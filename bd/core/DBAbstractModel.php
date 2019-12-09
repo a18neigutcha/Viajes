@@ -1,14 +1,14 @@
 
 <?php
 
-require_once('login.php');
+// require_once('login.php');
 
 abstract class DBAbstractModel {
  
   
   private static $db_host = "localhost";
   private static $db_user = "root";
-  private static $db_pass = "t2r2";
+  private static $db_pass = "password";
  
 
   protected $db_name;

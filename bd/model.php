@@ -1,30 +1,29 @@
 <?php
 
 // magic constant
-require_once (__DIR__ . "/../core/DBAbstractModel.php");
+require_once (__DIR__ . "../core/DBAbstractModel.php");
 
-class persones extends DBAbstractModel {
+class usuari extends DBAbstractModel {
   
-  private $id;
-  private $nom;
-  private $edat;
-  private $alcada;
+  private $nomUsuari;
+  private $pwd;
 
   public $message;
   
   function __construct() {
-    $this->db_name = "patromvc";
+    $this->db_name = "viajes";
     }
   
   function __toString() {
     echo "entro string <br>";
-    return "(" . $this->id . ", " . $this->name . ", " . $this->edat . ", " .  
-      $this->alcada . ")";
+    return "(" . $this->nomUsuari . ", " . $this->pwd . ")";
   }
   
   function __destruct() {
-    unset ($this);
+   // unset ($this);
   }
+  
+
   
   //select dels camps passats de tots els registres
   //stored in $rows property
@@ -46,7 +45,7 @@ class persones extends DBAbstractModel {
   }
   
   public function select($nom="") {
-   
+
   }
   
   
