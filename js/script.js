@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    axios.get('http://localhost/Viajes/api.php', {
+    axios.get('api.php', {
         params: {
         }
       })
