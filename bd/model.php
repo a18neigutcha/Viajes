@@ -124,6 +124,20 @@ class experiencia extends DBAbstractModel {
     $this->get_results_from_query();
     return $this->rows;
   }
+  public function select10Last($fields=array()){
+    $this->query="SELECT ";
+    $firstField = true;
+    for ($i=0; $i<count($fields); $i++) {
+      if ($firstField) {
+        $this->query .= $fields[$i];
+        $firstField=false;
+      }
+      else $this->query .= ", " . $fields[$i];
+    }
+    $this->query .= " FROM experiencia ORDER BY codExp DESC LIMIT 10";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
 
   public function insert($user_data = array()) {
   }
