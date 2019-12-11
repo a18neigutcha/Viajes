@@ -8,17 +8,18 @@
 
     <!-- CSS de Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/animacion.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
 
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
 
-    <div class="container" style="background-color: #aaa">
+    <div class="container header">
       <!--Contenido de la página-->
       <!--clase text-center: centra el texto-->
       <div class="row">
@@ -29,9 +30,9 @@
       <div class="row">
         <div class="col-10"></div>
         <!--clase btn: botón-->
-        <button class="btn col-1">SingIn</button>
+        <button class="btn col-1 link buzz-out-on-hover">SingIn</button>
         <!--clase btn-primary: botón primario-->
-        <button class="btn btn-primary col-1">SingUp</button>
+        <button class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
       </div>
     </div>
 
@@ -39,15 +40,45 @@
       <p class="col">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>
 
-    <div class="container" style="background-color: #aaa">
+    <div class="container">
+      <div class="carga animation-load"></div>
+    </div>
+
+    <div class="container caja">
       <!--Contenido de la página-->
       <div class="row">
-          <div class="col-8" style="background-color: rgb(130, 167, 130)">
-                <script src="js/script.js"></script>
+          <div class="col-8 caja">
+            <div class="exp">
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+              {experiencia}<br>
+            </div>
           </div>
-          <div class="col-4" style="background-color: rgb(221, 221, 115)">
+          <div class="col-4 caja">
               <br>
-              <img border="0" alt="paisage" src="./img/paisage/piramides.png" width="350" height="250">
+              <img class="showbox" border="0" alt="paisage" src="./img/paisage/piramides.png" width="350" height="250">
               <p>Nom:</p>
               <p>Categoria:</p>
           </div>
@@ -55,21 +86,21 @@
     </div>
 
     <div class="container">
-      <br>
+      <div class="carga animation-load"></div>
     </div>
 
-    <div class="container" style="background-color: #aaa">
+    <div class="container footer">
       <div class="row">
-          <div class="col-8" style="background-color: #aaa">
+          <div class="col-8 footer">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-              <div class="col-12">
-                  <a href="url" style="display: inline;">Readme</a>
-                  <a style="display: inline;">|</a>
-                  <a href="url" style="display: inline;">StyleGuide</a>
+              <div class="col-12 legal">
+                  <a href="url">Readme</a>
+                  <a>|</a>
+                  <a href="url">StyleGuide</a>
               </div>
           </div>
-          <div class="col-4" style="background-color: #aaa; padding-top: 5px">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.438862338542!2d2.1038899157269384!3d41.386274704026405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a499e386a0bfa3%3A0x241820329ee7632!2sInstitut%20Pedralbes!5e0!3m2!1sca!2ses!4v1575891763027!5m2!1sca!2ses" width="350" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+          <div class="col-4 maps">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.438862338542!2d2.1038899157269384!3d41.386274704026405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a499e386a0bfa3%3A0x241820329ee7632!2sInstitut%20Pedralbes!5e0!3m2!1sca!2ses!4v1575891763027!5m2!1sca!2ses" width="250" height="150" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
           </div>
       </div>
     <div>

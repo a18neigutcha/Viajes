@@ -23,6 +23,12 @@ body{
     background-color: #aaa;
 }
 
+.exp{
+    width: 400px;
+    height: 400px;
+    overflow: auto;
+}
+
 .footer{
     background-color: #aaa;
 }
