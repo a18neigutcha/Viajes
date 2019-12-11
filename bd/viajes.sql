@@ -1,3 +1,4 @@
+DROP DATABASE viajes;
 CREATE DATABASE IF NOT EXISTS viajes;
 
 CREATE TABLE IF NOT EXISTS viajes.usuari(
@@ -11,7 +12,7 @@ CREATE TABLE IF NOT EXISTS viajes.experiencia (
   data DATE,
   text VARCHAR (50),
   imatge VARCHAR (50),
-  coordenades VARCHAR(250),
+  coordenades VARCHAR(300),
   valPos INT,
   valNeg INT,
   estat VARCHAR (50),
@@ -32,3 +33,4 @@ CREATE TABLE IF NOT EXISTS viajes.pertany(
     FOREIGN KEY (codExp) REFERENCES experiencia(codExp) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (codCat) REFERENCES categories(codCat)  ON UPDATE CASCADE ON DELETE CASCADE
 );
+
