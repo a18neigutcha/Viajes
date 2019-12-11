@@ -1,0 +1,40 @@
+.header{
+    background-color: #aaa;
+}
+
+.titulo{
+
+}
+
+.boton{
+
+}
+
+body{
+    background-image: url("../img/paisage/cielo.jpg");
+    background-size: 100%;
+}
+
+.text{
+
+}
+
+.caja{
+    background-color: #aaa;
+}
+
+.footer{
+    background-color: #aaa;
+}
+
+.legal{
+    display: inline;
+    text-align: center;
+    padding-left: 50%;
+}
+
+.maps{
+    background-color: #aaa; 
+    padding-top: 5px; 
+    padding-left: 100px;
+}
