@@ -2,7 +2,6 @@
 
 // magic constant
 require_once ("core/DBAbstractModel.php");
-
 class usuari extends DBAbstractModel {
   
   private $nomUsuari;
@@ -63,7 +62,6 @@ class usuari extends DBAbstractModel {
  
     
 }
-
 class experiencia extends DBAbstractModel {
   
   private $codExp;
@@ -153,4 +151,75 @@ class experiencia extends DBAbstractModel {
     
 }
 
+class categories extends DBAbstractModel{
+  
+  private $codCat;
+  private $nomCat;
+  
+  function __construct() {
+    $this->db_name = "viajes";
+    }
+  
+  function __toString() {
+    return "(" . $this->codCat . ", " . $this->nomCat  . ")";
+  }
+  
+  function __destruct() {
+   // unset ($this);
+  }
+  
+  public function selectAll($fields=array()){
+    
+    $this->query="SELECT ";
+    $firstField = true;
+    for ($i=0; $i<count($fields); $i++) {
+      if ($firstField) {
+        $this->query .= $fields[$i];
+        $firstField=false;
+      }
+      else $this->query .= ", " . $fields[$i];
+    }
+    $this->query .= " FROM categories";
+    $this->get_results_from_query();
+    return $this->rows;
+
+  }
+  
+  public function select($nomCat=""){
+    
+    $this->query="SELECT * FROM categories WHERE nomCat='".$nomCat."'";
+    $this->get_results_from_query();
+    return $this->rows;
+    
+  }
+  public function insert($value=""){
+    
+    $this->query="INSERT INTO categories (nomCat) VALUE ('".$value."')";
+    $this->execute_single_query();
+    return $this->rows;
+    
+    
+  }
+  public function update($id="",$nouNom=""){
+    
+    $this->query ="UPDATE categories SET nomCat='".$nouNom."' WHERE codCat='".$id."'";
+    $this->execute_single_query();
+    return $this->rows;  
+    
+  }
+  public function updateNom($nom="",$nouNom=""){
+    
+    $this->query ="UPDATE categories SET nomCat='".$nouNom."' WHERE nomCat='".$nom."'";
+    $this->execute_single_query();
+    return $this->rows;
+    
+  }
+  public function delete($codCat=""){
+    
+    $this->query="DELETE FROM categories WHERE codCat='".$codCat."'";
+    $this->execute_single_query();
+    return $this->rows;
+    
+  }
+} 
 ?>

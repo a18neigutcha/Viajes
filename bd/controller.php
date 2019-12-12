@@ -11,7 +11,6 @@ class controller {
     $exp = new experiencia();
     $view = new view();
 
-
     $dades = $exp->selectAll(array("*"));
     $view->retornarVista($dades);
 
