@@ -126,7 +126,7 @@ class experiencia extends DBAbstractModel {
   }
   public function selectTitol($titol){
     $this->query="SELECT * FROM experiencia WHERE titol='".$titol."'";
-    $this->execute_single_query();
+    $this->get_results_from_query();
     return $this->rows;
   }
   public function select10Last($fields=array()){
