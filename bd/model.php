@@ -56,16 +56,18 @@ class usuari extends DBAbstractModel {
     return $this->rows; 
   }
   
-  public function update ($userData = array()) {
-    $this->query ="UPDATE usuari SET nomUsuari='".$userData["nomUsuari"]."' AND pwd='".$userData["pwd"]."' WHERE nomUsuari='".$userData["oldNomUsuari"]."'";
+  public function update ($user_data = array()) {
+    $this->query ="UPDATE usuari SET nomUsuari='".$user_data["nomUsuari"]."', pwd='".$user_data["pwd"]."' WHERE nomUsuari='".$user_data["oldNomUsuari"]."'";
     $this->execute_single_query();
     return $this->rows;  
   }
- 
+
   public function delete ($nom="") {
-  
+    $this->query="DELETE FROM usuari where nomUsuari='".$nom."'";
+    $this->execute_single_query();
+    return $this->rows; 
   }
- 
+
     
 }
 class experiencia extends DBAbstractModel {
@@ -129,6 +131,11 @@ class experiencia extends DBAbstractModel {
     $this->get_results_from_query();
     return $this->rows;
   }
+  public function selectConCategoria(){
+    $this->query="SELECT E.*, C.nomCat FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
   public function select10Last($fields=array()){
     $this->query="SELECT ";
     $firstField = true;
@@ -145,14 +152,25 @@ class experiencia extends DBAbstractModel {
   }
 
   public function insert($user_data = array()) {
+    $this->query="INSERT INTO experiencia (titol,data,text,imatge,coordenades,valPos,valNeg,estat,usuari) 
+                  VALUES ('".$user_data["titol"]."','".$user_data["data"]."','".$user_data["text"]."','".$user_data["img"]."','".$user_data["coordenades"]."','".
+                  $user_data["valPos"]."','".$user_data["valNeg"]."','".$user_data["estat"]."','".$user_data["usuari"]."')";
+    $this->execute_single_query();
+    return $this->rows;
   }
   
-  public function update ($userData = array()) {
-   
+  public function update ($user_data = array()) {
+    $this->query="UPDATE experiencia SET titol ='".$user_data["titol"]."',data ='".$user_data["data"]."', text='".$user_data["text"]."',
+    imatge ='".$user_data["img"]."',coordenades ='".$user_data["coordenades"]."',valPos ='".$user_data["valPos"]."',valNeg ='".$user_data["valNeg"]."',
+    estat ='".$user_data["estat"]."',usuari ='".$user_data["usuari"]."' WHERE codExp='".$user_data["codExp"]."'";
+    $this->execute_single_query();
+    return $this->rows;
   }
  
-  public function delete ($nom="") {
-  
+  public function delete ($codExp="") {
+    $this->query="DELETE FROM experiencia where codExp='".$codExp."'";
+    $this->execute_single_query();
+    return $this->rows;
   }
  
     
