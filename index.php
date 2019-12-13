@@ -44,13 +44,12 @@
       <div class="row">
           <div id="contExp" class="col-8" style="background-color: rgb(130, 167, 130)">
                 <script src="js/script.js"></script>
-                
           </div>
           <div class="col-4" style="background-color: rgb(221, 221, 115)">
               <br>
-              <img border="0" alt="paisage" src="./img/paisage/piramides.png" width="350" height="250">
-              <p>Nom:</p>
-              <p>Categoria:</p>
+              <img id="imgExp" border="0" alt="paisage" src="./img/paisage/piramides.png" width="350" height="250">
+              <p id="nomExp">Nom:</p>
+              <p id="catExp">Categoria:</p>
           </div>
       </div>
     </div>

@@ -1,35 +1,8 @@
-/*function muestraExperiencias(datos){
-    var contExp=document.getElementById("contExp");
-    console.log(contExp);
-    console.log(datos);
-    for(let i=0;i<datos.length;i++){
-        let divExp=document.createElement("div");
-        divExp.setAttribute("id",i+"-exp");
-        divExp.innerHTML=datos[i].titol;
-        contExp.appendChild(divExp);
-        console.log(contExp);
-    }
-
-}*/
-
 var datosInicio;
 
 window.onload = function() {
 
-    /*axios.get('api.php', {
-        params: {
-        }
-      })
-      .then(function (response) {
-        console.log(response);
-        muestraExperiencias(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-        
-      }); */
+
 
       var modelo={
         init:function(){
@@ -71,13 +44,23 @@ window.onload = function() {
           },
           mostrarExperiencias:function(datos){
             var contExp=document.getElementById("contExp");
+            console.log(datos);
             for(let i=0;i<datos.length;i++){
                 let divExp=document.createElement("div");
                 divExp.setAttribute("id",i+"-exp");
                 divExp.innerHTML=datos[i].titol;
                 contExp.appendChild(divExp);
             }
+          },
+          mostrarInfoExp:function(datoExp){
+            let img=document.getElementById("imgExp");
+            let nom=document.getElementById("nomExp");
+            let categ=document.getElementById("catExp");
+
+            img.src=datosExp;
+
           }
+
 
 
       }
