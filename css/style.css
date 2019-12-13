@@ -1,5 +1,5 @@
 .header{
-    background-color: #aaa;
+    background-color: antiquewhite;
 }
 
 .titulo{
@@ -20,11 +20,17 @@ body{
 }
 
 .caja{
-    background-color: #aaa;
+    background-color: antiquewhite;
+}
+
+.exp{
+    width: 400px;
+    height: 400px;
+    overflow: auto;
 }
 
 .footer{
-    background-color: #aaa;
+    background-color: antiquewhite;
 }
 
 .legal{
@@ -34,7 +40,35 @@ body{
 }
 
 .maps{
-    background-color: #aaa; 
+    background-color: antiquewhite; 
     padding-top: 5px; 
     padding-left: 100px;
+}
+
+.log{
+    width: 12%;
+    height: 20%;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    position: absolute;
+    left: 70%;
+    z-index: 100000;
+    padding-left: 5px;
+    visibility: hidden;
+}
+
+.barLog{
+    width: 80%;
+}
+
+.barLogBut{
+    width: 60%;
+}
+
+#cross{
+    position: absolute;
+    left: 90%;
+    z-index: 100000;
+    padding-top: 5px;
 }

@@ -138,6 +138,35 @@ window.onload = function() {
           }
 
 
+      }
+
+      var controlador={
+          init:function(){
+            modelo.init();
+            let datos=modelo.dameDatosIniciales();
+            view.mostrarExperiencias(datos);
+          }
+          
+
+      }
+
+      var view={
+          init:function(){
+              
+
+          },
+          mostrarExperiencias:function(datos){
+            var contExp=document.getElementById("contExp");
+            for(let i=0;i<datos.length;i++){
+                let divExp=document.createElement("div");
+                divExp.setAttribute("id",i+"-exp");
+                divExp.innerHTML=datos[i].titol;
+                contExp.appendChild(divExp);
+            }
+          }
+
+
+      }
 
       }
     //  window.setTimeout(function (){alert("Hola")},1000);
