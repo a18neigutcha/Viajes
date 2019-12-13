@@ -103,13 +103,27 @@ window.onload = function() {
           mostrarExperiencias:function(datos){
             var contExp=document.getElementById("contExp");
             for(let i=0;i<datos.length;i++){
+                //Crea el div para la experiencia
                 let divExp=document.createElement("div");
                 divExp.setAttribute("id",i+"-exp");
-                divExp.innerHTML=datos[i].titol;
+                divExp.setAttribute("class","experiencia");
+
+                //Crea el div para el titulo de la experiencia
+                let divExpTitol=document.createElement("div");
+                divExpTitol.setAttribute("class","expTitol");
+                divExpTitol.innerHTML=datos[i].titol;
+                divExp.appendChild(divExpTitol);
+
+                //Crea un boton para ver mas informacion de la experiencia
+                let botVer=document.createElement("div");
+                botVer.setAttribute("class","botVer");
+                botVer.innerHTML="Ver mas";
+                divExp.appendChild(botVer);
+
                 contExp.appendChild(divExp);
-                divExp.addEventListener("click",function(){
+                botVer.addEventListener("click",function(){
                   //SetTime puestos por que es necesario esperar un rato a que se cargen los datos
-                  modelo.cargaExperienciaPorTitulo(divExp.innerHTML);
+                  modelo.cargaExperienciaPorTitulo(divExpTitol.innerHTML);
                   
                   window.setTimeout(function(){
                     let datosExp=controlador.dameExperienciaPorTitulo();
@@ -140,35 +154,6 @@ window.onload = function() {
 
       }
 
-      var controlador={
-          init:function(){
-            modelo.init();
-            let datos=modelo.dameDatosIniciales();
-            view.mostrarExperiencias(datos);
-          }
-          
-
-      }
-
-      var view={
-          init:function(){
-              
-
-          },
-          mostrarExperiencias:function(datos){
-            var contExp=document.getElementById("contExp");
-            for(let i=0;i<datos.length;i++){
-                let divExp=document.createElement("div");
-                divExp.setAttribute("id",i+"-exp");
-                divExp.innerHTML=datos[i].titol;
-                contExp.appendChild(divExp);
-            }
-          }
-
-
-      }
-
-      }
     //  window.setTimeout(function (){alert("Hola")},1000);
       controlador.init();
      

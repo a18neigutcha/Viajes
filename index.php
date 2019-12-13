@@ -60,10 +60,11 @@
     <div class="container caja">
       <!--Contenido de la página-->
       <div class="row">
+          <!--Experiencias de inicio -->
           <div id="contExp" class="col-8" style="background-color: rgb(130, 167, 130)">
                 
           </div>
-          <div class="col-4" style="background-color: rgb(221, 221, 115)">
+          <div id="dellateExp" class="col-4" style="background-color: rgb(221, 221, 115)">
               <br>
               <img id="imgExp" border="0" alt="paisage" src="./img/paisage/piramides.png" width="350" height="250">
               <div id="nomExp"></div>

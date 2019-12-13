@@ -72,3 +72,25 @@ body{
     z-index: 100000;
     padding-top: 5px;
 }
+
+
+
+
+.experiencia{
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 9px;
+}
+#contExp{
+    display: flex;
+}
+.experiencia > .botVer{
+    background-color: rgba(255, 255, 255, 0.589);
+}
+
+#detalleExp{
+    visibility: hidden;
+}
