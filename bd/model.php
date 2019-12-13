@@ -44,16 +44,22 @@ class usuari extends DBAbstractModel {
   }
   
   public function select($nom="") {
-
+    $this->query="SELECT * FROM usuari WHERE nomUsuari='".$nom."'";
+    $this->get_results_from_query();
+    return $this->rows;
   }
   
   
   public function insert($user_data = array()) {
-    
+    $this->query ="INSERT INTO usuari values('".$user_data["nomUsuari"]."','".$user_data["pwd"]."')";
+    $this->execute_single_query();
+    return $this->rows; 
   }
   
   public function update ($userData = array()) {
-   
+    $this->query ="UPDATE usuari SET nomUsuari='".$userData["nomUsuari"]."' AND pwd='".$userData["pwd"]."' WHERE nomUsuari='".$userData["oldNomUsuari"]."'";
+    $this->execute_single_query();
+    return $this->rows;  
   }
  
   public function delete ($nom="") {
@@ -112,14 +118,15 @@ class experiencia extends DBAbstractModel {
     
   }
   
-  public function selectTitol($titol="") {
+  
+  public function select($titol="") {
     $this->query="SELECT * FROM experiencia WHERE titol=".$titol;
     $this->get_results_from_query();
     return $this->rows;
   }
-  public function select($titol="") {
-    $this->query="SELECT * FROM experiencia WHERE titol=".$titol;
-    $this->get_results_from_query();
+  public function selectTitol($titol){
+    $this->query="SELECT * FROM experiencia WHERE titol='".$titol."'";
+    $this->execute_single_query();
     return $this->rows;
   }
   public function select10Last($fields=array()){
