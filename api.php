@@ -12,9 +12,14 @@ $experiencias = [
 
 require_once 'bd/model.php';
 
-
-$exp = new experiencia();
-$dades = $exp->select10Last(array("*"));
+if($_REQUEST['titol']){
+    $exp = new experiencia();
+    $dades = $exp->selectTitol($_REQUEST['titol']);
+}else{
+    $exp = new experiencia();
+    $dades = $exp->select10Last(array("*"));
+    
+}
 echo json_encode($dades);
 //echo json_encode($experiencias[$_REQUEST['id_experiencia']]);
 

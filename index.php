@@ -14,7 +14,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
   </head>
   <body>
 
@@ -43,13 +43,19 @@
       <!--Contenido de la página-->
       <div class="row">
           <div id="contExp" class="col-8" style="background-color: rgb(130, 167, 130)">
-                <script src="js/script.js"></script>
+                
           </div>
           <div class="col-4" style="background-color: rgb(221, 221, 115)">
               <br>
               <img id="imgExp" border="0" alt="paisage" src="./img/paisage/piramides.png" width="350" height="250">
-              <p id="nomExp">Nom:</p>
-              <p id="catExp">Categoria:</p>
+              <div id="nomExp"></div>
+              <div id="catExp"></div>
+              <div id="text"></div>
+              <div id="valoracion">
+                <div id="pos"></div>
+                <div id="neg"></div>
+              </div>
+              <div id="estat"></div>
           </div>
       </div>
     </div>
@@ -76,6 +82,9 @@
     </div>
 
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script src="js/script.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
 
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
