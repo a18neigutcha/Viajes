@@ -38,14 +38,16 @@
 
     <!--login-->
     <div id="log" class="log">
-        <FORM name=form action="Viat-1.HTML">
+        <form name=form action="Viat-1.HTML">
         <div>
             <img id="cross" border="0" alt="cross" src="./img/icons/cross.png" width="15" height="15">
         </div>
 
-        <P>Usuario:</p>    <INPUT class="barLog" type=text name=login> 
-        <P>Contraseña:</p> <INPUT class="barLog" type=password name=password><br> 
-        <INPUT class="barLogBut" onclick=go() type=button value=Acceder> 
+        <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
+        <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
+
+        <input class="barLogBut" id="botLogIn"  type="button" value="Acceder">
+        </form> 
     </div>
 
     <!-- texto introductivo-->
@@ -61,12 +63,11 @@
       <!--Contenido de la página-->
       <div class="row">
           <!--Experiencias de inicio -->
-          <div id="contExp" class="col-8" style="background-color: rgb(130, 167, 130)">
+          <div id="contExp" class="col-12" style="background-color: rgb(130, 167, 130)">
                 
           </div>
-          <div id="dellateExp" class="col-4" style="background-color: rgb(221, 221, 115)">
-              <br>
-              <img id="imgExp" border="0" alt="paisage" src="./img/paisage/piramides.png" width="350" height="250">
+          <div id="detalleExp">
+              <img id="imgExp" src="./img/paisage/piramides.png" width="350" height="250">
               <div id="nomExp"></div>
               <div id="catExp"></div>
               <div id="text"></div>

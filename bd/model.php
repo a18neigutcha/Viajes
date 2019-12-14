@@ -48,6 +48,11 @@ class usuari extends DBAbstractModel {
     $this->get_results_from_query();
     return $this->rows;
   }
+  public function selectUsuari($nomUsuari="",$pwd="") {
+    $this->query="SELECT * FROM usuari WHERE nomUsuari='".$nomUsuari."' AND  pwd='".$pwd."' ";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
   
   
   public function insert($user_data = array()) {
