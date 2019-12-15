@@ -2,7 +2,7 @@
 <?php
 
 
-require_once ("../../.gitignore/login.php");
+//require_once ("../../.gitignore/login.php");
 
 abstract class DBAbstractModel {
 

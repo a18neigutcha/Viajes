@@ -14,22 +14,22 @@ require_once 'bd/core/login.php';
 
     echo "TEST <br><hr>";
     echo"Metode 1<br>";
-    $arr = array("nomUsuari","pwd");
-    $arr_asoc = array(
-        "titol"=>"viatgeProvaMod",
-        "data"=>"2000-01-01",
-        "text"=>"lorem",
-        "img"=>"img.jpg",
-        "coordenades"=>"posX,posY",
-        "valPos"=>3,
-        "valNeg"=>4,
-        "estat"=>"acceptada",
-        "usuari"=>"Ferran",
-        "codExp"=>7
+    // $arr = array("nomUsuari","pwd");
+    // $arr_asoc = array(
+    //     "titol"=>"viatgeProvaMod",
+    //     "data"=>"2000-01-01",
+    //     "text"=>"lorem",
+    //     "img"=>"img.jpg",
+    //     "coordenades"=>"posX,posY",
+    //     "valPos"=>3,
+    //     "valNeg"=>4,
+    //     "estat"=>"acceptada",
+    //     "usuari"=>"Ferran",
+    //     "codExp"=>7
 
-    );
+    // );
     $exp= new experiencia();
-    $exp->delete(7);
+    //$exp->delete(7);
     $result= $exp->selectAll(array("*"));
     $str = "";
     foreach($result as $row){
