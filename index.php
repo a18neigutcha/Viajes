@@ -61,11 +61,11 @@
 
     <div class="container caja">
       <!--Contenido de la página-->
-      <div class="row">
-          <!--Experiencias de inicio -->
-          <div id="contExp" class="col-12" style="background-color: rgb(130, 167, 130)">
-                
-          </div>
+        <!--Experiencias de inicio -->
+      <div id="contExp" class="row">
+          
+          
+          <!--
           <div id="detalleExp">
               <img id="imgExp" src="./img/paisage/piramides.png" width="350" height="250">
               <div id="nomExp"></div>
@@ -76,7 +76,7 @@
                 <div id="neg"></div>
               </div>
               <div id="estat"></div>
-          </div>
+          </div> -->
       </div>
     </div>
 
