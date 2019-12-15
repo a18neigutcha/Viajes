@@ -2,7 +2,7 @@
 
 // magic constant
 require_once ("core/DBAbstractModel.php");
-require_once ("../.gitignore/login.php");
+require_once ("core/login.php");
 class usuari extends DBAbstractModel {
   
   private $nomUsuari;
