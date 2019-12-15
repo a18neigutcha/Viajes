@@ -135,64 +135,68 @@ window.onload = function() {
           mostrarExperiencias:function(datos){
             var contExp=document.getElementById("contExp");
             for(let i=0;i<datos.length;i++){
-                //Crea el div para la experiencia
-                let divExp=document.createElement("div");
-                divExp.setAttribute("id",i+"-exp");
-                divExp.setAttribute("class","col-2 experiencia");
+                let divCol2=document.createElement("div");
+                divCol2.setAttribute("class","col-2");
 
-                  //Crea el div para el titulo de la experiencia
-                  let divExpTitol=document.createElement("div");
-                  divExpTitol.setAttribute("class","expTitol");
-                  divExpTitol.innerHTML=datos[i].titol;
-                  divExp.appendChild(divExpTitol);
-                  
-                  //Muestra el usuario creador de la experiencia
-                  let divExpUsu=document.createElement("div");
-                  divExpUsu.setAttribute("class","expUsu detalleExp");
-                  divExpUsu.innerHTML=datos[i].usuari;
-                  divExp.appendChild(divExpUsu);
+                  //Crea el div para la experiencia
+                  let divExp=document.createElement("div");
+                  divExp.setAttribute("id",i+"-exp");
+                  divExp.setAttribute("class","experiencia");
 
-                  //Crea la img de la experiencia
-                  let imgExp=document.createElement("img");
-                  imgExp.setAttribute("class","imgExp");
-                  imgExp.src="img/"+datos[i].imatge;
-                  divExp.appendChild(imgExp);
-
-                  //Despliege del mapa pendiente por problemas de api key
-
-                  //Muestra las categorias de la experiencia
-                  // !Pendiente ya que no puedo necesito una select con las categorias
-                  // incluidas de cada experiencia!
-                  // >Por cuestiones de produccion solo se pondra una categoria por experiencia
-                  let catExp=document.createElement("div");
-                  catExp.setAttribute("class","catExp");
-                  catExp.innerHTML="¡PENDIENTE DE PRODUCIR!"
-                  divExp.appendChild(catExp);
-
-                  //Crea el texto de la descripcion de la experiencia
-                  let textExp=document.createElement("div");
-                  textExp.setAttribute("class","textExp");
-                  textExp.innerHTML=datos[i].text;
-                  divExp.appendChild(textExp);
-
-                  let valExp=document.createElement("div");
-                  valExp.setAttribute("class","valExp detalleExp");
-
-                    //Crea un boton para dar megusta
-                    let botMeGusta=document.createElement("button");
-                    botMeGusta.setAttribute("class","botMeGusta");
-                    botMeGusta.innerHTML="Me gusta";
-                    valExp.appendChild(botMeGusta);
-
-                    //Crea un boton para dar no megusta
-                    let botNoMeGusta=document.createElement("button");
-                    botNoMeGusta.setAttribute("class","botNoMeGusta");
-                    botNoMeGusta.innerHTML="No me gusta";
-                    valExp.appendChild(botNoMeGusta);
+                    //Crea el div para el titulo de la experiencia
+                    let divExpTitol=document.createElement("div");
+                    divExpTitol.setAttribute("class","expTitol");
+                    divExpTitol.innerHTML=datos[i].titol;
+                    divExp.appendChild(divExpTitol);
                     
-                  divExp.appendChild(valExp);
+                    //Muestra el usuario creador de la experiencia
+                    let divExpUsu=document.createElement("div");
+                    divExpUsu.setAttribute("class","expUsu detalleExp");
+                    divExpUsu.innerHTML=datos[i].usuari;
+                    divExp.appendChild(divExpUsu);
 
-                contExp.appendChild(divExp);
+                    //Crea la img de la experiencia
+                    let imgExp=document.createElement("img");
+                    imgExp.setAttribute("class","imgExp");
+                    imgExp.src="img/"+datos[i].imatge;
+                    divExp.appendChild(imgExp);
+
+                    //Despliege del mapa pendiente por problemas de api key
+
+                    //Muestra las categorias de la experiencia
+                    // !Pendiente ya que no puedo necesito una select con las categorias
+                    // incluidas de cada experiencia!
+                    // >Por cuestiones de produccion solo se pondra una categoria por experiencia
+                    let catExp=document.createElement("div");
+                    catExp.setAttribute("class","catExp");
+                    catExp.innerHTML="¡PENDIENTE DE PRODUCIR!"
+                    divExp.appendChild(catExp);
+
+                    //Crea el texto de la descripcion de la experiencia
+                    let textExp=document.createElement("div");
+                    textExp.setAttribute("class","textExp");
+                    textExp.innerHTML=datos[i].text;
+                    divExp.appendChild(textExp);
+
+                    let valExp=document.createElement("div");
+                    valExp.setAttribute("class","valExp detalleExp");
+
+                      //Crea un boton para dar megusta
+                      let botMeGusta=document.createElement("button");
+                      botMeGusta.setAttribute("class","botMeGusta");
+                      botMeGusta.innerHTML="Me gusta";
+                      valExp.appendChild(botMeGusta);
+
+                      //Crea un boton para dar no megusta
+                      let botNoMeGusta=document.createElement("button");
+                      botNoMeGusta.setAttribute("class","botNoMeGusta");
+                      botNoMeGusta.innerHTML="No me gusta";
+                      valExp.appendChild(botNoMeGusta);
+                      
+                    divExp.appendChild(valExp);
+
+                  divCol2.appendChild(divExp);
+                contExp.appendChild(divCol2);
                 /*Comentado de momento hasta desplegar el hover por css*/
                 // botVer.addEventListener("click",function(){
                 //   //SetTime puestos por que es necesario esperar un rato a que se cargen los datos

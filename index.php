@@ -62,7 +62,7 @@
     <div class="container caja">
       <!--Contenido de la página-->
         <!--Experiencias de inicio -->
-      <div id="contExp" class="row">
+      <div id="contExp" class="row contExp">
           
           
           <!--
