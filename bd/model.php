@@ -4,14 +4,13 @@
 require_once ("core/DBAbstractModel.php");
 require_once ("core/login.php");
 class usuari extends DBAbstractModel {
-  
   private $nomUsuari;
   private $pwd;
 
   public $message;
   
   function __construct() {
-    $this->db_name = $db_nameLogIn;
+    $this->db_name = "a18NeiGutCha_viajes";
     }
   
   function __toString() {
@@ -92,7 +91,7 @@ class experiencia extends DBAbstractModel {
   public $message;
   
   function __construct() {
-    $this->db_name = $db_nameLogIn;
+    $this->db_name = "a18NeiGutCha_viajes";
     }
   
   function __toString() {
@@ -188,7 +187,7 @@ class categories extends DBAbstractModel{
   private $nomCat;
   
   function __construct() {
-    $this->db_name = $db_nameLogIn;
+    $this->db_name = "a18NeiGutCha_viajes";
     }
   
   function __toString() {
