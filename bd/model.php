@@ -2,6 +2,7 @@
 
 // magic constant
 require_once ("core/DBAbstractModel.php");
+require_once ("../.gitignore/login.php");
 class usuari extends DBAbstractModel {
   
   private $nomUsuari;
@@ -10,7 +11,7 @@ class usuari extends DBAbstractModel {
   public $message;
   
   function __construct() {
-    $this->db_name = "viajes";
+    $this->db_name = $db_nameLogIn;
     }
   
   function __toString() {
@@ -91,7 +92,7 @@ class experiencia extends DBAbstractModel {
   public $message;
   
   function __construct() {
-    $this->db_name = "viajes";
+    $this->db_name = $db_nameLogIn;
     }
   
   function __toString() {
@@ -187,7 +188,7 @@ class categories extends DBAbstractModel{
   private $nomCat;
   
   function __construct() {
-    $this->db_name = "viajes";
+    $this->db_name = $db_nameLogIn;
     }
   
   function __toString() {

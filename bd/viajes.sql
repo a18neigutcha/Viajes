@@ -1,12 +1,12 @@
 
-CREATE DATABASE IF NOT EXISTS viajes;
-
-CREATE TABLE IF NOT EXISTS viajes.usuari(
+/*CREATE DATABASE IF NOT EXISTS viajes;*/
+USE a18NeiGutCha_viajes;
+CREATE TABLE IF NOT EXISTS usuari(
 	nomUsuari VARCHAR(50) PRIMARY KEY,
     pwd VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS viajes.experiencia (
+CREATE TABLE IF NOT EXISTS experiencia (
   codExp TiNYINT AUTO_INCREMENT PRIMARY KEY,
   titol VARCHAR(30),
   data DATE,
@@ -20,13 +20,13 @@ CREATE TABLE IF NOT EXISTS viajes.experiencia (
   FOREIGN KEY (usuari) REFERENCES usuari(nomUsuari) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS viajes.categories(
+CREATE TABLE IF NOT EXISTS categories(
 	codCat TINYINT AUTO_INCREMENT PRIMARY KEY,
     nomCat VARCHAR(70)
 
 );
 
-CREATE TABLE IF NOT EXISTS viajes.pertany(
+CREATE TABLE IF NOT EXISTS pertany(
 	codExp TINYINT,
     codCat TINYINT,
     primary key(codExp,codCat),

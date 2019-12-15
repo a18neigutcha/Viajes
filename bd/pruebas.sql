@@ -1,5 +1,5 @@
 
-USE viajes;
+USE a18NeiGutCha_viajes;
 INSERT INTO usuari values
 			("Neil","contra1"),
             ("Adrian","contra2"),
