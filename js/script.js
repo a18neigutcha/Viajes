@@ -10,7 +10,7 @@ window.onload = function() {
         init:function(){
           modelo.cargaDatosIniciales();
         },
-        cargaDatosIniciales:function(callback){
+        cargaDatosIniciales:function(){
           
             axios.get('api.php', {
                 params: {
@@ -19,12 +19,14 @@ window.onload = function() {
             })
             .then(function (response) {
                 datosInicio=response.data;
+                console.log("axios succes")
             })
             .catch(function (error) {
                 console.log(error);
             })
             .finally(function () {
-              callback;
+              console.log("axios finally");
+              //callback;
             }); 
         },
         
@@ -67,8 +69,6 @@ window.onload = function() {
             callback();
           }); 
         }
-        
-
       }
 
       var controlador={
@@ -98,6 +98,10 @@ window.onload = function() {
             modelo.logInUsuario(nomUsuari,pwd,function postLogin(){
               if(logIn.log=="logIn"){
                 console.log("Inicio session");
+                modelo.cargaDatosIniciales();
+                let datos= datosInicio;
+                console.log(datos);
+                /*
                 controlador.actualizaDatosExperiencias(function postActualizaDatos(){
                   console.log("HI THERE");
                   let datos=controlador.dameDatosIniciales();
@@ -105,6 +109,7 @@ window.onload = function() {
                   view.actualizaExperiencias(datos);
                   console.log("GENERAL KENOBI");
                 });
+                */
                 console.log("actualizaDatosExperiencias")
               }else{
                 console.log("Fallo el acceso");
