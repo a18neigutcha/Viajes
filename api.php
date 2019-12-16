@@ -34,6 +34,13 @@ if($_REQUEST["logIn"]){
     }
     
 }
+if($_REQUEST["nuevaExp"]){
+    $exp = new experiencia();
+    $dadesExp=json_decode ($_REQUEST["nuevaExp"],true);
+    $exp->insert($dadesExp);
+    $dades="ok";
+}
+
 echo json_encode($dades);
 //echo json_encode($experiencias[$_REQUEST['id_experiencia']]);
 

@@ -82,7 +82,7 @@
           <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
           <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
           <br>
-          <input id="botLogUp"  type="button" value="Registrarse">
+          <input id="botRegistrarse"  type="button" value="Registrarse">
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 
       </div>
@@ -109,7 +109,7 @@
           </select>
           <br>
           
-          <input id="botLogUp"  type="button" value="Registrarse">
+          <input id="botCreaExp"  type="button" value="Registrarse">
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 
       </div>
