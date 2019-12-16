@@ -201,23 +201,10 @@
         let loading = null;
         // Retardo para borrar
         const myLoadingDelayHidden = loadingDelayHidden;
-        // Imágenes
-        let imgs = [];
-        let lenImgs = 0;
-        let counterImgsLoading = 0;
 
         //-----------------------------------------------------
         // Funciones
         //-----------------------------------------------------
-
-        /**
-         * Método que aumenta el contador de las imágenes cargadas
-         */
-        function incrementCounterImgs() {
-            counterImgsLoading += 1;
-            // Comprueba si todas las imágenes están cargadas
-            if (counterImgsLoading === lenImgs) hideLoading();
-        }
 
         /**
          * Ocultar HTML
@@ -243,20 +230,7 @@
             /* Comprobar que el HTML esté cargadas */
             document.addEventListener('DOMContentLoaded', function () {
                 loading = document.querySelector('.loading');
-                imgs = Array.from(document.images);
-                lenImgs = imgs.length;
-
-                /* Comprobar que todas las imágenes estén cargadas */
-                if(imgs.length === 0) {
-                    // No hay ninguna
-                    hideLoading();
-                } else {
-                    // Una o más
-                    imgs.forEach(function (img) {
-                        // A cada una le añade un evento que cuando se carge la imagen llame a la funcion incrementCounterImgs
-                        img.addEventListener('load', incrementCounterImgs, false);
-                    });
-                }
+                
             });
         }
 
