@@ -10,7 +10,7 @@ window.onload = function() {
         init:function(){
           modelo.cargaDatosIniciales();
         },
-        cargaDatosIniciales:function(){
+        cargaDatosIniciales:function(callback){
           
             axios.get('api.php', {
                 params: {
@@ -24,6 +24,7 @@ window.onload = function() {
                 console.log(error);
             })
             .finally(function () {
+              callback();
             }); 
         },
         
@@ -45,7 +46,7 @@ window.onload = function() {
             }); 
             
         },
-        logInUsuario:function(nomUsuari,pwd){
+        logInUsuario:function(nomUsuari,pwd, callback){
           axios.get('api.php', {
             params: {
               "nomUsuari":nomUsuari,
@@ -55,13 +56,14 @@ window.onload = function() {
           .then(function (response) {
               logIn.log=response.data;
               logIn.nomUsuari=nomUsuari;
-              
+              console.log(logIn);
+             
           })
           .catch(function (error) {
               console.log(error);
           })
           .finally(function () {
-              
+            callback();
           }); 
         }
         
@@ -88,10 +90,25 @@ window.onload = function() {
           iniciaSesion:function(){
             let nomUsuari=view.dameElnomUsuariLogIn();
             let pwd=view.dameElPwdLogIn();
-            modelo.logInUsuario(nomUsuari,pwd);
+            modelo.logInUsuario(nomUsuari,pwd,postLogin );
           },
           actualizaDatosExperiencias:function(){
             modelo.cargaDatosIniciales();
+          },
+          postLogin: function(){
+            if(logIn.log=="logIn"){
+              console.log("Inicio session");
+              controlador.actualizaDatosExperiencias(postActualizaDatos);
+            }else{
+              console.log("Fallo el acceso");
+            }
+            console.log(logIn.log);
+          },
+          postActualizaDatos:function(){
+            window.setTimeout(function (){
+              let datos=controlador.dameDatosIniciales();
+              view.actualizaExperiencias(datos);
+            },1000);
           }
           
 
@@ -100,6 +117,8 @@ window.onload = function() {
       var view={
           init:function(){
             view.eventoAccederUsuario();
+            view.eventoMostrarOcultarLogIn();
+            view.eventoMostrarOcultarLogOut()
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -198,27 +217,60 @@ window.onload = function() {
           },
           eventoAccederUsuario:function(){
               document.getElementById("botLogIn").addEventListener("click",function(){
+                  document.getElementById("contExp").style.display="none";
                   console.log("El evento acceso se desencadeno");
                   controlador.iniciaSesion();
 
                   /* Verifica si se pudo iniciar session * Se puede modificar para que dependiendo
                   de una cosa o otra muestre algo distinto*/
                   window.setTimeout(function (){
-                    if(logIn.log==true){
-                      console.log("Inicio session");
-                      window.setTimeout(function (){
-                        controlador.actualizaDatosExperiencias();
-                        let datos=controlador.dameDatosIniciales();
-                        view.actualizaExperiencias(datos);
-                      },1000);
-                    }else{
-                      console.log("Fallo el acceso");
-                    }
-                    console.log(logIn.log);
+                   
                   },1000);
                   
               });
 
+          },
+          eventoMostrarOcultarLogIn:function(){
+            document.getElementById("botLogIn").addEventListener("click",function(){
+              
+              let formLog=document.getElementById("log");
+                if(formLog.style.display=="none"){
+                  formLog.style.display="block";
+                  document.getElementById("contExp").style.display="none";
+                  document.getElementById("formRegistro").style.display="none";
+                }else{
+                  formLog.style.display="none";
+                  document.getElementById("formRegistro").style.display="none";
+                  document.getElementById("contExp").style.display="flex";
+                }
+              
+            });
+      
+            document.getElementById("cross").addEventListener("click",function(){
+              let formLog=document.getElementById("log");
+              formLog.style.display="none";
+            });
+          },
+          eventoMostrarOcultarLogOut:function(){
+            document.getElementById("botLogUp").addEventListener("click",function(){
+              
+              let formRegistro=document.getElementById("formRegistro");
+                if(formRegistro.style.display=="none"){
+                  formRegistro.style.display="block";
+                  document.getElementById("contExp").style.display="none";
+                  document.getElementById("log").style.display="none";
+                }else{
+                  formRegistro.style.display="none";
+                  document.getElementById("log").style.display="none";
+                  document.getElementById("contExp").style.display="flex";
+                }
+              
+            });
+      
+            document.getElementById("cross").addEventListener("click",function(){
+              let formLog=document.getElementById("log");
+              formLog.style.display="none";
+            });
           }
 
 

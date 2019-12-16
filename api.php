@@ -18,12 +18,11 @@ if($_REQUEST['titol']){
 }
 if($_REQUEST['nomUsuari'] && $_REQUEST['pwd']){
     $usuari=new usuari();
-    $dades= $usuari->verificaUsuario($_REQUEST['nomUsuari'],$_REQUEST['pwd']);
-    // if($verif['registrado']==1){
-    //     $dades="logIn";
-    // }else{
-    //     $dades="logOut";
-    // }
+    $rows= $usuari->selectUsuari($_REQUEST['nomUsuari'],$_REQUEST['pwd']);
+    if($rows)
+        $dades="logIn";
+    else
+        $dades="logOut";
 }
 if($_REQUEST["logIn"]){
     $exp = new experiencia();

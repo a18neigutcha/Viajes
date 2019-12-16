@@ -30,25 +30,14 @@
       <div class="row">
         <div class="col-10"></div>
         <!--clase btn: botón-->
-        <button id="botLog" class="btn col-1 link buzz-out-on-hover">SingIn</button>
+        <button id="botLogIn" class="btn col-1 link buzz-out-on-hover">SingIn</button>
         <!--clase btn-primary: botón primario-->
-        <button class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
+        <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
       </div>
     </div>
 
-    <!--login-->
-    <div id="log" class="log">
-        <form name=form action="Viat-1.HTML">
-        <div>
-            <img id="cross" border="0" alt="cross" src="./img/icons/cross.png" width="15" height="15">
-        </div>
-
-        <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
-        <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
-
-        <input class="barLogBut" id="botLogIn"  type="button" value="Acceder">
-        </form> 
-    </div>
+    
+    
 
     <!-- texto introductivo-->
     <div class="container">
@@ -58,25 +47,52 @@
     <div class="container">
       <div class="carga animation-load"></div>
     </div>
-
+    <!--Contenido de la página-->
     <div class="container caja">
-      <!--Contenido de la página-->
+      
         <!--Experiencias de inicio -->
       <div id="contExp" class="row contExp">
           
-          
-          <!--
-          <div id="detalleExp">
-              <img id="imgExp" src="./img/paisage/piramides.png" width="350" height="250">
-              <div id="nomExp"></div>
-              <div id="catExp"></div>
-              <div id="text"></div>
-              <div id="valoracion">
-                <div id="pos"></div>
-                <div id="neg"></div>
-              </div>
-              <div id="estat"></div>
-          </div> -->
+      </div>
+      <!--login-->
+      <div id="log" class="log" style="display: none;">
+        <form>
+        <div>
+            <img id="cross" border="0" alt="cross" src="./img/icons/cross.png" width="15" height="15">
+        </div>
+        <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
+        <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
+        <a>Acceder como administrador</a>
+        <input class="barLogBut" id="botLogIn"  type="button" value="Acceder">
+        </form> 
+      </div>
+      <!--Registrarse-->
+      <div id="formRegistro" style="display: none;">
+        <div>Formulario de registro: </div>
+        <form>
+          <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
+          <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <input id="botLogUp"  type="button" value="Registrarse">
+          <input id="botCancelar"  type="button" value="Cancelar">
+        </form> 
+      </div>
+      <!--Nueva experiencia-->
+      <div id="formNewExp" style="display: none;" >
+        <div>Crea una nueva experiencia:</div>
+        <form>
+          <p>Titulo:</p> <input id="" type="text" name="logUpName"> 
+          <p>Descripcion:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <p>URL(Imagen):</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <p>URL (Maps):</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <p>Categoria:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <p>Estado:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <input id="botLogUp"  type="button" value="Registrarse">
+          <input id="botCancelar"  type="button" value="Cancelar">
+        </form> 
+      </div>
+      <!--Reportar spam-->
+      <div id="formSpam" style="display: none;">
+        <div>Reportar un spam</div>
       </div>
     </div>
 
@@ -101,33 +117,6 @@
       </div>
     <div>
     </div>
-
-    <!-- script login-->
-    <SCRIPT  language=JavaScript> 
-        function go(){
-        if (document.form.password.value=='CONTRASEÑA' && document.form.login.value=='USUARIO'){ 
-                document.form.submit(); 
-            } 
-            else{ 
-                alert("Porfavor ingrese, nombre de usuario y contraseña correctos."); 
-            } 
-        } 
-      </SCRIPT>
-      
-      <!-- script mostrar ocultar login-->
-      <script type="text/javascript"> 
-      document.getElementById("botLog").addEventListener("click",function(){
-          let formLog=document.getElementById("log");
-          formLog.style.visibility="visible";
-      });
-  
-      document.getElementById("cross").addEventListener("click",function(){
-          let formLog=document.getElementById("log");
-          
-          formLog.style.visibility="hidden";
-      });
-      </script> 
-
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
     <script src="http://code.jquery.com/jquery.js"></script>
 

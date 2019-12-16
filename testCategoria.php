@@ -36,6 +36,15 @@ require_once 'bd/core/login.php';
         $str.="<p>".$row['codExp']."->".$row['titol']."->".$row['data']."<p>";
     }
     echo $str;
+
+
+    $usuari=new usuari();
+    $rows= $usuari->selectUsuari("Neil","contra12");
+    print_r($rows);
+    if($rows)
+        print("logIn");
+    else
+        print("logOut");
     
     /*
     echo"<hr>Metode tradicional<br>";

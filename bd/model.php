@@ -74,7 +74,7 @@ class usuari extends DBAbstractModel {
   }
 
   public function verificaUsuario($nom="",$pwd=""){
-    $this->query="SELECT IF(count(*)>0 ,true,false) as registrado from usuari where nomUsuari='".$nom."'and pwd='".$pwd."'";
+    $this->query="SELECT * from usuari where nomUsuari='".$nom."'and pwd='".$pwd."'";
     $this->execute_single_query();
     return $this->rows;
   }
