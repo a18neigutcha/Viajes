@@ -19,12 +19,12 @@ window.onload = function() {
             })
             .then(function (response) {
                 datosInicio=response.data;
-                hideLoading();//oculta pantalla de load
+                //hideLoading();//oculta pantalla de load
                 console.log("axios succes")
             })
             .catch(function (error) {
                 console.log(error);
-                hideLoading();//oculta pantalla de load
+                //hideLoading();//oculta pantalla de load
 
                 var imagen = new Image();
                 imagen.onload = imagenCargada;
@@ -32,7 +32,7 @@ window.onload = function() {
             })
             .finally(function () {
               console.log("cargadatos Inicio");
-              hideLoading();//oculta pantalla de load
+             // hideLoading();//oculta pantalla de load
             }); 
         },
         cargaDatosActualizados:function(callback){
