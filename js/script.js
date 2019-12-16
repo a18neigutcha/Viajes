@@ -11,7 +11,7 @@ window.onload = function() {
         init:function(){
           modelo.cargaDatosIniciales();
         },
-        cargaDatosIniciales:function(callback){
+        cargaDatosIniciales:function(){
             axios.get('api.php', {
                 params: {
                   'logIn':logIn.log
@@ -19,23 +19,23 @@ window.onload = function() {
             })
             .then(function (response) {
                 datosInicio=response.data;
-                hideLoading();//oculta pantalla de load
-                console.log("axios succes")
+                //hideLoading();//oculta pantalla de load
+                console.log("axios succes");
             })
             .catch(function (error) {
                 console.log(error);
-                hideLoading();//oculta pantalla de load
+                //hideLoading();//oculta pantalla de load
 
-                var imagen = new Image();
-                imagen.onload = imagenCargada;
-                imagen.src = "../img/icons/ups.jpg"
+                // var imagen = new Image();
+                // imagen.onload = imagenCargada;
+                // imagen.src = "../img/icons/ups.jpg"
             })
             .finally(function () {
-              console.log("cargadatos Inicio");
-              hideLoading();//oculta pantalla de load
+              controlador.postActualizaDatos();
+             // hideLoading();//oculta pantalla de load
             }); 
         },
-        cargaDatosActualizados:function(callback){
+        cargaDatosActualizados:function(){
           
           axios.get('api.php', {
               params: {
@@ -51,8 +51,8 @@ window.onload = function() {
               console.log(error);
           })
           .finally(function () {
-            console.log("cargadatos actualizado");
-            callback();
+            controlador.postActualizaDatos();
+            
           }); 
         },
         
@@ -74,7 +74,7 @@ window.onload = function() {
             }); 
             
         },
-        logInUsuario:function(nomUsuari,pwd,callback){
+        logInUsuario:function(nomUsuari,pwd){
           axios.get('api.php', {
             params: {
               "nomUsuari":nomUsuari,
@@ -84,15 +84,12 @@ window.onload = function() {
           .then(function (response) {
               logIn.log=response.data;
               logIn.nomUsuari=nomUsuari;
-              console.log(logIn);
-             
           })
           .catch(function (error) {
               console.log(error);
           })
           .finally(function () {
-            console.log("login usuario");
-            callback();
+            controlador.postLogIn();
           }); 
         },
 
@@ -113,7 +110,7 @@ window.onload = function() {
           }); 
         },
         insertaLaNuevaExperiencia:function(nuevaExp){
-          axios.get('testCategoria.php', {
+          axios.get('api.php', {
               params: {
                 'nuevaExp':nuevaExp
               }
@@ -125,6 +122,7 @@ window.onload = function() {
               console.log(error);
           })
           .finally(function () {
+            controlador.postInsertaExperiencia();
               
           });
         }
@@ -134,14 +132,6 @@ window.onload = function() {
           init:function(){
             modelo.init();
             view.init();
-            //SetTime puestos por que es necesario esperar un rato a que se cargen los datos
-            window.setTimeout(function(){
-              let datos=controlador.dameDatosIniciales();
-              view.creaCamposExperiencias(datos.length);
-              view.actualizaExperiencias(datos);
-              
-            },1000);
-
           },
           dameDatosIniciales:function(){
             return datosInicio;
@@ -156,24 +146,23 @@ window.onload = function() {
           iniciaSesion:function(){
             let nomUsuari=view.dameElnomUsuariLogIn();
             let pwd=view.dameElPwdLogIn();
-            modelo.logInUsuario(nomUsuari,pwd,function postLogin(){
-              if(logIn.log=="logIn"){
-                console.log("Inicio session");
-                modelo.cargaDatosActualizados(function postActualizaDatos(){
-                  
-                  let datos=controlador.dameDatosIniciales();
-                  view.actualizaExperiencias(datos);
-                  view.ocultarTodo();
-                  view.mostrarPaginaPrincipal();
-                  console.log(datos);
-                });                
-              }else{
-                console.log("Fallo el acceso");
-              }
-            });
+            modelo.logInUsuario(nomUsuari,pwd);
+          },
+          postLogIn:function(){
+            if(logIn.log=="logIn"){
+              console.log("Inicio session");
+              modelo.cargaDatosIniciales();                
+            }else{
+              console.log("Fallo el acceso");
+            }
           },
           postActualizaDatos:function(){
-              view.actualizaExperiencias(datos);
+            let datos=controlador.dameDatosIniciales();
+            view.creaCamposExperiencias(datos.length);
+            view.actualizaExperiencias(datos);
+            view.ocultarTodo();
+            view.mostrarPaginaPrincipal();
+            console.log("Datos actualizados");
           },
           fechaHoy:function(){
               let hoy = new Date();
@@ -186,6 +175,11 @@ window.onload = function() {
           crearNuevaExperiencia:function(nuevaExp){
               console.log(JSON.stringify(nuevaExp));
               modelo.insertaLaNuevaExperiencia(JSON.stringify(nuevaExp));
+              
+          },
+          postInsertaExperiencia:function(){
+            console.log(confirmacionGuardado);
+            controlador.actualizaDatosExperiencias();
           }
           
 
@@ -204,6 +198,7 @@ window.onload = function() {
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
+            contExp.innerHTML="";
             for(let i=0;i<numExp;i++){
                   let divExp=document.createElement("li");
                   divExp.setAttribute("id",i+"-exp");
@@ -214,10 +209,13 @@ window.onload = function() {
                     divExpTitol.setAttribute("class","expTitol");
                     divExp.appendChild(divExpTitol);
                     
-                    //Muestra el usuario creador de la experiencia
-                    let divExpUsu=document.createElement("div");
-                    divExpUsu.setAttribute("class","expUsu detalleExp");
-                    divExp.appendChild(divExpUsu);
+                    
+                    if(logIn.log=="logIn"){
+                      //Muestra el usuario creador de la experiencia
+                      let divExpUsu=document.createElement("div");
+                      divExpUsu.setAttribute("class","expUsu detalleExp");
+                      divExp.appendChild(divExpUsu);
+                    }
 
                     //Crea la img de la experiencia
                     let imgExp=document.createElement("img");
@@ -239,24 +237,25 @@ window.onload = function() {
                     textExp.setAttribute("class","textExp");
                     divExp.appendChild(textExp);
 
-                    let valExp=document.createElement("div");
-                    valExp.setAttribute("class","valExp detalleExp");
-
-                      //Crea un boton para dar megusta
-                      let botMeGusta=document.createElement("button");
-                      botMeGusta.setAttribute("class","botMeGusta");
-                      botMeGusta.innerHTML="Me gusta";
-                      valExp.appendChild(botMeGusta);
-
-                      //Crea un boton para dar no megusta
-                      let botNoMeGusta=document.createElement("button");
-                      botNoMeGusta.setAttribute("class","botNoMeGusta");
-                      botNoMeGusta.innerHTML="No me gusta";
-                      valExp.appendChild(botNoMeGusta);
-                      
-                    divExp.appendChild(valExp);
-
-                  //divCol2.appendChild(divExp);
+                    if(logIn.log=="logIn"){
+                      let valExp=document.createElement("div");
+                      valExp.setAttribute("class","valExp detalleExp");
+  
+                        //Crea un boton para dar megusta
+                        let botMeGusta=document.createElement("button");
+                        botMeGusta.setAttribute("class","botMeGusta");
+                        botMeGusta.innerHTML="Me gusta";
+                        valExp.appendChild(botMeGusta);
+  
+                        //Crea un boton para dar no megusta
+                        let botNoMeGusta=document.createElement("button");
+                        botNoMeGusta.setAttribute("class","botNoMeGusta");
+                        botNoMeGusta.innerHTML="No me gusta";
+                        valExp.appendChild(botNoMeGusta);
+                        
+                      divExp.appendChild(valExp);
+                    }
+                    
                 contExp.appendChild(divExp);
             }
           },

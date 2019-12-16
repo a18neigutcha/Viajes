@@ -171,6 +171,9 @@ body{
 .accordion li:hover{
     width:60%;
 }
+.accordion li:hover .detalleExp{
+    visibility: visible;
+}
 .slide-01  { background:#0091A6; color:white; }
 .slide-02  { background:#0067A6; color:white; }
 .slide-03  { background:#003EA6; color:#333; text-shadow:none; }

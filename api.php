@@ -2,13 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
 
-/*
-$experiencias = [
-    "1" => ["descripcion" =>"ir en barca"],
-    "2" => "viaje a paris",
-    "3" => "otra cosa",
-    "4" => "y otra"
-];*/
 
 require_once 'bd/model.php';
 
@@ -24,7 +17,7 @@ if($_REQUEST['nomUsuari'] && $_REQUEST['pwd']){
     else
         $dades="logOut";
 }
-if(true){
+if($_REQUEST['logIn']){
     $exp = new experiencia();
     if($_REQUEST['logIn']=="logIn"){
         $dades = $exp->select10Last(array("*"));  
@@ -34,24 +27,29 @@ if(true){
     }
 
 }
+/*
 if($_REQUEST['nomUsuari']){
     $exp =new experiencia();
     $dades = $exp->selectUsuari($_REQUEST['nomUsuari']);
-}
+}*/
 if($_REQUEST["nuevaExp"]){
     $exp = new experiencia();
     $dadesExp=json_decode ($_REQUEST["nuevaExp"],true);
-    $exp->insert($dadesExp);
-    $dades="ok";
+    $verif=$exp->insert($dadesExp);
+    if($verif>0){
+        $dades="ok";
+    }else{
+        $dades="Error";
+    }
 }
 
 echo json_encode($dades);
 //echo json_encode($experiencias[$_REQUEST['id_experiencia']]);
-
+/*
 switch($_REQUEST['tipo']){
     /*case: "iniciarSesion"
-    case:"seleccionar10primeros"*/
-}   
+    case:"seleccionar10primeros"
+}   */
 ?>
 
 
