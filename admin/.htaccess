@@ -1,5 +1,5 @@
 AuthType Basic
 AuthName "Restricted Files"
 AuthBasicProvider file
-AuthUserFile "/home/a18NeiGutCha/public_html/proyecto/pass/pedralbes"
+AuthUserFile "/home/a18NeiGutCha/public_html/Viajes/pass/pedralbes"
 Require user pedralbes
