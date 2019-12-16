@@ -63,7 +63,7 @@
         <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
         <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
         <a>Acceder como administrador</a>
-        <input class="barLogBut" id="botLogIn"  type="button" value="Acceder">
+        <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
         </form> 
       </div>
       <!--Registrarse-->

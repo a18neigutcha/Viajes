@@ -24,7 +24,7 @@ window.onload = function() {
                 console.log(error);
             })
             .finally(function () {
-              callback();
+              callback;
             }); 
         },
         
@@ -46,7 +46,7 @@ window.onload = function() {
             }); 
             
         },
-        logInUsuario:function(nomUsuari,pwd, callback){
+        logInUsuario:function(nomUsuari,pwd,callback){
           axios.get('api.php', {
             params: {
               "nomUsuari":nomUsuari,
@@ -63,6 +63,7 @@ window.onload = function() {
               console.log(error);
           })
           .finally(function () {
+            console.log(callback);
             callback();
           }); 
         }
@@ -87,29 +88,36 @@ window.onload = function() {
           dameExperienciaPorTitulo:function(){
             return expPorTitol;
           },
-          iniciaSesion:function(){
-            let nomUsuari=view.dameElnomUsuariLogIn();
-            let pwd=view.dameElPwdLogIn();
-            modelo.logInUsuario(nomUsuari,pwd,postLogin );
-          },
+         
           actualizaDatosExperiencias:function(){
             modelo.cargaDatosIniciales();
           },
-          postLogin: function(){
-            if(logIn.log=="logIn"){
-              console.log("Inicio session");
-              controlador.actualizaDatosExperiencias(postActualizaDatos);
-            }else{
-              console.log("Fallo el acceso");
-            }
-            console.log(logIn.log);
-          },
+          iniciaSesion:function(){
+            let nomUsuari=view.dameElnomUsuariLogIn();
+            let pwd=view.dameElPwdLogIn();
+            modelo.logInUsuario(nomUsuari,pwd,function postLogin(){
+              if(logIn.log=="logIn"){
+                console.log("Inicio session");
+                controlador.actualizaDatosExperiencias(function postActualizaDatos(){
+                  console.log("HI THERE");
+                  let datos=controlador.dameDatosIniciales();
+                  console.log(datos);
+                  view.actualizaExperiencias(datos);
+                  console.log("GENERAL KENOBI");
+                });
+                console.log("actualizaDatosExperiencias")
+              }else{
+                console.log("Fallo el acceso");
+              }
+              //console.log(logIn.log);
+            });
+          }/*,
           postActualizaDatos:function(){
             window.setTimeout(function (){
               let datos=controlador.dameDatosIniciales();
               view.actualizaExperiencias(datos);
             },1000);
-          }
+          }*/
           
 
 
@@ -216,17 +224,12 @@ window.onload = function() {
             return document.getElementById("inputLogInPwd").value;
           },
           eventoAccederUsuario:function(){
-              document.getElementById("botLogIn").addEventListener("click",function(){
-                  document.getElementById("contExp").style.display="none";
+              document.getElementById("botAcceso").addEventListener("click",function(){
                   console.log("El evento acceso se desencadeno");
                   controlador.iniciaSesion();
 
                   /* Verifica si se pudo iniciar session * Se puede modificar para que dependiendo
-                  de una cosa o otra muestre algo distinto*/
-                  window.setTimeout(function (){
-                   
-                  },1000);
-                  
+                  de una cosa o otra muestre algo distinto*/    
               });
 
           },
