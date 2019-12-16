@@ -24,7 +24,7 @@ window.onload = function() {
                 console.log(error);
             })
             .finally(function () {
-              callback();
+              //callback();
             }); 
         },
         
@@ -118,7 +118,8 @@ window.onload = function() {
           init:function(){
             view.eventoAccederUsuario();
             view.eventoMostrarOcultarLogIn();
-            view.eventoMostrarOcultarLogOut()
+            view.eventoMostrarOcultarLogOut();
+            view.eventoMuestraCrearNuevaExperiencia();
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -235,42 +236,56 @@ window.onload = function() {
               
               let formLog=document.getElementById("log");
                 if(formLog.style.display=="none"){
+                  view.ocultarTodo();
                   formLog.style.display="block";
-                  document.getElementById("contExp").style.display="none";
-                  document.getElementById("formRegistro").style.display="none";
                 }else{
-                  formLog.style.display="none";
-                  document.getElementById("formRegistro").style.display="none";
-                  document.getElementById("contExp").style.display="flex";
+                  view.ocultarTodo();
+                  view.mostrarPaginaPrincipal();
                 }
               
-            });
-      
-            document.getElementById("cross").addEventListener("click",function(){
-              let formLog=document.getElementById("log");
-              formLog.style.display="none";
             });
           },
           eventoMostrarOcultarLogOut:function(){
             document.getElementById("botLogUp").addEventListener("click",function(){
-              
               let formRegistro=document.getElementById("formRegistro");
+                
                 if(formRegistro.style.display=="none"){
+                  view.ocultarTodo();
                   formRegistro.style.display="block";
-                  document.getElementById("contExp").style.display="none";
-                  document.getElementById("log").style.display="none";
+          
                 }else{
-                  formRegistro.style.display="none";
-                  document.getElementById("log").style.display="none";
-                  document.getElementById("contExp").style.display="flex";
+                  view.ocultarTodo();
+                  view.mostrarPaginaPrincipal();
                 }
               
             });
-      
-            document.getElementById("cross").addEventListener("click",function(){
-              let formLog=document.getElementById("log");
-              formLog.style.display="none";
+          },
+          eventoMuestraCrearNuevaExperiencia:function(){
+            document.getElementById("botNewExp").addEventListener("click",function(){
+              let formNewExp=document.getElementById("formNewExp");
+                console.log("Evento new exp");
+                
+                if(formNewExp.style.display=="none"){
+                  view.ocultarTodo();
+                  formNewExp.style.display="block";
+          
+                }else{
+                  view.ocultarTodo();
+                  view.mostrarPaginaPrincipal();
+                }
+              
             });
+          },
+          ocultarTodo:function(){
+            console.log("Oculta todo");
+            document.getElementById("contExp").style.display="none";
+            document.getElementById("log").style.display="none";
+            document.getElementById("formRegistro").style.display="none";
+            document.getElementById("formNewExp").style.display="none";
+            document.getElementById("formSpam").style.display="none";
+          },
+          mostrarPaginaPrincipal:function(){
+            document.getElementById("contExp").style.display="flex";
           }
 
 

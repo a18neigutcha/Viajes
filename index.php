@@ -34,6 +34,13 @@
         <!--clase btn-primary: botón primario-->
         <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
       </div>
+      <div class="row">
+      <button id="botInicio" class="btn btn-primary col-2">Inicio</button>
+      <button id="botMisExp" class="btn btn-primary col-2">Mis experiencias</button>
+      <button id="botNewExp" class="btn btn-primary col-2">Nueva experiencia</button>
+      <button id="botReport" class="btn btn-primary col-2">Reportar</button>
+      <div class="col-2"></div>
+    </div>
     </div>
 
     
@@ -57,13 +64,10 @@
       <!--login-->
       <div id="log" class="log" style="display: none;">
         <form>
-        <div>
-            <img id="cross" border="0" alt="cross" src="./img/icons/cross.png" width="15" height="15">
-        </div>
         <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
         <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
         <a>Acceder como administrador</a>
-        <input class="barLogBut" id="botLogIn"  type="button" value="Acceder">
+        <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
         </form> 
       </div>
       <!--Registrarse-->
@@ -80,12 +84,23 @@
       <div id="formNewExp" style="display: none;" >
         <div>Crea una nueva experiencia:</div>
         <form>
-          <p>Titulo:</p> <input id="" type="text" name="logUpName"> 
-          <p>Descripcion:</p> <input id="logUpPwd" type="password" name="logUpPwd">
-          <p>URL(Imagen):</p> <input id="logUpPwd" type="password" name="logUpPwd">
-          <p>URL (Maps):</p> <input id="logUpPwd" type="password" name="logUpPwd">
-          <p>Categoria:</p> <input id="logUpPwd" type="password" name="logUpPwd">
-          <p>Estado:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <p>Titulo:</p> <input id="newExpTitulo" type="text"> 
+          <p>Descripcion:</p> <input id="newExpDescrip" type="text">
+          <p>URL(Imagen):</p> <input id="newExpImg" type="text">
+          <p>URL (Maps):</p> <input id="newExpMaps" type="text">
+          <p>Categoria:</p>
+          <select id="newExpCat">
+              <option value="Platja">Platja</option>
+              <option value="Muntanya">Muntanya</option>
+              <option value="Interior">Interior</option>
+              <option value="Aventures">Aventures</option>
+              <option value="Relax">Relax</option>
+          </select>
+          <select id="newExpEst">
+              <option value="publicada">Publicar</option>
+              <option value="esborrany">Esborrany</option>
+          </select>
+          <p>Estado:</p>
           <input id="botLogUp"  type="button" value="Registrarse">
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 
