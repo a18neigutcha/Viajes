@@ -5,14 +5,13 @@ var logIn={
 
 var datosInicio;
 var expPorTitol;
-var carga=0;
+var confirmacionGuardado="";
 window.onload = function() {
       var modelo={
         init:function(){
           modelo.cargaDatosIniciales();
         },
         cargaDatosIniciales:function(callback){
-          
             axios.get('api.php', {
                 params: {
                   'logIn':logIn.log
@@ -20,13 +19,20 @@ window.onload = function() {
             })
             .then(function (response) {
                 datosInicio=response.data;
+                hideLoading();//oculta pantalla de load
                 console.log("axios succes")
             })
             .catch(function (error) {
                 console.log(error);
+                hideLoading();//oculta pantalla de load
+
+                var imagen = new Image();
+                imagen.onload = imagenCargada;
+                imagen.src = "../img/icons/ups.jpg"
             })
             .finally(function () {
               console.log("cargadatos Inicio");
+              hideLoading();//oculta pantalla de load
             }); 
         },
         cargaDatosActualizados:function(callback){
@@ -105,6 +111,22 @@ window.onload = function() {
             console.log("login usuario");
             callback();
           }); 
+        },
+        insertaLaNuevaExperiencia:function(nuevaExp){
+          axios.get('testCategoria.php', {
+              params: {
+                'nuevaExp':nuevaExp
+              }
+          })
+          .then(function (response) {
+              confirmacionGuardado=response.data;
+          })
+          .catch(function (error) {
+              console.log(error);
+          })
+          .finally(function () {
+              
+          });
         }
       }
 
@@ -117,6 +139,7 @@ window.onload = function() {
               let datos=controlador.dameDatosIniciales();
               view.creaCamposExperiencias(datos.length);
               view.actualizaExperiencias(datos);
+              
             },1000);
 
           },
@@ -140,6 +163,8 @@ window.onload = function() {
                   
                   let datos=controlador.dameDatosIniciales();
                   view.actualizaExperiencias(datos);
+                  view.ocultarTodo();
+                  view.mostrarPaginaPrincipal();
                   console.log(datos);
                 });                
               }else{
@@ -150,9 +175,19 @@ window.onload = function() {
           postActualizaDatos:function(){
               view.actualizaExperiencias(datos);
           },
-
+          fechaHoy:function(){
+              let hoy = new Date();
+              let dd = hoy.getDate();
+              let mm = hoy.getMonth()+1;
+              let yyyy = hoy.getFullYear();
+                  
+              return yyyy+'/'+mm+'/'+dd;
+          },
+          crearNuevaExperiencia:function(nuevaExp){
+              console.log(JSON.stringify(nuevaExp));
+              modelo.insertaLaNuevaExperiencia(JSON.stringify(nuevaExp));
+          }
           
-
 
       }
       var view={
@@ -164,6 +199,7 @@ window.onload = function() {
             view.eventoMuestraPaginaInicio();
             view.eventoMuestraReportarContenido();
             view.eventoMuestraMisExperiencias();
+            view.crearNuevaExperiencia();
             view.eventoMostrarActualizarExp();
           },
           creaCamposExperiencias:function(numExp){
@@ -264,10 +300,7 @@ window.onload = function() {
           eventoAccederUsuario:function(){
               document.getElementById("botAcceso").addEventListener("click",function(){
                   console.log("El evento acceso se desencadeno");
-                  controlador.iniciaSesion();
-
-                  /* Verifica si se pudo iniciar session * Se puede modificar para que dependiendo
-                  de una cosa o otra muestre algo distinto*/    
+                  controlador.iniciaSesion();  
               });
 
           },
@@ -392,7 +425,34 @@ window.onload = function() {
           },
           mostrarPaginaPrincipal:function(){
             document.getElementById("contExp").style.display="flex";
+          },
+          crearNuevaExperiencia:function(){
+            document.getElementById("botCreaExp").addEventListener("click",function(){
+              let experiencia={
+                titol:"",
+                data:controlador.fechaHoy(),
+                text:"",
+                imatge:"",
+                coordenades:"",
+                valPos:0,
+                valNeg:0,
+                estat:"",
+                usuari:logIn.nomUsuari,
+                categoria:""
+              };
+              experiencia.titol=document.getElementById("newExpTitulo").value;
+              experiencia.text=document.getElementById("newExpDescrip").value;
+              experiencia.imatge=document.getElementById("newExpImg").value;
+              experiencia.coordenades=document.getElementById("newExpMaps").value;
+              experiencia.estat=document.getElementById("newExpEst").value;
+              experiencia.categoria=document.getElementById("newExpCat").value;
+              console.log(experiencia);
+              controlador.crearNuevaExperiencia(experiencia);
+
+            });
+
           }
+
 
 
       }

@@ -85,7 +85,7 @@
           <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
           <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
           <br>
-          <input id="botLogUp"  type="button" value="Registrarse">
+          <input id="botRegistrarse"  type="button" value="Registrarse">
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 
       </div>
@@ -112,7 +112,7 @@
           </select>
           <br>
           
-          <input id="botLogUp"  type="button" value="Registrarse">
+          <input id="botCreaExp"  type="button" value="Registrarse">
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 
       </div>
@@ -157,6 +157,63 @@
     <div>
     </div>
 
+<<<<<<< HEAD
+=======
+    <script>
+            //======================================================================
+        // LOADING
+        //======================================================================
+        var Loading = (loadingDelayHidden = 0) => {
+
+        //-----------------------------------------------------
+        // Variables
+        //-----------------------------------------------------
+        // HTML
+        let loading = null;
+        // Retardo para borrar
+        const myLoadingDelayHidden = loadingDelayHidden;
+
+        //-----------------------------------------------------
+        // Funciones
+        //-----------------------------------------------------
+
+        /**
+         * Ocultar HTML
+         */
+        function hideLoading() {
+            // Comprueba que exista el HTML
+            if(loading !== null) {
+                // Oculta el HTML de "cargando..." quitando la clase .show
+                loading.classList.remove('show');
+
+                // Borra el HTML
+                setTimeout(function () {
+                    loading.remove();
+                }, myLoadingDelayHidden);
+            }
+
+        }
+
+        /**
+         * Método que inicia la lógica
+         */
+        function init() {
+            /* Comprobar que el HTML esté cargadas */
+            document.addEventListener('DOMContentLoaded', function () {
+                loading = document.querySelector('.loading');
+                
+            });
+        }
+
+        return {
+            'init': init
+        }
+        }
+
+        // Para usarlo se declara e inicia. El número es el tiempo transcurrido para borra el HTML una vez cargado todos los elementos, en este caso 1 segundo: 1000 milisegundos,
+        Loading(1000).init();
+    </script>
+>>>>>>> 7750e506236ceb9e562dfe8efa6c62c3cae97306
 
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
     <script src="http://code.jquery.com/jquery.js"></script>

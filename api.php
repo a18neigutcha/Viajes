@@ -24,7 +24,7 @@ if($_REQUEST['nomUsuari'] && $_REQUEST['pwd']){
     else
         $dades="logOut";
 }
-if($_REQUEST["tipo"]==){
+if(true){
     $exp = new experiencia();
     if($_REQUEST['logIn']=="logIn"){
         $dades = $exp->select10Last(array("*"));  
@@ -38,12 +38,19 @@ if($_REQUEST['nomUsuari']){
     $exp =new experiencia();
     $dades = $exp->selectUsuari($_REQUEST['nomUsuari']);
 }
+if($_REQUEST["nuevaExp"]){
+    $exp = new experiencia();
+    $dadesExp=json_decode ($_REQUEST["nuevaExp"],true);
+    $exp->insert($dadesExp);
+    $dades="ok";
+}
+
 echo json_encode($dades);
 //echo json_encode($experiencias[$_REQUEST['id_experiencia']]);
 
 switch($_REQUEST['tipo']){
-    case: "iniciarSesion"
-    case:"seleccionar10primeros"
+    /*case: "iniciarSesion"
+    case:"seleccionar10primeros"*/
 }   
 ?>
 
