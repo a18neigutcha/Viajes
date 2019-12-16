@@ -25,8 +25,27 @@ window.onload = function() {
                 console.log(error);
             })
             .finally(function () {
-              //callback();
+              console.log("cargadatos Inicio");
             }); 
+        },
+        cargaDatosActualizados:function(callback){
+          
+          axios.get('api.php', {
+              params: {
+                'logIn':logIn.log
+              }
+          })
+          .then(function (response) {
+              datosInicio=response.data;
+              console.log("axios succes")
+          })
+          .catch(function (error) {
+              console.log(error);
+          })
+          .finally(function () {
+            console.log("cargadatos actualizado");
+            callback();
+          }); 
         },
         
         cargaExperienciaPorTitulo:function(titol){
@@ -64,7 +83,7 @@ window.onload = function() {
               console.log(error);
           })
           .finally(function () {
-            console.log(callback);
+            console.log("login usuario");
             callback();
           }); 
         }
@@ -97,11 +116,11 @@ window.onload = function() {
             modelo.logInUsuario(nomUsuari,pwd,function postLogin(){
               if(logIn.log=="logIn"){
                 console.log("Inicio session");
-                modelo.cargaDatosIniciales();
-                let datos= datosInicio;
-                console.log(datos);
-                console.log("actualizaDatosExperiencias");
-                
+                modelo.cargaDatosActualizados(function postActualizaDatos(){
+                  let datos=controlador.dameDatosIniciales();
+                  view.actualizaExperiencias(datos);
+                  console.log(datos);
+                });                
               }else{
                 console.log("Fallo el acceso");
               }
