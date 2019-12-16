@@ -49,8 +49,8 @@
 .accordion li:hover{
     width:60%;
 }
-.slide-01  { background:red; color:white; }
-.slide-02  { background:orange; color:white; }
-.slide-03  { background:yellow; color:#333; text-shadow:none; }
-.slide-04  { background:green; color:white; }
-.slide-05  { background:blue; color:white; }
+.slide-01  { background:#0091A6; color:white; }
+.slide-02  { background:#0067A6; color:white; }
+.slide-03  { background:#003EA6; color:#333; text-shadow:none; }
+.slide-04  { background:#0014A6; color:white; }
+.slide-05  { background:#1400A6; color:white; }
