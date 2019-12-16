@@ -73,6 +73,12 @@ class usuari extends DBAbstractModel {
     return $this->rows; 
   }
 
+  public function verificaUsuario($nom="",$pwd=""){
+    $this->query="SELECT IF(count(*)>0 ,true,false) as registrado from usuari where nomUsuari='".$nom."'and pwd='".$pwd."'";
+    $this->execute_single_query();
+    return $this->rows;
+  }
+
     
 }
 class experiencia extends DBAbstractModel {
