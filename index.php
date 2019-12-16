@@ -57,9 +57,13 @@
     <!--Contenido de la página-->
     <div class="container caja">
       
-        <!--Experiencias de inicio -->
-      <div id="contExp" class="row contExp">
+      <!--Experiencias de inicio -->
+      <ul id="contExp" class="row accordion">
           
+      </ul>
+      <!--Experiencias de inicio -->
+      <div id="misExp" class="row contExp">
+          <div>Carga las experiencias del usuario</div>
       </div>
       <!--login-->
       <div id="log" class="log" style="display: none;">
@@ -96,11 +100,13 @@
               <option value="Aventures">Aventures</option>
               <option value="Relax">Relax</option>
           </select>
+          <p>Estado:</p>
           <select id="newExpEst">
               <option value="publicada">Publicar</option>
               <option value="esborrany">Esborrany</option>
           </select>
-          <p>Estado:</p>
+          <br>
+          
           <input id="botLogUp"  type="button" value="Registrarse">
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 
@@ -108,6 +114,13 @@
       <!--Reportar spam-->
       <div id="formSpam" style="display: none;">
         <div>Reportar un spam</div>
+        <form>
+          <textarea id="reporteExp" name="reporte" rows="10" cols="40">¿En que te puedo ayudar?</textarea>
+          <br>
+          
+          <input id="botLogUp"  type="button" value="Reportar">
+          <input id="botCancelar"  type="button" value="Cancelar">
+        </form>
       </div>
     </div>
 

@@ -10,7 +10,7 @@ window.onload = function() {
         init:function(){
           modelo.cargaDatosIniciales();
         },
-        cargaDatosIniciales:function(){
+        cargaDatosIniciales:function(callback){
           
             axios.get('api.php', {
                 params: {
@@ -120,13 +120,15 @@ window.onload = function() {
             view.eventoMostrarOcultarLogIn();
             view.eventoMostrarOcultarLogOut();
             view.eventoMuestraCrearNuevaExperiencia();
+            view.eventoMuestraPaginaInicio();
+            view.eventoMuestraReportarContenido();
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
             for(let i=0;i<numExp;i++){
-                  let divExp=document.createElement("div");
+                  let divExp=document.createElement("li");
                   divExp.setAttribute("id",i+"-exp");
-                  divExp.setAttribute("class","experiencia");
+                  divExp.setAttribute("class","slide-0"+(i+1));
 
                     //Crea el div para el titulo de la experiencia
                     let divExpTitol=document.createElement("div");
@@ -259,15 +261,68 @@ window.onload = function() {
             document.getElementById("botNewExp").addEventListener("click",function(){
               let formNewExp=document.getElementById("formNewExp");
                 console.log("Evento new exp");
-                
-                if(formNewExp.style.display=="none"){
-                  view.ocultarTodo();
-                  formNewExp.style.display="block";
-          
+                if(logIn.log=="logIn"){
+                  if(formNewExp.style.display=="none"){
+                    view.ocultarTodo();
+                    formNewExp.style.display="block";
+            
+                  }else{
+                    view.ocultarTodo();
+                    view.mostrarPaginaPrincipal();
+                  }
                 }else{
-                  view.ocultarTodo();
-                  view.mostrarPaginaPrincipal();
+                  alert("Necesitas iniciar sesion");
                 }
+                  
+              
+            });
+          },
+          eventoMuestraPaginaInicio:function(){
+            document.getElementById("botInicio").addEventListener("click",function(){
+                console.log("Evento inicio");
+                view.ocultarTodo();
+                view.mostrarPaginaPrincipal();
+                
+              
+            });
+          },
+          eventoMuestraReportarContenido:function(){
+            document.getElementById("botReport").addEventListener("click",function(){
+              let formSpam=document.getElementById("formSpam");
+                console.log("Evento Reportar");
+                if(logIn.log=="logIn"){
+                  if(formSpam.style.display=="none"){
+                    view.ocultarTodo();
+                    formSpam.style.display="block";
+            
+                  }else{
+                    view.ocultarTodo();
+                    view.mostrarPaginaPrincipal();
+                  }
+                }else{
+                  alert("Necesitas iniciar sesion");
+                }
+                  
+              
+            });
+          },
+          eventoMuestraMisExperiencias:function(){
+            document.getElementById("botMisExp").addEventListener("click",function(){
+              let misExp=document.getElementById("misExp");
+                console.log("Evento Reportar");
+                if(logIn.log=="logIn"){
+                  if(misExp.style.display=="none"){
+                    view.ocultarTodo();
+                    misExp.style.display="block";
+            
+                  }else{
+                    view.ocultarTodo();
+                    view.mostrarPaginaPrincipal();
+                  }
+                }else{
+                  alert("Necesitas iniciar sesion");
+                }
+                  
               
             });
           },
