@@ -62,15 +62,16 @@
           
       </ul>
       <!--Experiencias de inicio -->
-      <div id="misExp" class="row contExp">
+      <ul id="misExp" class="row accordion" style="display: none;">
           <div>Carga las experiencias del usuario</div>
-      </div>
+      </ul>
       <!--login-->
       <div id="log" class="log" style="display: none;">
         <form>
         <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
         <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
         <a>Acceder como administrador</a>
+        <br>
         <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
         </form> 
       </div>
@@ -80,6 +81,7 @@
         <form>
           <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
           <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <br>
           <input id="botLogUp"  type="button" value="Registrarse">
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 

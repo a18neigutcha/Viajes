@@ -141,6 +141,7 @@ window.onload = function() {
             view.eventoMuestraCrearNuevaExperiencia();
             view.eventoMuestraPaginaInicio();
             view.eventoMuestraReportarContenido();
+            view.eventoMuestraMisExperiencias();
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -328,7 +329,7 @@ window.onload = function() {
           eventoMuestraMisExperiencias:function(){
             document.getElementById("botMisExp").addEventListener("click",function(){
               let misExp=document.getElementById("misExp");
-                console.log("Evento Reportar");
+                console.log("Evento mis experiencias");
                 if(logIn.log=="logIn"){
                   if(misExp.style.display=="none"){
                     view.ocultarTodo();
