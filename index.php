@@ -15,9 +15,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
   </head>
   <body>
+
+
+    <!--- Resto de tu HTML -->
 
     <div class="container" style="background-color: #aaa">
       <!--Contenido de la página-->
@@ -30,25 +32,22 @@
       <div class="row">
         <div class="col-10"></div>
         <!--clase btn: botón-->
-        <button id="botLog" class="btn col-1 link buzz-out-on-hover">SingIn</button>
+        <button id="botLogIn" class="btn col-1 link buzz-out-on-hover">SingIn</button>
         <!--clase btn-primary: botón primario-->
-        <button class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
+        <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
       </div>
+      <div class="row">
+      <button id="botInicio" class="btn btn-primary col-2">Inicio</button>
+      <button id="botMisExp" class="btn btn-primary col-2">Mis experiencias</button>
+      <button id="botNewExp" class="btn btn-primary col-2">Nueva experiencia</button>
+      <button id="botUpdExp" class="btn btn-primary col-2">Actualiza una experiencia</button>
+      <button id="botReport" class="btn btn-primary col-2">Reportar</button>
+      <div class="col-2"></div>
+    </div>
     </div>
 
-    <!--login-->
-    <div id="log" class="log">
-        <form name=form action="Viat-1.HTML">
-        <div>
-            <img id="cross" border="0" alt="cross" src="./img/icons/cross.png" width="15" height="15">
-        </div>
-
-        <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
-        <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
-
-        <input class="barLogBut" id="botLogIn"  type="button" value="Acceder">
-        </form> 
-    </div>
+    
+    
 
     <!-- texto introductivo-->
     <div class="container">
@@ -58,25 +57,81 @@
     <div class="container">
       <div class="carga animation-load"></div>
     </div>
-
+    <!--Contenido de la página-->
     <div class="container caja">
-      <!--Contenido de la página-->
-        <!--Experiencias de inicio -->
-      <div id="contExp" class="row">
+      
+      <!--Experiencias de inicio -->
+      <ul id="contExp" class="row accordion">
           
+      </ul>
+      <!--Experiencias de inicio -->
+      <ul id="misExp" class="row accordion" style="display: none;">
+          <div>Carga las experiencias del usuario</div>
+      </ul>
+      <!--login-->
+      <div id="log" class="log" style="display: none;">
+        <form>
+        <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
+        <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
+        <a>Acceder como administrador</a>
+        <br>
+        <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
+        </form> 
+      </div>
+      <!--Registrarse-->
+      <div id="formRegistro" style="display: none;">
+        <div>Formulario de registro: </div>
+        <form>
+          <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
+          <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+          <br>
+          <input id="botRegistrarse"  type="button" value="Registrarse">
+          <input id="botCancelar"  type="button" value="Cancelar">
+        </form> 
+      </div>
+      <!--Nueva experiencia-->
+      <div id="formNewExp" style="display: none;" >
+        <div>Crea una nueva experiencia:</div>
+        <form>
+          <p>Titulo:</p> <input id="newExpTitulo" type="text"> 
+          <p>Descripcion:</p> <input id="newExpDescrip" type="text">
+          <p>URL(Imagen):</p> <input id="newExpImg" type="text">
+          <p>URL (Maps):</p> <input id="newExpMaps" type="text">
+          <p>Categoria:</p>
+          <select id="newExpCat">
+              <option value="Platja">Platja</option>
+              <option value="Muntanya">Muntanya</option>
+              <option value="Interior">Interior</option>
+              <option value="Aventures">Aventures</option>
+              <option value="Relax">Relax</option>
+          </select>
+          <p>Estado:</p>
+          <select id="newExpEst">
+              <option value="publicada">Publicar</option>
+              <option value="esborrany">Esborrany</option>
+          </select>
+          <br>
           
-          <!--
-          <div id="detalleExp">
-              <img id="imgExp" src="./img/paisage/piramides.png" width="350" height="250">
-              <div id="nomExp"></div>
-              <div id="catExp"></div>
-              <div id="text"></div>
-              <div id="valoracion">
-                <div id="pos"></div>
-                <div id="neg"></div>
-              </div>
-              <div id="estat"></div>
-          </div> -->
+          <input id="botCreaExp"  type="button" value="Registrarse">
+          <input id="botCancelar"  type="button" value="Cancelar">
+        </form> 
+      </div>
+      <!-- Actualizar experiencia -->
+      <div id="Upd8Exp" style="display: none;" >
+        <div>Selecciona una experiencia a actualitzar:</div>
+        <form id="formUpd8Exp">
+        </form>
+      </div>
+      <!--Reportar spam-->
+      <div id="formSpam" style="display: none;">
+        <div>Reportar un spam</div>
+        <form>
+          <textarea id="reporteExp" name="reporte" rows="10" cols="40">¿En que te puedo ayudar?</textarea>
+          <br>
+          
+          <input id="botLogUp"  type="button" value="Reportar">
+          <input id="botCancelar"  type="button" value="Cancelar">
+        </form>
       </div>
     </div>
 
@@ -102,31 +157,63 @@
     <div>
     </div>
 
-    <!-- script login-->
-    <SCRIPT  language=JavaScript> 
-        function go(){
-        if (document.form.password.value=='CONTRASEÑA' && document.form.login.value=='USUARIO'){ 
-                document.form.submit(); 
-            } 
-            else{ 
-                alert("Porfavor ingrese, nombre de usuario y contraseña correctos."); 
-            } 
-        } 
-      </SCRIPT>
-      
-      <!-- script mostrar ocultar login-->
-      <script type="text/javascript"> 
-      document.getElementById("botLog").addEventListener("click",function(){
-          let formLog=document.getElementById("log");
-          formLog.style.visibility="visible";
-      });
-  
-      document.getElementById("cross").addEventListener("click",function(){
-          let formLog=document.getElementById("log");
-          
-          formLog.style.visibility="hidden";
-      });
-      </script> 
+<<<<<<< HEAD
+=======
+    <script>
+            //======================================================================
+        // LOADING
+        //======================================================================
+        var Loading = (loadingDelayHidden = 0) => {
+
+        //-----------------------------------------------------
+        // Variables
+        //-----------------------------------------------------
+        // HTML
+        let loading = null;
+        // Retardo para borrar
+        const myLoadingDelayHidden = loadingDelayHidden;
+
+        //-----------------------------------------------------
+        // Funciones
+        //-----------------------------------------------------
+
+        /**
+         * Ocultar HTML
+         */
+        function hideLoading() {
+            // Comprueba que exista el HTML
+            if(loading !== null) {
+                // Oculta el HTML de "cargando..." quitando la clase .show
+                loading.classList.remove('show');
+
+                // Borra el HTML
+                setTimeout(function () {
+                    loading.remove();
+                }, myLoadingDelayHidden);
+            }
+
+        }
+
+        /**
+         * Método que inicia la lógica
+         */
+        function init() {
+            /* Comprobar que el HTML esté cargadas */
+            document.addEventListener('DOMContentLoaded', function () {
+                loading = document.querySelector('.loading');
+                
+            });
+        }
+
+        return {
+            'init': init
+        }
+        }
+
+        // Para usarlo se declara e inicia. El número es el tiempo transcurrido para borra el HTML una vez cargado todos los elementos, en este caso 1 segundo: 1000 milisegundos,
+        Loading(1000).init();
+    </script>
+>>>>>>> 7750e506236ceb9e562dfe8efa6c62c3cae97306
 
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
     <script src="http://code.jquery.com/jquery.js"></script>

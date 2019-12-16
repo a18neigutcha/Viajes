@@ -73,6 +73,12 @@ class usuari extends DBAbstractModel {
     return $this->rows; 
   }
 
+  public function verificaUsuario($nom="",$pwd=""){
+    $this->query="SELECT * from usuari where nomUsuari='".$nom."'and pwd='".$pwd."'";
+    $this->execute_single_query();
+    return $this->rows;
+  }
+
     
 }
 class experiencia extends DBAbstractModel {
@@ -138,6 +144,11 @@ class experiencia extends DBAbstractModel {
   }
   public function selectConCategoria(){
     $this->query="SELECT E.*, C.nomCat FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
+  public function selectUsuari($usuari){
+    $this->query="SELECT * FROM experiencia WHERE usuari='".$usuari."'";
     $this->get_results_from_query();
     return $this->rows;
   }

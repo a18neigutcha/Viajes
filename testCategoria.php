@@ -2,12 +2,10 @@
 //select OK
 //insert OK
 //update OK
-
-    echo "START testCategoria.php <br>";
     error_reporting(-1);
     ini_set('display_errors','on');
-require_once 'bd/model.php';
-require_once 'bd/core/login.php';
+    require_once 'bd/model.php';
+    require_once 'bd/core/login.php';
 
     
 
@@ -57,5 +55,4 @@ require_once 'bd/core/login.php';
     } else {
         echo "0 results";
     }*/
-    echo "<br>fi<br>"
 ?>
