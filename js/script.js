@@ -12,7 +12,6 @@ window.onload = function() {
           modelo.cargaDatosIniciales();
         },
         cargaDatosIniciales:function(callback){
-          
             axios.get('api.php', {
                 params: {
                   'logIn':logIn.log
@@ -20,13 +19,20 @@ window.onload = function() {
             })
             .then(function (response) {
                 datosInicio=response.data;
+                hideLoading();//oculta pantalla de load
                 console.log("axios succes")
             })
             .catch(function (error) {
                 console.log(error);
+                hideLoading();//oculta pantalla de load
+
+                var imagen = new Image();
+                imagen.onload = imagenCargada;
+                imagen.src = "../img/icons/ups.jpg"
             })
             .finally(function () {
               console.log("cargadatos Inicio");
+              hideLoading();//oculta pantalla de load
             }); 
         },
         cargaDatosActualizados:function(callback){
@@ -115,6 +121,7 @@ window.onload = function() {
               let datos=controlador.dameDatosIniciales();
               view.creaCamposExperiencias(datos.length);
               view.actualizaExperiencias(datos);
+              
             },1000);
           },
           dameDatosIniciales:function(){

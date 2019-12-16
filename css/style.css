@@ -129,7 +129,7 @@ body{
     list-style:none;
     margin-bottom:10px;
     text-shadow:1px 1px 1px rgba(0,0,0,0.25);
-    background:blue;
+    background:#007bff;
 
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
@@ -171,9 +171,14 @@ body{
 .accordion li:hover{
     width:60%;
 }
-.slide-01  { background:red; color:white; }
-.slide-02  { background:orange; color:white; }
-.slide-03  { background:yellow; color:#333; text-shadow:none; }
-.slide-04  { background:green; color:white; }
-.slide-05  { background:blue; color:white; }
+.slide-01  { background:#0091A6; color:white; }
+.slide-02  { background:#0067A6; color:white; }
+.slide-03  { background:#003EA6; color:#333; text-shadow:none; }
+.slide-04  { background:#0014A6; color:white; }
+.slide-05  { background:#1400A6; color:white; }
+.slide-06  { background:#0091A6; color:white; opacity: 80%;}
+.slide-07  { background:#0067A6; color:white; opacity: 80%}
+.slide-08  { background:#003EA6; color:#333; text-shadow:none; opacity: 80%}
+.slide-09  { background:#0014A6; color:white; opacity: 80%}
+.slide-010  { background:#1400A6; color:white; opacity: 80%}
 
