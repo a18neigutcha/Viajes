@@ -147,6 +147,11 @@ class experiencia extends DBAbstractModel {
     $this->get_results_from_query();
     return $this->rows;
   }
+  public function selectUsuari($usuari){
+    $this->query="SELECT * FROM experiencia WHERE usuari='".$usuari."'";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
   public function select10Last($fields=array()){
     $this->query="SELECT ";
     $firstField = true;

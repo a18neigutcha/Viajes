@@ -5,6 +5,7 @@ var logIn={
 
 var datosInicio;
 var expPorTitol;
+var carga=0;
 window.onload = function() {
       var modelo={
         init:function(){
@@ -32,7 +33,8 @@ window.onload = function() {
           
           axios.get('api.php', {
               params: {
-                'logIn':logIn.log
+                'logIn':logIn.log,
+                "tipo":"cargarDatosIniciales"
               }
           })
           .then(function (response) {
@@ -86,6 +88,23 @@ window.onload = function() {
             console.log("login usuario");
             callback();
           }); 
+        },
+
+        listaExperienciasUsuario:function(nomUsuari,callback){
+          axios.get('api.php',{
+            "nomUsuari":nomUsuari,
+            "tipo":"actualizar"
+          })
+          .then(function(response){
+              datos=response.data;
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          .finally(function () {
+            console.log("login usuario");
+            callback();
+          }); 
         }
       }
 
@@ -99,6 +118,7 @@ window.onload = function() {
               view.creaCamposExperiencias(datos.length);
               view.actualizaExperiencias(datos);
             },1000);
+
           },
           dameDatosIniciales:function(){
             return datosInicio;
@@ -117,6 +137,7 @@ window.onload = function() {
               if(logIn.log=="logIn"){
                 console.log("Inicio session");
                 modelo.cargaDatosActualizados(function postActualizaDatos(){
+                  
                   let datos=controlador.dameDatosIniciales();
                   view.actualizaExperiencias(datos);
                   console.log(datos);
@@ -128,7 +149,8 @@ window.onload = function() {
           },
           postActualizaDatos:function(){
               view.actualizaExperiencias(datos);
-          }
+          },
+
           
 
 
@@ -142,6 +164,7 @@ window.onload = function() {
             view.eventoMuestraPaginaInicio();
             view.eventoMuestraReportarContenido();
             view.eventoMuestraMisExperiencias();
+            view.eventoMostrarActualizarExp();
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -262,6 +285,18 @@ window.onload = function() {
               
             });
           },
+          eventoMostrarActualizarExp:function(){
+            document.getElementById("botUpdExp").addEventListener("click",function(){
+              let formUpd=document.getElementById("Upd8Exp");
+              if(formUpd.style.display=="none"){
+                view.ocultarTodo();
+                formUpd.style.display="block";
+              }else{
+                view.ocultarTodo();
+                view.mostrarPaginaPrincipal();
+              }
+            });
+          },
           eventoMostrarOcultarLogOut:function(){
             document.getElementById("botLogUp").addEventListener("click",function(){
               let formRegistro=document.getElementById("formRegistro");
@@ -353,6 +388,7 @@ window.onload = function() {
             document.getElementById("formRegistro").style.display="none";
             document.getElementById("formNewExp").style.display="none";
             document.getElementById("formSpam").style.display="none";
+            document.getElementById("Upd8Exp").style.display="none";
           },
           mostrarPaginaPrincipal:function(){
             document.getElementById("contExp").style.display="flex";

@@ -15,47 +15,9 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    <style>
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: 1s all;
-            opacity: 0;
-        }
-        .loading.show {
-            opacity: 1;
-        }
-        .loading .spin {
-            border: 3px solid hsla(185, 100%, 62%, 0.2);
-            border-top-color: #3cefff;
-            border-radius: 50%;
-            width: 3em;
-            height: 3em;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }            
-    </style>
-
   </head>
   <body>
 
-
-  <div class="loading show">
-    <div class="spin"></div>
-  </div>
 
     <!--- Resto de tu HTML -->
 
@@ -78,6 +40,7 @@
       <button id="botInicio" class="btn btn-primary col-2">Inicio</button>
       <button id="botMisExp" class="btn btn-primary col-2">Mis experiencias</button>
       <button id="botNewExp" class="btn btn-primary col-2">Nueva experiencia</button>
+      <button id="botUpdExp" class="btn btn-primary col-2">Actualiza una experiencia</button>
       <button id="botReport" class="btn btn-primary col-2">Reportar</button>
       <div class="col-2"></div>
     </div>
@@ -153,6 +116,12 @@
           <input id="botCancelar"  type="button" value="Cancelar">
         </form> 
       </div>
+      <!-- Actualizar experiencia -->
+      <div id="Upd8Exp" style="display: none;" >
+        <div>Selecciona una experiencia a actualitzar:</div>
+        <form id="formUpd8Exp">
+        </form>
+      </div>
       <!--Reportar spam-->
       <div id="formSpam" style="display: none;">
         <div>Reportar un spam</div>
@@ -188,86 +157,6 @@
     <div>
     </div>
 
-    <script>
-            //======================================================================
-        // LOADING
-        //======================================================================
-        var Loading = (loadingDelayHidden = 0) => {
-
-        //-----------------------------------------------------
-        // Variables
-        //-----------------------------------------------------
-        // HTML
-        let loading = null;
-        // Retardo para borrar
-        const myLoadingDelayHidden = loadingDelayHidden;
-        // Imágenes
-        let imgs = [];
-        let lenImgs = 0;
-        let counterImgsLoading = 0;
-
-        //-----------------------------------------------------
-        // Funciones
-        //-----------------------------------------------------
-
-        /**
-         * Método que aumenta el contador de las imágenes cargadas
-         */
-        function incrementCounterImgs() {
-            counterImgsLoading += 1;
-            // Comprueba si todas las imágenes están cargadas
-            if (counterImgsLoading === lenImgs) hideLoading();
-        }
-
-        /**
-         * Ocultar HTML
-         */
-        function hideLoading() {
-            // Comprueba que exista el HTML
-            if(loading !== null) {
-                // Oculta el HTML de "cargando..." quitando la clase .show
-                loading.classList.remove('show');
-
-                // Borra el HTML
-                setTimeout(function () {
-                    loading.remove();
-                }, myLoadingDelayHidden);
-            }
-
-        }
-
-        /**
-         * Método que inicia la lógica
-         */
-        function init() {
-            /* Comprobar que el HTML esté cargadas */
-            document.addEventListener('DOMContentLoaded', function () {
-                loading = document.querySelector('.loading');
-                imgs = Array.from(document.images);
-                lenImgs = imgs.length;
-
-                /* Comprobar que todas las imágenes estén cargadas */
-                if(imgs.length === 0) {
-                    // No hay ninguna
-                    hideLoading();
-                } else {
-                    // Una o más
-                    imgs.forEach(function (img) {
-                        // A cada una le añade un evento que cuando se carge la imagen llame a la funcion incrementCounterImgs
-                        img.addEventListener('load', incrementCounterImgs, false);
-                    });
-                }
-            });
-        }
-
-        return {
-            'init': init
-        }
-        }
-
-        // Para usarlo se declara e inicia. El número es el tiempo transcurrido para borra el HTML una vez cargado todos los elementos, en este caso 1 segundo: 1000 milisegundos,
-        Loading(1000).init();
-    </script>
 
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
     <script src="http://code.jquery.com/jquery.js"></script>

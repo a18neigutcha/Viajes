@@ -12,20 +12,7 @@ class controller {
     $view = new view();
 
     $dades = $exp->selectAll(array("*"));
-    $view->retornarVista($dades);
-
-
-
-
-    
-      
-  }
-
-  
+    $view->retornarVista($dades);     
+  } 
 }
-
-
-
-
-
 ?>

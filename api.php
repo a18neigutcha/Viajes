@@ -15,7 +15,7 @@ require_once 'bd/model.php';
 if($_REQUEST['titol']){
     $exp = new experiencia();
     $dades = $exp->selectTitol($_REQUEST['titol']);
-}
+}else
 if($_REQUEST['nomUsuari'] && $_REQUEST['pwd']){
     $usuari=new usuari();
     $rows= $usuari->selectUsuari($_REQUEST['nomUsuari'],$_REQUEST['pwd']);
@@ -24,7 +24,7 @@ if($_REQUEST['nomUsuari'] && $_REQUEST['pwd']){
     else
         $dades="logOut";
 }
-if($_REQUEST["logIn"]){
+if($_REQUEST["tipo"]==){
     $exp = new experiencia();
     if($_REQUEST['logIn']=="logIn"){
         $dades = $exp->select10Last(array("*"));  
@@ -32,10 +32,20 @@ if($_REQUEST["logIn"]){
         $dades = $exp->select10Last(array("codExp","titol","text","imatge"));  
         
     }
-    
+
+}
+if($_REQUEST['nomUsuari']){
+    $exp =new experiencia();
+    $dades = $exp->selectUsuari($_REQUEST['nomUsuari']);
 }
 echo json_encode($dades);
 //echo json_encode($experiencias[$_REQUEST['id_experiencia']]);
 
+switch($_REQUEST['tipo']){
+    case: "iniciarSesion"
+    case:"seleccionar10primeros"
+}   
 ?>
+
+
 
