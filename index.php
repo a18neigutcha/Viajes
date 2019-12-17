@@ -55,6 +55,26 @@
     </div>
 
     <div class="container">
+      <div class="row">
+        <p class="col-1">Filtrar: </p>
+        <select class="col-2" name="OS">
+          <option value="Categoria">Escull una opció:</option> 
+          <option value="Platja">Platja</option>
+          <option value="Muntanya">Muntanya</option>
+          <option value="Interior">Interior</option>
+          <option value="Aventures">Aventures</option>
+          <option value="Relax">Relax</option>
+        </select>
+        <p class="col-1">Ordenar: </p>
+        <select class="col-2" name="OS">
+          <option value="Categoria">Escull una opció:</option> 
+          <option value="Platja">Ascendent</option>
+          <option value="Muntanya">Descendent</option>
+        </select>
+      <div>
+    </div>
+
+    <div class="container">
       <div class="carga animation-load"></div>
     </div>
     <!--Contenido de la página-->
