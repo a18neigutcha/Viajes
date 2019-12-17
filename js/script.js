@@ -136,7 +136,8 @@ window.onload = function() {
             params: {
               'codExp':codExp,
               'newVal':newVal,
-              'tipo':tipo
+              'tipo':'valoracion',
+              'positiva':tipo
             }
             })
             .then(function (response) {
@@ -228,9 +229,7 @@ window.onload = function() {
             view.eventoMuestraReportarContenido();
             view.eventoMuestraMisExperiencias();
             view.crearNuevaExperiencia();
-            view.eventoMostrarActualizarExp();
-            view.eventoMostrarActualizarExp();
-            
+            view.eventoMostrarActualizarExp();        
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -378,11 +377,14 @@ window.onload = function() {
           },
           eventoMostrarActualizarExp:function(){
             document.getElementById("botUpdExp").addEventListener("click",function(){
+              console.log("UPDATE EXP");
               let formUpd=document.getElementById("Upd8Exp");
               if(formUpd.style.display=="none"){
+                console.log("IF");
                 view.ocultarTodo();
                 formUpd.style.display="block";
               }else{
+                console.log("ELSE");
                 view.ocultarTodo();
                 view.mostrarPaginaPrincipal();
               }
@@ -517,6 +519,7 @@ window.onload = function() {
               document.getElementsByClassName("botMeGusta")[i].addEventListener("click",function(){
                 console.log("Evento valoracon positiva");
                 let contValPos=document.getElementsByClassName("contMeGusta");
+                /*Cuando haya tiempo corregir  estas linias para respetar el M-V-C*/
                 contValPos[i].innerHTML=parseInt(contValPos[i].innerHTML)+1;
                 controlador.actualizaLaValoracion(datos[i].codExp,contValPos[i].innerHTML,1);
               });
@@ -530,8 +533,15 @@ window.onload = function() {
 
             }
             
+          },
+          listaExperienciasUsuario:function(){
+            let datos=controlador.dameExpUsuario(logIn.nomUsuari);
+            let form = document.getElementById("formUpd8Exp");
+            let ul = document.createElement("ul");
+            for(let i=0; i < datos.length;i++){
+                let li =document.createElement("li");
+            }
           }
-
 
 
       }
