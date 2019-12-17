@@ -42,6 +42,16 @@ if($_REQUEST["nuevaExp"]){
         $dades="Error";
     }
 }
+if($_REQUEST["codExp"] && $_REQUEST["newVal"] && $_REQUEST["tipo"]){
+    $exp = new experiencia();
+    $verif=$exp->updateValoracion($_REQUEST["codExp"], $_REQUEST["newVal"], $_REQUEST["tipo"]);
+    if($verif>0){
+        $dades=$varif;
+    }else{
+        $dades="Error";
+    }
+
+}
 
 echo json_encode($dades);
 //echo json_encode($experiencias[$_REQUEST['id_experiencia']]);
