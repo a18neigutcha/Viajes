@@ -36,25 +36,83 @@
         <!--clase btn-primary: botón primario-->
         <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
       </div>
-      <div class="row">
-      <button id="botInicio" class="btn btn-primary col-2">Inicio</button>
-      <button id="botMisExp" class="btn btn-primary col-2">Mis experiencias</button>
-      <button id="botNewExp" class="btn btn-primary col-2">Nueva experiencia</button>
-      <button id="botUpdExp" class="btn btn-primary col-2">Actualiza una experiencia</button>
-      <button id="botReport" class="btn btn-primary col-2">Reportar</button>
-      <div class="col-2"></div>
-    </div>
-    </div>
+      <div class="container">
+        <div class="row">
+          <button id="botInicio" class="btn btn-primary col-2">Inicio</button>
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger colorBot">Experiencias</button>
 
-    
-    
+              <button type="button" class="btn btn-danger dropdown-toggle colorBot"
+                      data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Desplegar menú</span>
+              </button>
 
+              <ul class="dropdown-menu" role="menu">
+                <li><a id="botMisExp" href="#">Mis experiencias</a></li>
+                <li><a id="botNewExp" href="#">Nueva experiencia</a></li>
+                <li><a id="botUpdExp" href="#">Actualiza una experiencia</a></li>
+              </ul>
+            </div>
+          <!--<button id="botMisExp" class="btn btn-primary col-2">Mis experiencias</button>
+          <button id="botNewExp" class="btn btn-primary col-2">Nueva experiencia</button>
+          <button id="botUpdExp" class="btn btn-primary col-2">Actualiza una experiencia</button>-->
+          <button id="botReport" class="btn btn-primary col-2">Reportar</button>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+    </div>
+    
     <!-- texto introductivo-->
     <div class="container">
       <p class="col">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>
 
     <div class="container">
+      <div class="row">
+        <p class="col-1">Filtrar: </p>
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
+
+          <button type="button" class="btn btn-danger dropdown-toggle colorBot"
+                  data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Desplegar menú</span>
+          </button>
+
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Platja</a></li>
+            <li><a href="#">Muntanya</a></li>
+            <li><a href="#">Interior</a></li>
+            <li><a href="#">Aventures</a></li>
+            <li><a href="#">Relax</a></li>
+          </ul>
+        </div>
+
+        <p class="col-1">Ordenar: </p>
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
+
+          <button type="button" class="btn btn-danger dropdown-toggle colorBot"
+                  data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Desplegar menú</span>
+          </button>
+
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Ascendent</a></li>
+            <li><a href="#">Descendent</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    <!--<div class="container">
       <div class="row">
         <p class="col-1">Filtrar: </p>
         <select class="col-2" name="OS">
@@ -72,7 +130,7 @@
           <option value="Muntanya">Descendent</option>
         </select>
       <div>
-    </div>
+    </div>-->
 
     <div class="container">
       <div class="carga animation-load"></div>
@@ -89,15 +147,22 @@
           <div>Carga las experiencias del usuario</div>
       </ul>
       <!--login-->
-      <div id="log" class="log" style="display: none;">
-        <form>
-        <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
-        <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password">
-        <a href="admin/admin.php">Acceder como administrador</a>
-        <br>
-        <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
-        </form> 
-      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+              <div id="log" class="log" style="display: none;">
+                <form>
+                  <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
+                  <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password"><br>
+                  <a href="admin/admin.php">Acceder como administrador</a>
+                  <br>
+                  <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
+                </form> 
+              </div>
+          </div>
+        </div>
+        </div>
       <!--Registrarse-->
       <div id="formRegistro" style="display: none;">
         <div>Formulario de registro: </div>
@@ -180,6 +245,10 @@
 
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
     <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
