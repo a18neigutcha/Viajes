@@ -15,7 +15,7 @@ window.onload = function() {
             axios.get('api.php', {
                 params: {
                   'logIn':logIn.log,
-                  'tipo':'cargaDatosIniciales'
+                  "tipo":"cargaDatosIniciales"
                 }
             })
             .then(function (response) {

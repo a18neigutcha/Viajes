@@ -42,6 +42,7 @@ if($_REQUEST["nuevaExp"]){
         $dades="Error";
     }
 }*/
+$exp =new experiencia();
 switch ($_REQUEST['tipo']){
     case "cargaDatosIniciales":
         if($_REQUEST['logIn']){
