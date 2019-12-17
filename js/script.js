@@ -130,7 +130,29 @@ window.onload = function() {
             controlador.postInsertaExperiencia();
               
           });
+        },
+        actualizaLaValoracion:function(codExp,newVal,tipo){
+          axios.get('api.php', {
+            params: {
+              'codExp':codExp,
+              'newVal':newVal,
+              'tipo':tipo
+            }
+            })
+            .then(function (response) {
+                confirmacionGuardado=response.data;
+                controlador.postActualizaValoracion();
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+              
+                
+            });
+
         }
+        
       }
 
       var controlador={
@@ -185,6 +207,13 @@ window.onload = function() {
           postInsertaExperiencia:function(){
             console.log(confirmacionGuardado);
             controlador.actualizaDatosExperiencias();
+          },
+          actualizaLaValoracion:function(codExp,newVal,tipo){
+            modelo.actualizaLaValoracion(codExp,newVal,tipo);
+          },
+          postActualizaValoracion:function(){
+            console.log("Valoracion guardada correctamente");
+            modelo.cargaDatosIniciales();
           }
           
 
@@ -200,6 +229,8 @@ window.onload = function() {
             view.eventoMuestraMisExperiencias();
             view.crearNuevaExperiencia();
             view.eventoMostrarActualizarExp();
+            view.eventoMostrarActualizarExp();
+            
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -249,17 +280,29 @@ window.onload = function() {
                         //Crea un boton para dar megusta
                         let botMeGusta=document.createElement("button");
                         botMeGusta.setAttribute("class","botMeGusta");
+                        botMeGusta.setAttribute("id","botMeGusta");
                         botMeGusta.innerHTML="Me gusta";
                         valExp.appendChild(botMeGusta);
-  
+
+                        let contMeGusta=document.createElement("div");
+                        contMeGusta.setAttribute("class","contMeGusta");
+                        valExp.appendChild(contMeGusta);
+
                         //Crea un boton para dar no megusta
                         let botNoMeGusta=document.createElement("button");
                         botNoMeGusta.setAttribute("class","botNoMeGusta");
+                        botNoMeGusta.setAttribute("id","botNoMeGusta");
                         botNoMeGusta.innerHTML="No me gusta";
                         valExp.appendChild(botNoMeGusta);
+
+                        let contNoMeGusta=document.createElement("div");
+                        contNoMeGusta.setAttribute("class","contNoMeGusta");
+                        valExp.appendChild(contNoMeGusta);
                         
                       divExp.appendChild(valExp);
                     }
+
+                    
                     
                 contExp.appendChild(divExp);
             }
@@ -293,6 +336,17 @@ window.onload = function() {
               //Actualiza el texto de la experiencia
               let textExp=document.getElementsByClassName("textExp")[i];
               textExp.innerHTML=datos[i].text;
+              if(logIn.log=="logIn"){
+                let contMeGusta=document.getElementsByClassName("contMeGusta")[i];
+                contMeGusta.innerHTML=datos[i].valPos;
+
+                let contNoMeGusta=document.getElementsByClassName("contNoMeGusta")[i];
+                contNoMeGusta.innerHTML=datos[i].valNeg;
+              }
+            }
+            //Eventos que se cargan exclusivamente cunando se accedio como usuario
+            if(logIn.log=="logIn"){
+              view.valoraUnaExperiencia();
             }
           },
           dameElnomUsuariLogIn:function(){
@@ -455,6 +509,27 @@ window.onload = function() {
 
             });
 
+          },
+          valoraUnaExperiencia:function(){
+            let datos=controlador.dameDatosIniciales();
+            for(let i=0;i<datos.length;i++){
+
+              document.getElementsByClassName("botMeGusta")[i].addEventListener("click",function(){
+                console.log("Evento valoracon positiva");
+                let contValPos=document.getElementsByClassName("contMeGusta");
+                contValPos[i].innerHTML=parseInt(contValPos[i].innerHTML)+1;
+                controlador.actualizaLaValoracion(datos[i].codExp,contValPos[i].innerHTML,1);
+              });
+
+              document.getElementsByClassName("botNoMeGusta")[i].addEventListener("click",function(){
+                console.log("Evento valoracon Negativa");
+                let contValNeg=document.getElementsByClassName("contNoMeGusta");
+                contValNeg[i].innerHTML=parseInt(contValNeg[i].innerHTML)+1;
+                controlador.actualizaLaValoracion(datos[i].codExp,contValNeg[i].innerHTML,0);
+              });
+
+            }
+            
           }
 
 

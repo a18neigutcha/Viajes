@@ -91,6 +91,15 @@ switch ($_REQUEST['tipo']){
         $dades="REQUEST ERROR: TIPO ERRONEO";
         break;
     
+if($_REQUEST["codExp"] && $_REQUEST["newVal"] && $_REQUEST["tipo"]){
+    $exp = new experiencia();
+    $verif=$exp->updateValoracion($_REQUEST["codExp"], $_REQUEST["newVal"], $_REQUEST["tipo"]);
+    if($verif>0){
+        $dades=$varif;
+    }else{
+        $dades="Error";
+    }
+
 }
 
 echo json_encode($dades);
@@ -106,7 +115,7 @@ switch($_REQUEST['tipo']){
     cargaExpTitol
     logInUsuario
     listaExpUsuario
-    insertaNuevaExp
+    insertaNuevaExp*/
 ?>
 
 
