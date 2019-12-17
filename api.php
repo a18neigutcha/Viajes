@@ -5,7 +5,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 require_once 'bd/model.php';
 
-if($_REQUEST['titol']){
+/*if($_REQUEST['titol']){
     $exp = new experiencia();
     $dades = $exp->selectTitol($_REQUEST['titol']);
 }
@@ -31,7 +31,7 @@ if($_REQUEST['logIn']){
 if($_REQUEST['nomUsuari']){
     $exp =new experiencia();
     $dades = $exp->selectUsuari($_REQUEST['nomUsuari']);
-}*/
+}
 if($_REQUEST["nuevaExp"]){
     $exp = new experiencia();
     $dadesExp=json_decode ($_REQUEST["nuevaExp"],true);
@@ -41,7 +41,7 @@ if($_REQUEST["nuevaExp"]){
     }else{
         $dades="Error";
     }
-}
+}*/
 switch ($_REQUEST['tipo']){
     case "cargaDatosIniciales":
         if($_REQUEST['logIn']){
@@ -99,17 +99,4 @@ if($_REQUEST["codExp"] && $_REQUEST["newVal"] && $_REQUEST["tipo"]){
 }
 
 echo json_encode($dades);
-//echo json_encode($experiencias[$_REQUEST['id_experiencia']]);
-/*
-switch($_REQUEST['tipo']){
-    /*case: "iniciarSesion"
-    case:"seleccionar10primeros"
-}   */
-/*tipos:
-    cargaDatosIniciales
-    cargaDatosActualizados
-    cargaExpTitol
-    logInUsuario
-    listaExpUsuario
-    insertaNuevaExp*/
 ?>
