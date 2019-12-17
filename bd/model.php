@@ -182,6 +182,15 @@ class experiencia extends DBAbstractModel {
     $this->execute_single_query();
     return $this->rows;
   }
+  public function updateValoracion ($codExp,$newVal,$tipo) {
+    if($tipo==1){
+      $this->query="UPDATE experiencia SET valPos ='".$newVal."' WHERE codExp='".$codExp."'";
+    }else{
+      $this->query="UPDATE experiencia SET valNeg ='".$newVal."' WHERE codExp='".$codExp."'";
+    }
+    $this->execute_single_query();
+    return $this->rows;
+  }
  
   public function delete ($codExp="") {
     $this->query="DELETE FROM experiencia where codExp='".$codExp."'";

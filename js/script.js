@@ -14,7 +14,8 @@ window.onload = function() {
         cargaDatosIniciales:function(){
             axios.get('api.php', {
                 params: {
-                  'logIn':logIn.log
+                  'logIn':logIn.log,
+                  "tipo":"cargaDatosIniciales"
                 }
             })
             .then(function (response) {
@@ -40,7 +41,7 @@ window.onload = function() {
           axios.get('api.php', {
               params: {
                 'logIn':logIn.log,
-                "tipo":"cargarDatosIniciales"
+                "tipo":"cargarDatosActualizados"
               }
           })
           .then(function (response) {
@@ -59,7 +60,8 @@ window.onload = function() {
         cargaExperienciaPorTitulo:function(titol){
               axios.get('api.php', {
                 params: {
-                  'titol':titol
+                  'titol':titol,
+                  'tipo':'cargaExpTitol'
                 }
             })
             .then(function (response) {
@@ -78,7 +80,8 @@ window.onload = function() {
           axios.get('api.php', {
             params: {
               "nomUsuari":nomUsuari,
-              "pwd":pwd
+              "pwd":pwd,
+              'tipo':'logInUsuario'
             }
           })
           .then(function (response) {
@@ -96,7 +99,8 @@ window.onload = function() {
         listaExperienciasUsuario:function(nomUsuari,callback){
           axios.get('api.php',{
             "nomUsuari":nomUsuari,
-            "tipo":"actualizar"
+            "tipo":"listaExpUsuario",
+            
           })
           .then(function(response){
               datos=response.data;
@@ -112,7 +116,8 @@ window.onload = function() {
         insertaLaNuevaExperiencia:function(nuevaExp){
           axios.get('api.php', {
               params: {
-                'nuevaExp':nuevaExp
+                'nuevaExp':nuevaExp,
+                'tipo':'insertaNuevaExp'
               }
           })
           .then(function (response) {
@@ -125,7 +130,30 @@ window.onload = function() {
             controlador.postInsertaExperiencia();
               
           });
+        },
+        actualizaLaValoracion:function(codExp,newVal,tipo){
+          axios.get('api.php', {
+            params: {
+              'codExp':codExp,
+              'newVal':newVal,
+              'tipo':'valoracion',
+              'positiva':tipo
+            }
+            })
+            .then(function (response) {
+                confirmacionGuardado=response.data;
+                controlador.postActualizaValoracion();
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+              
+                
+            });
+
         }
+        
       }
 
       var controlador={
@@ -180,6 +208,13 @@ window.onload = function() {
           postInsertaExperiencia:function(){
             console.log(confirmacionGuardado);
             controlador.actualizaDatosExperiencias();
+          },
+          actualizaLaValoracion:function(codExp,newVal,tipo){
+            modelo.actualizaLaValoracion(codExp,newVal,tipo);
+          },
+          postActualizaValoracion:function(){
+            console.log("Valoracion guardada correctamente");
+            modelo.cargaDatosIniciales();
           }
           
 
@@ -194,7 +229,7 @@ window.onload = function() {
             view.eventoMuestraReportarContenido();
             view.eventoMuestraMisExperiencias();
             view.crearNuevaExperiencia();
-            view.eventoMostrarActualizarExp();
+            view.eventoMostrarActualizarExp();        
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -244,17 +279,29 @@ window.onload = function() {
                         //Crea un boton para dar megusta
                         let botMeGusta=document.createElement("button");
                         botMeGusta.setAttribute("class","botMeGusta");
+                        botMeGusta.setAttribute("id","botMeGusta");
                         botMeGusta.innerHTML="Me gusta";
                         valExp.appendChild(botMeGusta);
-  
+
+                        let contMeGusta=document.createElement("div");
+                        contMeGusta.setAttribute("class","contMeGusta");
+                        valExp.appendChild(contMeGusta);
+
                         //Crea un boton para dar no megusta
                         let botNoMeGusta=document.createElement("button");
                         botNoMeGusta.setAttribute("class","botNoMeGusta");
+                        botNoMeGusta.setAttribute("id","botNoMeGusta");
                         botNoMeGusta.innerHTML="No me gusta";
                         valExp.appendChild(botNoMeGusta);
+
+                        let contNoMeGusta=document.createElement("div");
+                        contNoMeGusta.setAttribute("class","contNoMeGusta");
+                        valExp.appendChild(contNoMeGusta);
                         
                       divExp.appendChild(valExp);
                     }
+
+                    
                     
                 contExp.appendChild(divExp);
             }
@@ -288,6 +335,17 @@ window.onload = function() {
               //Actualiza el texto de la experiencia
               let textExp=document.getElementsByClassName("textExp")[i];
               textExp.innerHTML=datos[i].text;
+              if(logIn.log=="logIn"){
+                let contMeGusta=document.getElementsByClassName("contMeGusta")[i];
+                contMeGusta.innerHTML=datos[i].valPos;
+
+                let contNoMeGusta=document.getElementsByClassName("contNoMeGusta")[i];
+                contNoMeGusta.innerHTML=datos[i].valNeg;
+              }
+            }
+            //Eventos que se cargan exclusivamente cunando se accedio como usuario
+            if(logIn.log=="logIn"){
+              view.valoraUnaExperiencia();
             }
           },
           dameElnomUsuariLogIn:function(){
@@ -319,11 +377,14 @@ window.onload = function() {
           },
           eventoMostrarActualizarExp:function(){
             document.getElementById("botUpdExp").addEventListener("click",function(){
+              console.log("UPDATE EXP");
               let formUpd=document.getElementById("Upd8Exp");
               if(formUpd.style.display=="none"){
+                console.log("IF");
                 view.ocultarTodo();
                 formUpd.style.display="block";
               }else{
+                console.log("ELSE");
                 view.ocultarTodo();
                 view.mostrarPaginaPrincipal();
               }
@@ -450,8 +511,37 @@ window.onload = function() {
 
             });
 
-          }
+          },
+          valoraUnaExperiencia:function(){
+            let datos=controlador.dameDatosIniciales();
+            for(let i=0;i<datos.length;i++){
 
+              document.getElementsByClassName("botMeGusta")[i].addEventListener("click",function(){
+                console.log("Evento valoracon positiva");
+                let contValPos=document.getElementsByClassName("contMeGusta");
+                /*Cuando haya tiempo corregir  estas linias para respetar el M-V-C*/
+                contValPos[i].innerHTML=parseInt(contValPos[i].innerHTML)+1;
+                controlador.actualizaLaValoracion(datos[i].codExp,contValPos[i].innerHTML,1);
+              });
+
+              document.getElementsByClassName("botNoMeGusta")[i].addEventListener("click",function(){
+                console.log("Evento valoracon Negativa");
+                let contValNeg=document.getElementsByClassName("contNoMeGusta");
+                contValNeg[i].innerHTML=parseInt(contValNeg[i].innerHTML)+1;
+                controlador.actualizaLaValoracion(datos[i].codExp,contValNeg[i].innerHTML,0);
+              });
+
+            }
+            
+          },
+          listaExperienciasUsuario:function(){
+            let datos=controlador.dameExpUsuario(logIn.nomUsuari);
+            let form = document.getElementById("formUpd8Exp");
+            let ul = document.createElement("ul");
+            for(let i=0; i < datos.length;i++){
+                let li =document.createElement("li");
+            }
+          }
 
 
       }

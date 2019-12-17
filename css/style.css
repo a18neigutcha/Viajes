@@ -170,6 +170,7 @@ body{
 }
 .accordion li:hover{
     width:60%;
+    height: 450px;
 }
 .accordion li:hover .detalleExp{
     visibility: visible;
