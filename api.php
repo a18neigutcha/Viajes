@@ -8,7 +8,7 @@ require_once 'bd/model.php';
 if($_REQUEST['titol']){
     $exp = new experiencia();
     $dades = $exp->selectTitol($_REQUEST['titol']);
-}else
+}
 if($_REQUEST['nomUsuari'] && $_REQUEST['pwd']){
     $usuari=new usuari();
     $rows= $usuari->selectUsuari($_REQUEST['nomUsuari'],$_REQUEST['pwd']);
