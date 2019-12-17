@@ -45,7 +45,6 @@ if($_REQUEST["nuevaExp"]){
 switch ($_REQUEST['tipo']){
     case "cargaDatosIniciales":
         if($_REQUEST['logIn']){
-            $exp = new experiencia();
             if($_REQUEST['logIn']=="logIn"){
                 $dades = $exp->select10Last(array("*"));  
             }else{
@@ -55,7 +54,6 @@ switch ($_REQUEST['tipo']){
         break;
     case "cargaDatosActualizados":
         if($_REQUEST['logIn']){
-            $exp = new experiencia();
             if($_REQUEST['logIn']=="logIn"){
                 $dades = $exp->select10Last(array("*"));  
             }else{
@@ -65,7 +63,6 @@ switch ($_REQUEST['tipo']){
         break;
     case "cargaExpTitol":
         if($_REQUEST['titol']){
-            $exp = new experiencia();
             $dades = $exp->selectTitol($_REQUEST['titol']);
         }else $dades="INPUT DATA ERROR: cargaExpTitol";
         break;
@@ -81,7 +78,6 @@ switch ($_REQUEST['tipo']){
         break;
     case "listaExpUsuario":
         if($_REQUEST['nomUsuari']){
-            $exp =new experiencia();
             $dades = $exp->selectUsuari($_REQUEST['nomUsuari']);
         }else $dades="INPUT DATA ERROR: ListaExpUsuario";
         break;
@@ -117,6 +113,3 @@ switch($_REQUEST['tipo']){
     listaExpUsuario
     insertaNuevaExp*/
 ?>
-
-
-
