@@ -14,7 +14,8 @@ window.onload = function() {
         cargaDatosIniciales:function(){
             axios.get('api.php', {
                 params: {
-                  'logIn':logIn.log
+                  'logIn':logIn.log,
+                  'tipo':'cargaDatosIniciales'
                 }
             })
             .then(function (response) {
@@ -40,7 +41,7 @@ window.onload = function() {
           axios.get('api.php', {
               params: {
                 'logIn':logIn.log,
-                "tipo":"cargarDatosIniciales"
+                "tipo":"cargarDatosActualizados"
               }
           })
           .then(function (response) {
@@ -59,7 +60,8 @@ window.onload = function() {
         cargaExperienciaPorTitulo:function(titol){
               axios.get('api.php', {
                 params: {
-                  'titol':titol
+                  'titol':titol,
+                  'tipo':'cargaExpTitol'
                 }
             })
             .then(function (response) {
@@ -78,7 +80,8 @@ window.onload = function() {
           axios.get('api.php', {
             params: {
               "nomUsuari":nomUsuari,
-              "pwd":pwd
+              "pwd":pwd,
+              'tipo':'logInUsuario'
             }
           })
           .then(function (response) {
@@ -96,7 +99,8 @@ window.onload = function() {
         listaExperienciasUsuario:function(nomUsuari,callback){
           axios.get('api.php',{
             "nomUsuari":nomUsuari,
-            "tipo":"actualizar"
+            "tipo":"listaExpUsuario",
+            
           })
           .then(function(response){
               datos=response.data;
@@ -112,7 +116,8 @@ window.onload = function() {
         insertaLaNuevaExperiencia:function(nuevaExp){
           axios.get('api.php', {
               params: {
-                'nuevaExp':nuevaExp
+                'nuevaExp':nuevaExp,
+                'tipo':'insertaNuevaExp'
               }
           })
           .then(function (response) {
