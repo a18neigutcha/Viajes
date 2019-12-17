@@ -82,11 +82,11 @@
           </button>
 
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Platja</a></li>
-            <li><a href="#">Muntanya</a></li>
-            <li><a href="#">Interior</a></li>
-            <li><a href="#">Aventures</a></li>
-            <li><a href="#">Relax</a></li>
+            <li class="dropdown-item filtroCat">Platja</button></li>
+            <li class="dropdown-item filtroCat">Muntanya</li>
+            <li class="dropdown-item filtroCat">Interior</li>
+            <li class="dropdown-item filtroCat">Aventures</li>
+            <li class="dropdown-item filtroCat">Relax</li>
           </ul>
         </div>
 

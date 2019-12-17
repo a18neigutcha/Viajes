@@ -99,6 +99,16 @@ switch ($_REQUEST['tipo']){
             }
         }
         break;
+    case "cargaDatosPorCategoria":
+        if($_REQUEST["categoria"]){
+            if($_REQUEST['logIn']=="logIn"){
+                $dades = $exp->selectCategori(array("*"),$_REQUEST["categoria"]);  
+            }else{
+                $dades = $exp->selectCategori(array("codExp","titol","text","imatge"),$_REQUEST["categoria"]);   
+            }
+        }else $dades="Error categoria";
+            
+        break;
     default:
         $dades="REQUEST ERROR: TIPO ERRONEO";
         break;

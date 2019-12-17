@@ -28,7 +28,7 @@
     // );
     $exp= new experiencia();
     //$exp->delete(7);
-    $result= $exp->selectAll(array("*"));
+    $result= $exp->selectCategori(array("*"),"Platja");
     $str = "";
     foreach($result as $row){
         $str.="<p>".$row['codExp']."->".$row['titol']."->".$row['data']."<p>";

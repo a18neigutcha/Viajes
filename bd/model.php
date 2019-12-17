@@ -147,6 +147,20 @@ class experiencia extends DBAbstractModel {
     $this->get_results_from_query();
     return $this->rows;
   }
+  public function selectCategori($fields=array(),$categoria){
+    $this->query="SELECT ";
+    $firstField = true;
+    for ($i=0; $i<count($fields); $i++) {
+      if ($firstField) {
+        $this->query .="E.".$fields[$i];
+        $firstField=false;
+      }
+      else $this->query .= ", E." . $fields[$i];
+    }
+    $this->query .= "FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat AND C.nomCat='".$categoria."'";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
   public function selectUsuari($usuari){
     $this->query="SELECT * FROM experiencia WHERE usuari='".$usuari."'";
     $this->get_results_from_query();

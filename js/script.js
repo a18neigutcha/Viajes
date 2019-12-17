@@ -152,6 +152,32 @@ window.onload = function() {
                 
             });
 
+        },
+        cargaDatosPorCategoria:function(categoria){
+          axios.get('api.php', {
+            params: {
+              'logIn':logIn.log,
+              'categoria':categoria,
+              "tipo":"cargaDatosPorCategoria"
+            }
+          })
+          .then(function (response) {
+              datosInicio=response.data;
+              //hideLoading();//oculta pantalla de load
+              console.log("axios succes");
+          })
+          .catch(function (error) {
+              console.log(error);
+              //hideLoading();//oculta pantalla de load
+
+              // var imagen = new Image();
+              // imagen.onload = imagenCargada;
+              // imagen.src = "../img/icons/ups.jpg"
+          })
+          .finally(function () {
+            controlador.postActualizaDatos();
+          // hideLoading();//oculta pantalla de load
+          }); 
         }
         
       }
@@ -215,7 +241,10 @@ window.onload = function() {
           postActualizaValoracion:function(){
             console.log("Valoracion guardada correctamente");
             modelo.cargaDatosIniciales();
-          }
+          },
+          filtraExperienciasPorCategoria:function(categoria){
+            modelo.cargaDatosPorCategoria(categoria);
+          },
           
 
       }
@@ -229,7 +258,8 @@ window.onload = function() {
             view.eventoMuestraReportarContenido();
             view.eventoMuestraMisExperiencias();
             view.crearNuevaExperiencia();
-            view.eventoMostrarActualizarExp();        
+            view.eventoMostrarActualizarExp();
+            view.filtraPorCategoria();        
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -541,6 +571,16 @@ window.onload = function() {
             for(let i=0; i < datos.length;i++){
                 let li =document.createElement("li");
             }
+          },
+          filtraPorCategoria:function(){
+            let categorias=document.getElementsByClassName("filtroCat");
+            for(let i=0;i<categorias.length;i++){
+              categorias[i].addEventListener("click",function(){
+                  console.log("Evento filta por categoria."+categorias[i].innerHTML);
+                  controlador.filtraExperienciasPorCategoria(categorias[i].innerHTML);
+              });
+            }
+            
           }
 
 
