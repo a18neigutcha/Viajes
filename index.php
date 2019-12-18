@@ -158,7 +158,7 @@
                 <form>
                   <p>Usuario:</p> <input class="barLog" id="inputLogInUsuari" type="text" name="login"> 
                   <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password"><br>
-                  <a href="admin/admin.php">Acceder como administrador</a>
+                  <a href="admin/index.php">Acceder como administrador</a>
                   <br>
                   <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
                 </form> 
@@ -174,7 +174,7 @@
           <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
           <br>
           <input id="botRegistrarse"  type="button" value="Registrarse">
-          <input id="botCancelar"  type="button" value="Cancelar">
+          <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
         </form> 
       </div>
       <!--Nueva experiencia-->
@@ -201,7 +201,7 @@
           <br>
           
           <input id="botCreaExp"  type="button" value="Registrarse">
-          <input id="botCancelar"  type="button" value="Cancelar">
+          <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
         </form> 
       </div>
       <!-- Actualizar experiencia -->

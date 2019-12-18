@@ -276,8 +276,7 @@ window.onload = function() {
             let datos=controlador.dameDatosIniciales();
             view.creaCamposExperiencias(datos.length);
             view.actualizaExperiencias(datos);
-            view.ocultarTodo();
-            view.mostrarPaginaPrincipal();
+            controlador.retornaALaPaginaInicial();
             console.log("Datos actualizados");
           },
           fechaHoy:function(){
@@ -346,7 +345,8 @@ window.onload = function() {
             view.filtraPorCategoria();
             view.ordenExperiencias();
             view.aplicarFiltros();     
-            view.registrarUsuario();   
+            view.registrarUsuario();
+            view.eventoCancelar();   
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -545,8 +545,9 @@ window.onload = function() {
           eventoMuestraPaginaInicio:function(){
             document.getElementById("botInicio").addEventListener("click",function(){
                 console.log("Evento inicio");
-                view.ocultarTodo();
-                view.mostrarPaginaPrincipal();
+
+                controlador.actualizaDatosExperiencias();
+
                 
               
             });
@@ -699,7 +700,18 @@ window.onload = function() {
                 console.log(pwdUsu);
                 controlador.registraNuevoUsuario(nameUsu,pwdUsu);
             });
+          },
+          eventoCancelar:function(){
+            let botsCancelar=document.getElementsByClassName("cancelar");
+            console.log(botsCancelar);
+            for (let i=0;i<botsCancelar.length;i++){
+              botsCancelar[i].addEventListener("click",function(){
+                console.log("Pulso cancelar vuelvo al inicio");
+                controlador.retornaALaPaginaInicial();
+              });
+            }
           }
+
 
 
       }
