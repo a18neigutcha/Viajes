@@ -113,14 +113,36 @@
           <br>
           
           <input id="botCreaExp"  type="button" value="Registrarse">
-          <input id="botCancelar"  type="button" value="Cancelar">
+          <input id="botCancelar"  type="reset" value="Cancelar">
         </form> 
       </div>
       <!-- Actualizar experiencia -->
-      <div id="Upd8Exp" style="display: none;" >
-        <div>Selecciona una experiencia a actualitzar:</div>
-        <form id="formUpd8Exp">
-        </form>
+      <div id="Upd8Exp"  class="container" style="display: none;" >
+        <div class="row">
+          <div id="formUpd8Exp" class="col-6">
+         </div>
+         <form id="contenidoExp" class="col-6">
+         <p>Titulo:</p> <input id="updExpTitulo" type="text" value=""> 
+          <p>Descripcion:</p> <input id="updExpDescrip" type="text" value="">
+          <p>URL(Imagen):</p> <input id="updExpImg" type="text" value="">
+          <p>URL (Maps):</p> <input id="updExpMaps" type="text"value="">
+          <p>Categoria:</p>
+          <select id="updExpCat">
+              <option value="Platja">Platja</option>
+              <option value="Muntanya">Muntanya</option>
+              <option value="Interior">Interior</option>
+              <option value="Aventures">Aventures</option>
+              <option value="Relax">Relax</option>
+          </select>
+          <p>Estado:</p>
+          <select id="updExpEst">
+              <option value="publicada">Publicar</option>
+              <option value="esborrany">Esborrany</option>
+          </select>
+          <input id="botUpdConfirm"  type="reset" value="Confirmar">
+          <input id="botUpdCancelar"  type="reset" value="Cancelar">
+         </form>
+         </div>
       </div>
       <!--Reportar spam-->
       <div id="formSpam" style="display: none;">

@@ -10,12 +10,22 @@
     
 
 
-    $dades=json_decode ($_REQUEST["nuevaExp"],true);
-    print_r($dades) ;
+    //$dades=json_decode ($_REQUEST["nuevaExp"],true);
+    //print_r($dades) ;
+    $user=array(
+        "titol"=>"titol prova",
+        "data" =>"data prova"
+    );
+    $cod=1;/*
+    function update ($codExp,$user_data = array()) {
+        $this->query="UPDATE experiencia SET titol ='".$user_data["titol"]."',data ='".$user_data["data"]."' WHERE codExp='".$codExp."'";
+        $this->execute_single_query();
+        return $this->rows;
+      }
+      print_r(update($cod,$user))
     
-    
-    /*
     echo"<hr>Metode tradicional<br>";
+    */
     //inici conexio
     $conn = new mysqli($servername, $username, $password,$db);
     if ($conn->connect_error) {
@@ -33,5 +43,5 @@
         }
     } else {
         echo "0 results";
-    }*/
+    }
 ?>

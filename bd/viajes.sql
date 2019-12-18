@@ -1,4 +1,4 @@
-
+drop database viajes;
 CREATE DATABASE IF NOT EXISTS viajes;
 
 CREATE TABLE IF NOT EXISTS viajes.usuari(
