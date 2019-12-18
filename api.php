@@ -108,6 +108,20 @@ switch ($_REQUEST['tipo']){
     case "cargaDatosFiltradosYOrdenados":
         $dades = $exp->selectCategoriOrdenado(array("*"),$_REQUEST['categoria'],$_REQUEST['orden']);  
         break;
+    case "insertaUsuarioEnBD":
+        $usuari=new usuari();
+        $verif=$usuari->select($_REQUEST['nomUsuari']);
+        if($verif){
+            $dades="Error->Usuario existente";
+        }else{
+            $newUsu=array("nomUsuari"=>$_REQUEST['nomUsuari'],"pwd"=>$_REQUEST['pwd']);
+            $usuari->insert($newUsu);
+            $verif=$usuari->selectUsuari($_REQUEST['nomUsuari'],$_REQUEST['pwd']);  
+            $dades="ok";
+            
+        }
+        
+        break;
     default:
         $dades="REQUEST ERROR: TIPO ERRONEO";
         break;

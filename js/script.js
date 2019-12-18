@@ -214,6 +214,32 @@ window.onload = function() {
           .finally(function () {
             controlador.postActualizaDatos();
           }); 
+        },
+        insertaUsuarioEnBD:function(nomUsuari,pwd){
+          axios.get('api.php', {
+            params: {
+              'nomUsuari':nomUsuari,
+              'pwd':pwd,
+              "tipo":"insertaUsuarioEnBD"
+            }
+          })
+          .then(function (response) {
+              datosInicio=response.data;
+              console.log("axios succes");
+              if(response.data=="ok"){
+                controlador.retornaALaPaginaInicial();
+              }else{
+                alert("El regitro fallo vuelva a intentarlo");
+              }
+              
+          })
+          .catch(function (error) {
+              console.log(error);
+            
+          })
+          .finally(function () {
+            
+          }); 
         }
         
       }
@@ -295,6 +321,13 @@ window.onload = function() {
           },
           dameLosFiltros:function(){
             return filtros;
+          },
+          registraNuevoUsuario:function(usu,pwd){
+            modelo.insertaUsuarioEnBD(usu,pwd);
+          },
+          retornaALaPaginaInicial:function(){
+            view.ocultarTodo();
+            view.mostrarPaginaPrincipal();
           }
           
 
@@ -312,7 +345,8 @@ window.onload = function() {
             view.eventoMostrarActualizarExp();
             view.filtraPorCategoria();
             view.ordenExperiencias();
-            view.aplicarFiltros();        
+            view.aplicarFiltros();     
+            view.registrarUsuario();   
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -655,6 +689,16 @@ window.onload = function() {
               
             });
             
+          },
+          registrarUsuario:function(){
+            document.getElementById("botRegistrarse").addEventListener("click",function(){
+                console.log("Evento registro usuario");
+                let  nameUsu=document.getElementById("logUpName").value;
+                let  pwdUsu=document.getElementById("logUpPwd").value;
+                console.log(nameUsu);
+                console.log(pwdUsu);
+                controlador.registraNuevoUsuario(nameUsu,pwdUsu);
+            });
           }
 
 

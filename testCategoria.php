@@ -26,15 +26,24 @@
     //     "codExp"=>7
 
     // );
-    $exp= new experiencia();
+    //$exp= new experiencia();
+    $usu=new usuari();
     //$exp->delete(7);
-    $result= $exp->selectCategori(array("*"),"Platja");
-    //$result = $exp->selectCategoriOrdenado(array("*"),"Platja","Descendent");
-    $str = "";
-    foreach($result as $row){
-        $str.="<p>".$row['codExp']."->".$row['titol']."->".$row['data']."<p>";
+    $newUsu=array("nomUsuari"=>"Root2","pwd"=>"1234");
+   // $usu->insert($newUsu);
+    $result=$usu->selectUsuari($newUsu["nomUsuari"],$newUsu["pwd"]);
+    if($result){
+        echo "ok";
+    }else{
+        echo "Error";
     }
-    echo $str;
+    //$result = $exp->selectCategoriOrdenado(array("*"),"Platja","Descendent");
+    print_r($result);
+    // $str = "";
+    // foreach($result as $row){
+    //     $str.="<p>".$row['codExp']."->".$row['titol']."->".$row['data']."<p>";
+    // }
+    // echo $str;
     
     /*
     echo"<hr>Metode tradicional<br>";

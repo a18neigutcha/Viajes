@@ -1,4 +1,5 @@
 
+
 CREATE DATABASE IF NOT EXISTS a18NeiGutCha_viajes;
 USE a18NeiGutCha_viajes;
 CREATE TABLE IF NOT EXISTS usuari(
@@ -11,7 +12,7 @@ CREATE TABLE IF NOT EXISTS experiencia (
   titol VARCHAR(30),
   data DATE,
   text VARCHAR (50),
-  imatge VARCHAR (50),
+  imatge VARCHAR (50) default "imgdef.jpeg",
   coordenades VARCHAR(300),
   valPos INT,
   valNeg INT,
