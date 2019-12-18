@@ -4,8 +4,8 @@ header('Content-Type: text/html; charset=utf-8');
 
 
 require_once 'bd/model.php';
-/*
-if($_REQUEST['titol']){
+
+/*if($_REQUEST['titol']){
     $exp = new experiencia();
     $dades = $exp->selectTitol($_REQUEST['titol']);
 }
@@ -41,19 +41,8 @@ if($_REQUEST["nuevaExp"]){
     }else{
         $dades="Error";
     }
-}
-if($_REQUEST["codExp"] && $_REQUEST["newVal"] && $_REQUEST["tipo"]){
-    $exp = new experiencia();
-    $verif=$exp->updateValoracion($_REQUEST["codExp"], $_REQUEST["newVal"], $_REQUEST["tipo"]);
-    if($verif>0){
-        $dades=$varif;
-    }else{
-        $dades="Error";
-    }
-
 }*/
-$exp = new experiencia();
-$dades="SIN CONTENIDO";
+$exp =new experiencia();
 switch ($_REQUEST['tipo']){
     case "cargaDatosIniciales":
         if($_REQUEST['logIn']){
@@ -139,5 +128,4 @@ switch ($_REQUEST['tipo']){
 
 
 echo json_encode($dades);
-
 ?>
