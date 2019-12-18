@@ -105,7 +105,9 @@
             <li class="dropdown-item ordenExp">Descendent</li>
           </ul>
         </div>
-        <div id="botAplicaFiltros" class="btn btn-primary">
+        <div class="col-4">
+        </div>
+        <div id="botAplicaFiltros" class="btn btn-primary col-2">
           Aplicar filtros
         </div>
       </div>
@@ -167,42 +169,56 @@
         </div>
         </div>
       <!--Registrarse-->
-      <div id="formRegistro" style="display: none;">
-        <div>Formulario de registro: </div>
-        <form>
-          <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
-          <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
-          <br>
-          <input id="botRegistrarse"  type="button" value="Registrarse">
-          <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
-        </form> 
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <div id="formRegistro" class="log" style="display: none;">
+              <div>Formulario de registro: </div>
+              <form>
+                <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
+                <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+                <br>
+                <input id="botRegistrarse"  type="button" value="Registrarse">
+                <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
+              </form> 
+            </div>
+          </div>
+        </div>
       </div>
       <!--Nueva experiencia-->
-      <div id="formNewExp" style="display: none;" >
-        <div>Crea una nueva experiencia:</div>
-        <form>
-          <p>Titulo:</p> <input id="newExpTitulo" type="text"> 
-          <p>Descripcion:</p> <input id="newExpDescrip" type="text">
-          <p>URL(Imagen):</p> <input id="newExpImg" type="text">
-          <p>URL (Maps):</p> <input id="newExpMaps" type="text">
-          <p>Categoria:</p>
-          <select id="newExpCat">
-              <option value="Platja">Platja</option>
-              <option value="Muntanya">Muntanya</option>
-              <option value="Interior">Interior</option>
-              <option value="Aventures">Aventures</option>
-              <option value="Relax">Relax</option>
-          </select>
-          <p>Estado:</p>
-          <select id="newExpEst">
-              <option value="publicada">Publicar</option>
-              <option value="esborrany">Esborrany</option>
-          </select>
-          <br>
-          
-          <input id="botCreaExp"  type="button" value="Registrarse">
-          <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
-        </form> 
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <div id="formNewExp" class="log" style="display: none;" >
+              <div>Crea una nueva experiencia:</div>
+              <form>
+                <p>Titulo:</p> <input id="newExpTitulo" type="text"> 
+                <p>Descripcion:</p> <input id="newExpDescrip" type="text">
+                <p>URL(Imagen):</p> <input id="newExpImg" type="text">
+                <p>URL (Maps):</p> <input id="newExpMaps" type="text">
+                <p>Categoria:</p>
+                <select id="newExpCat">
+                    <option value="Platja">Platja</option>
+                    <option value="Muntanya">Muntanya</option>
+                    <option value="Interior">Interior</option>
+                    <option value="Aventures">Aventures</option>
+                    <option value="Relax">Relax</option>
+                </select>
+                <p>Estado:</p>
+                <select id="newExpEst">
+                    <option value="publicada">Publicar</option><br>
+                    <option value="esborrany">Esborrany</option>
+                </select>
+                <br>
+                
+                <input id="botCreaExp"  type="button" value="Registrarse">
+                <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
+              </form> 
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Actualizar experiencia -->
       <div id="Upd8Exp" style="display: none;" >
