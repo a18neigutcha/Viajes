@@ -29,6 +29,7 @@
     $exp= new experiencia();
     //$exp->delete(7);
     $result= $exp->selectCategori(array("*"),"Platja");
+    //$result = $exp->selectCategoriOrdenado(array("*"),"Platja","Descendent");
     $str = "";
     foreach($result as $row){
         $str.="<p>".$row['codExp']."->".$row['titol']."->".$row['data']."<p>";

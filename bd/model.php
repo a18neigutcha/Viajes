@@ -161,6 +161,38 @@ class experiencia extends DBAbstractModel {
     $this->get_results_from_query();
     return $this->rows;
   }
+  public function selectOrdenado($fields=array(),$orden){
+    $this->query="SELECT ";
+    $firstField = true;
+    for ($i=0; $i<count($fields); $i++) {
+      if ($firstField) {
+        $this->query .= $fields[$i];
+        $firstField=false;
+      }
+      else $this->query .= ", " . $fields[$i];
+    }
+    $this->query .= " FROM experiencia ORDER BY codExp ";
+    if(strcmp($orden,"Ascendent")==0) $this->query .= "ASC";
+    else $this->query .= "DESC";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
+  public function selectCategoriOrdenado($fields=array(),$categoria,$orden){
+    $this->query="SELECT ";
+    $firstField = true;
+    for ($i=0; $i<count($fields); $i++) {
+      if ($firstField) {
+        $this->query .="E.".$fields[$i];
+        $firstField=false;
+      }
+      else $this->query .= ", " . $fields[$i];
+    }
+    $this->query .= "FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat AND C.nomCat='".$categoria."' ORDER BY codExp ";
+    if(strcmp($orden,"Ascendent")==0) $this->query .= "ASC";
+    else $this->query .= "DESC";
+    $this->get_results_from_query();
+    return $this->rows;
+  }
   public function selectUsuari($usuari){
     $this->query="SELECT * FROM experiencia WHERE usuari='".$usuari."'";
     $this->get_results_from_query();

@@ -101,9 +101,12 @@
           </button>
 
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Ascendent</a></li>
-            <li><a href="#">Descendent</a></li>
+            <li class="dropdown-item ordenExp">Ascendent</li>
+            <li class="dropdown-item ordenExp">Descendent</li>
           </ul>
+        </div>
+        <div id="botAplicaFiltros" class="btn btn-primary">
+          Aplicar filtros
         </div>
       </div>
     </div>

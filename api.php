@@ -100,19 +100,19 @@ switch ($_REQUEST['tipo']){
         }
         break;
     case "cargaDatosPorCategoria":
-        if($_REQUEST["categoria"]){
-            if($_REQUEST['logIn']=="logIn"){
-                $dades = $exp->selectCategori(array("*"),$_REQUEST["categoria"]);  
-            }else{
-                $dades = $exp->selectCategori(array("codExp","titol","text","imatge"),$_REQUEST["categoria"]);   
-            }
-        }else $dades="Error categoria";
-            
+        $dades = $exp->selectCategori(array("*"),$_REQUEST['categoria']);  
+        break;
+    case "cargaDatosOrdenados":
+        $dades = $exp->selectOrdenado(array("*"),$_REQUEST['orden']);  
+        break;
+    case "cargaDatosFiltradosYOrdenados":
+        $dades = $exp->selectCategoriOrdenado(array("*"),$_REQUEST['categoria'],$_REQUEST['orden']);  
         break;
     default:
         $dades="REQUEST ERROR: TIPO ERRONEO";
         break;
-    }  
+    }
+    
 
 
 echo json_encode($dades);

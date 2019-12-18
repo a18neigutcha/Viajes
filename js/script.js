@@ -2,6 +2,10 @@ var logIn={
   log:"logOut",
   nomUsuari:"",
 };
+var filtros={
+  categoria:"",
+  orden:""
+}
 
 var datosInicio;
 var expPorTitol;
@@ -156,27 +160,59 @@ window.onload = function() {
         cargaDatosPorCategoria:function(categoria){
           axios.get('api.php', {
             params: {
-              'logIn':logIn.log,
               'categoria':categoria,
               "tipo":"cargaDatosPorCategoria"
             }
           })
           .then(function (response) {
               datosInicio=response.data;
-              //hideLoading();//oculta pantalla de load
               console.log("axios succes");
           })
           .catch(function (error) {
               console.log(error);
-              //hideLoading();//oculta pantalla de load
-
-              // var imagen = new Image();
-              // imagen.onload = imagenCargada;
-              // imagen.src = "../img/icons/ups.jpg"
+            
           })
           .finally(function () {
             controlador.postActualizaDatos();
-          // hideLoading();//oculta pantalla de load
+          }); 
+        },
+        cargaDatosOrdenados:function(orden){
+          axios.get('api.php', {
+            params: {
+              'orden':orden,
+              "tipo":"cargaDatosOrdenados"
+            }
+          })
+          .then(function (response) {
+              datosInicio=response.data;
+              console.log("axios succes");
+          })
+          .catch(function (error) {
+              console.log(error);
+            
+          })
+          .finally(function () {
+            controlador.postActualizaDatos();
+          }); 
+        },
+        cargaDatosFiltradosYOrdenados:function(categoria,orden){
+          axios.get('api.php', {
+            params: {
+              'categoria':categoria,
+              'orden':orden,
+              "tipo":"cargaDatosFiltradosYOrdenados"
+            }
+          })
+          .then(function (response) {
+              datosInicio=response.data;
+              console.log("axios succes");
+          })
+          .catch(function (error) {
+              console.log(error);
+            
+          })
+          .finally(function () {
+            controlador.postActualizaDatos();
           }); 
         }
         
@@ -242,9 +278,24 @@ window.onload = function() {
             console.log("Valoracion guardada correctamente");
             modelo.cargaDatosIniciales();
           },
-          filtraExperienciasPorCategoria:function(categoria){
-            modelo.cargaDatosPorCategoria(categoria);
+          filtraExperiencias:function(filtros){
+            if(filtros.categoria!="" && filtros.orden!=""){
+              console.log("filtra por categoria y ordena");
+              modelo.cargaDatosFiltradosYOrdenados(filtros.categoria,filtros.orden);
+            }else if(filtros.categoria=="" && filtros.orden!=""){
+              console.log("ordena");
+              modelo.cargaDatosOrdenados(filtros.orden);
+            }else if(filtros.categoria!="" && filtros.orden==""){
+              console.log("filtraPorCategoria");
+              modelo.cargaDatosPorCategoria(filtros.categoria);
+            }else{
+              console.log("No hay filtros");
+            }
+              
           },
+          dameLosFiltros:function(){
+            return filtros;
+          }
           
 
       }
@@ -259,7 +310,9 @@ window.onload = function() {
             view.eventoMuestraMisExperiencias();
             view.crearNuevaExperiencia();
             view.eventoMostrarActualizarExp();
-            view.filtraPorCategoria();        
+            view.filtraPorCategoria();
+            view.ordenExperiencias();
+            view.aplicarFiltros();        
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -576,10 +629,31 @@ window.onload = function() {
             let categorias=document.getElementsByClassName("filtroCat");
             for(let i=0;i<categorias.length;i++){
               categorias[i].addEventListener("click",function(){
-                  console.log("Evento filta por categoria."+categorias[i].innerHTML);
-                  controlador.filtraExperienciasPorCategoria(categorias[i].innerHTML);
+                  filtros.categoria=categorias[i].innerHTML;
+                  console.log(filtros);
               });
             }
+          },
+          ordenExperiencias:function(){
+            let ordenExp=document.getElementsByClassName("ordenExp");
+            for(let i=0;i<ordenExp.length;i++){
+              ordenExp[i].addEventListener("click",function(){
+                  filtros.orden=ordenExp[i].innerHTML;
+                  console.log(filtros);
+              });
+            }
+          },
+          aplicarFiltros:function(){
+            document.getElementById("botAplicaFiltros").addEventListener("click",function (){
+              if(logIn.log=="logIn"){
+                let filtros=controlador.dameLosFiltros();
+                console.log(filtros);
+                controlador.filtraExperiencias(filtros);
+              }else{
+                alert("Necesitas iniciar sesion");
+              }  
+              
+            });
             
           }
 
