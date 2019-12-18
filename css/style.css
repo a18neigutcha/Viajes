@@ -119,9 +119,21 @@ body{
 
 }
 
+.btn-danger:hover {
+    color: #fff;
+    background-color: #64FF33 !important;
+    border-color: #64FF33 !important;
+}
+
 .colorBot{
     border: 2px solid #007bff;
     background:#007bff;
+}
+
+.colorBot:hover {
+    color: #fff;
+    background-color: #64FF33 !important;
+    border-color: #64FF33 !important;
 }
 
 
