@@ -6,7 +6,7 @@ require_once ("login.php");
 abstract class DBAbstractModel {
 
   private static $db_host = "localhost";
-  private static $db_user = "a18NeiGutCha_V";
+  private static $db_user = "root";
   private static $db_pass = "password";
  
 
