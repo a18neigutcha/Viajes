@@ -209,7 +209,7 @@ class experiencia extends DBAbstractModel {
         $this->query .= "E.".$fields[$i];
         $firstField=false;
       }
-      else $this->query .= ", " . $fields[$i];
+      else $this->query .= ", E.".$fields[$i];
     }
     $this->query .= ", C.nomCat";
     $this->query .= " FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat ORDER BY codExp DESC LIMIT 10";
@@ -401,86 +401,4 @@ class categories extends DBAbstractModel{
     
   }
 } 
-
-/*
-class pertany extends DBAbstractModel{
-  private $codCat;
-  private $codExp;
-  
-  function __construct() {
-    $this->db_name = "viajes";
-    }
-  
-  function __toString() {
-    return "(" . $this->codCat . ", " . $this->codExp  . ")";
-  }
-  
-  function __destruct() {
-   // unset ($this);
-  }
-  
-  public function selectAll($fields=array()){
-    
-    $this->query="SELECT ";
-    $firstField = true;
-    for ($i=0; $i<count($fields); $i++) {
-      if ($firstField) {
-        $this->query .= $fields[$i];
-        $firstField=false;
-      }
-      else $this->query .= ", " . $fields[$i];
-    }
-    $this->query .= " FROM pertany";
-    $this->get_results_from_query();
-    return $this->rows;
-
-  }
-  
-  public function select($codCat=""){
-    
-    $this->query="SELECT * FROM pertany WHERE codCat='".$codCat."'";
-    $this->get_results_from_query();
-    return $this->rows;
-    
-  }
-  public function selectExp($codExp=""){
-    
-    $this->query="SELECT * FROM pertany WHERE codExp='".$codExp."'";
-    $this->get_results_from_query();
-    return $this->rows;
-    
-  }
-  public function insert($codCat,$codExp){
-    
-    $this->query="INSERT INTO pertany (codCat,codExp) VALUES ('".$codCat."','".$codExp."')";
-    $this->execute_single_query();
-    return $this->rows;
-    
-    
-  }
-  public function update(){
-    
-    $this->query ="UPDATE categories SET nomCat='".$nouNom."' WHERE codCat='".$id."'";
-    $this->execute_single_query();
-    return $this->rows; 
-    
-    return null;
-  }
-  public function updateNom($nom="",$nouNom=""){
-    
-    $this->query ="UPDATE categories SET nomCat='".$nouNom."' WHERE nomCat='".$nom."'";
-    $this->execute_single_query();
-    return $this->rows;
-    
-    return null;
-    
-  }
-  public function delete($codCat="", $codExp=""){
-    
-    $this->query="DELETE FROM pertany WHERE codCat='".$codCat."' AND codExp='".$codExp."'";
-    $this->execute_single_query();
-    return $this->rows;
-    
-  }
-}*/
 ?>

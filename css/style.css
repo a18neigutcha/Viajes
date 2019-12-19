@@ -189,7 +189,7 @@ body{
 }*/
 .accordion li:hover{
     width:50%;
-    /*height: 450px;*/
+    height: 500px;
 }
 .accordion li:hover .detalleExp{
     visibility: visible;

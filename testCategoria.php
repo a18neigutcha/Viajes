@@ -26,19 +26,19 @@
     //     "codExp"=>7
 
     // );
-    //$exp= new experiencia();
-    $usu=new usuari();
+    
+   // $usu=new usuari();
     //$exp->delete(7);
-    $newUsu=array("nomUsuari"=>"Root2","pwd"=>"1234");
+    //$newUsu=array("nomUsuari"=>"Root2","pwd"=>"1234");
    // $usu->insert($newUsu);
-    $result=$usu->selectUsuari($newUsu["nomUsuari"],$newUsu["pwd"]);
-    if($result){
-        echo "ok";
-    }else{
-        echo "Error";
-    }
+   // $result=$usu->selectUsuari($newUsu["nomUsuari"],$newUsu["pwd"]);
+    // if($result){
+    //     echo "ok";
+    // }else{
+    //     echo "Error";
+    // }
     //$result = $exp->selectCategoriOrdenado(array("*"),"Platja","Descendent");
-    print_r($result);
+    //print_r($result);
     // $str = "";
     // foreach($result as $row){
     //     $str.="<p>".$row['codExp']."->".$row['titol']."->".$row['data']."<p>";
@@ -63,21 +63,26 @@
     echo"<hr>Metode tradicional<br>";
     */
     //inici conexio
-    $conn = new mysqli($servername, $username, $password,$db);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully <br>";
-    $sql="SELECT * FROM categories";
-    $result=$conn->query($sql);
-    $conn->close();
-    //fi conexio
-    if ($result->num_rows > 0) {
-    // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["codCat"]. " - nom: " . $row["nomCat"]. "<br>";
-        }
-    } else {
-        echo "0 results";
-    }
+    // $conn = new mysqli($servername, $username, $password,$db);
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
+    // echo "Connected successfully <br>";
+    // $sql="SELECT * FROM categories";
+    // $result=$conn->query($sql);
+    // $conn->close();
+    // //fi conexio
+    // if ($result->num_rows > 0) {
+    // // output data of each row
+    //     while($row = $result->fetch_assoc()) {
+    //         echo "id: " . $row["codCat"]. " - nom: " . $row["nomCat"]. "<br>";
+    //     }
+    // } else {
+    //     echo "0 results";
+    // }
+    $exp= new experiencia();
+
+    $resul=$exp->select10Last(array("*"));
+
+    print_r($resul);
 ?>

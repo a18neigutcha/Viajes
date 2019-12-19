@@ -12,17 +12,17 @@ function saneaCadena($cadena){
     return $cadena;
 }
 
-/*
+
 if($_REQUEST["nuevaExp"]){
     $exp = new experiencia();
     $dadesExp=json_decode ($_REQUEST["nuevaExp"],true);
     $verif=$exp->insert($dadesExp);
-    if($verif>0){
+    if($verif){
         $dades="ok";
     }else{
         $dades="Error";
     }
-}*/
+}
 $exp =new experiencia();
 switch ($_REQUEST['tipo']){
     case "cargaDatosIniciales":
