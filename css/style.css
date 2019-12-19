@@ -21,9 +21,7 @@ body{
 
 }
 
-.caja{
-    background-color: antiquewhite;
-}
+
 
 .exp{
     width: 400px;
@@ -34,7 +32,9 @@ body{
 .footer{
     background-color: antiquewhite;
 }
-
+.caja{
+    background-color: antiquewhite;
+}
 .legal{
     display: inline;
     text-align: center;
@@ -115,18 +115,13 @@ body{
     height: 100%;
     justify-content: center;
     margin:0px;
-    
-    
-    
-
 }
-
 
 /*------------------------------------*\
     ACCORDION
 \*------------------------------------*/
 .accordion{
-    width:940px;
+    width:100%;
     overflow:hidden;
     list-style:none;
     margin-bottom:10px;
@@ -137,6 +132,9 @@ body{
     -webkit-border-radius:10px;
     -o-border-radius:10px;
     border-radius:10px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
 }
 .accordion li{
     float:left;
@@ -167,12 +165,13 @@ body{
 .accordion div{
     padding:10px;
 }
+/*
 .accordion:hover li{
     width:10%;
-}
+}*/
 .accordion li:hover{
-    width:60%;
-    height: 450px;
+    width:50%;
+    /*height: 450px;*/
 }
 .accordion li:hover .detalleExp{
     visibility: visible;
@@ -193,14 +192,17 @@ body{
    /* border-bottom: 1px solid blue;
     width: 200px;*/
 }
-.slide-01  { background:#0091A6; color:white; }
-.slide-02  { background:#0067A6; color:white; }
-.slide-03  { background:#003EA6; color:#333; text-shadow:none; }
-.slide-04  { background:#0014A6; color:white; }
-.slide-05  { background:#1400A6; color:white; }
-.slide-06  { background:#0091A6; color:white; opacity: 80%;}
-.slide-07  { background:#0067A6; color:white; opacity: 80%}
-.slide-08  { background:#003EA6; color:#333; text-shadow:none; opacity: 80%}
-.slide-09  { background:#0014A6; color:white; opacity: 80%}
-.slide-010  { background:#1400A6; color:white; opacity: 80%}
+.slide{
+    margin: 2px;
+}
+#slide-01  { background:#0091A6; color:white; }
+#slide-02  { background:#0067A6; color:white; }
+#slide-03  { background:#003EA6; color:#333; text-shadow:none; }
+#slide-04  { background:#0014A6; color:white; }
+#slide-05  { background:#1400A6; color:white; }
+#slide-06  { background:#0091A6; color:white; opacity: 80%;}
+#slide-07  { background:#0067A6; color:white; opacity: 80%}
+#slide-08  { background:#003EA6; color:#333; text-shadow:none; opacity: 80%}
+#slide-09  { background:#0014A6; color:white; opacity: 80%}
+#slide-010  { background:#1400A6; color:white; opacity: 80%}
 
