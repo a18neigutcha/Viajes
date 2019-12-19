@@ -357,7 +357,8 @@ class categories extends DBAbstractModel{
     
   }
 } 
-
+/*
+HAY ALGO MAL EN ESTA CLASE NO COMPILA EL PHP
 class pertany extends DBAbstractModel{
   private $codCat;
   private $codExp;
@@ -418,7 +419,7 @@ class pertany extends DBAbstractModel{
     $this->query ="UPDATE categories SET nomCat='".$nouNom."' WHERE codCat='".$id."'";
     $this->execute_single_query();
     return $this->rows; 
-    */ 
+    * / 
     return null;
   }
   public function updateNom($nom="",$nouNom=""){
@@ -426,7 +427,7 @@ class pertany extends DBAbstractModel{
     $this->query ="UPDATE categories SET nomCat='".$nouNom."' WHERE nomCat='".$nom."'";
     $this->execute_single_query();
     return $this->rows;
-    */
+    * /
     return null;
     
   }
@@ -437,6 +438,6 @@ class pertany extends DBAbstractModel{
     return $this->rows;
     
   }
-}
+}*/
 
 ?>
