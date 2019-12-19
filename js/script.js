@@ -28,6 +28,7 @@ window.onload = function() {
                 datosInicio=response.data;
                 //hideLoading();//oculta pantalla de load
                 console.log("axios succes");
+                document.getElementsByClassName("animation-load")[0].style.visibility="hidden";
             })
             .catch(function (error) {
                 console.log(error);
@@ -462,8 +463,9 @@ window.onload = function() {
             contExp.innerHTML="";
             for(let i=0;i<numExp;i++){
                   let divExp=document.createElement("li");
-                  divExp.setAttribute("id",i+"-exp");
-                  divExp.setAttribute("class","slide-0"+(i+1));
+                  divExp.setAttribute("id","slide-0"+(i+1));
+                  divExp.setAttribute("class","slide");
+
 
                     //Crea el div para el titulo de la experiencia
                     let divExpTitol=document.createElement("div");
@@ -556,7 +558,7 @@ window.onload = function() {
               // >Por cuestiones de produccion solo se pondra una categoria por experiencia
               //Actualiza las categorias de la experiencia
               let catExp=document.getElementsByClassName("catExp")[i];
-              catExp.innerHTML="¡PENDIENTE DE PRODUCIR!"
+              catExp.innerHTML=datos[i].nomCat;
 
               //Actualiza el texto de la experiencia
               let textExp=document.getElementsByClassName("textExp")[i];
@@ -575,7 +577,8 @@ window.onload = function() {
             }
           },
           dameElnomUsuariLogIn:function(){
-            return document.getElementById("inputLogInUsuari").value;
+            let nom= document.getElementById("inputLogInUsuari").value;
+            return nom;
           },
           dameElPwdLogIn:function(){
             return document.getElementById("inputLogInPwd").value;
@@ -594,6 +597,7 @@ window.onload = function() {
                 if(formLog.style.display=="none"){
                   view.ocultarTodo();
                   formLog.style.display="block";
+                  document.getElementsByClassName("caja")[0].style.backgroundColor="antiquewhite";
                 }else{
                   view.ocultarTodo();
                   view.mostrarPaginaPrincipal();
@@ -609,6 +613,8 @@ window.onload = function() {
                 if(formUpd.style.display=="none"){
                   view.ocultarTodo();
                   formUpd.style.display="block";
+                  document.getElementsByClassName("caja")[0].style.backgroundColor="antiquewhite";;
+
                 }else{
                   view.ocultarTodo();
                   view.mostrarPaginaPrincipal();
@@ -624,6 +630,8 @@ window.onload = function() {
                 if(formRegistro.style.display=="none"){
                   view.ocultarTodo();
                   formRegistro.style.display="block";
+                  document.getElementsByClassName("caja")[0].style.backgroundColor="antiquewhite";;
+
           
                 }else{
                   view.ocultarTodo();
@@ -640,10 +648,13 @@ window.onload = function() {
                   if(formNewExp.style.display=="none"){
                     view.ocultarTodo();
                     formNewExp.style.display="block";
+                    document.getElementsByClassName("caja")[0].style.backgroundColor="antiquewhite";
+
             
                   }else{
                     view.ocultarTodo();
                     view.mostrarPaginaPrincipal();
+
                   }
                 }else{
                   alert("Necesitas iniciar sesion");
@@ -711,6 +722,8 @@ window.onload = function() {
             document.getElementById("formSpam").style.display="none";
             document.getElementById("Upd8Exp").style.display="none";
             document.getElementById("barraFiltros").style.display="none";
+            document.getElementsByClassName("caja")[0].style.backgroundColor="transparent";
+
           },
           mostrarPaginaPrincipal:function(){
             document.getElementById("contExp").style.display="flex";

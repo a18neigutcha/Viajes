@@ -19,14 +19,15 @@ INSERT INTO categories values
         (5,"Relax");
 INSERT INTO pertany values
 		(1,1),
-        (1,2),
-        (2,1),
+       /* (1,2),
+        (2,1),*/
         (2,5),
         (3,3),
-        (4,4),
-        (4,5),
+        /*(4,4),
+        (4,5),*/
         (4,1),
         (5,2),
-        (5,3),
-        (6,1),
+        /*(5,3),
+        (6,1),*/
         (6,4);
+SELECT * FROM experiencia WHERE usuari="FERRAN";
