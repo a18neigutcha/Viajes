@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS experiencia (
   titol VARCHAR(30),
   data DATE,
   text VARCHAR (50),
-  imatge VARCHAR (50) default "imgdef.jpeg",
+  imatge VARCHAR (50) default "https://picsum.photos/200/300?random=",
   coordenades VARCHAR(300),
   valPos INT,
   valNeg INT,
