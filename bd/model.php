@@ -162,12 +162,13 @@ class experiencia extends DBAbstractModel {
     $firstField = true;
     for ($i=0; $i<count($fields); $i++) {
       if ($firstField) {
-        $this->query .= $fields[$i];
+        $this->query .= "E.".$fields[$i];
         $firstField=false;
       }
       else $this->query .= ", " . $fields[$i];
     }
-    $this->query .= " FROM experiencia ORDER BY codExp DESC LIMIT 10";
+    $this->query .= ", C.nomCat";
+    $this->query .= " FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat ORDER BY codExp DESC LIMIT 10";
     $this->get_results_from_query();
     return $this->rows;
   }

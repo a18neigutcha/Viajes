@@ -5,7 +5,9 @@
 .titulo{
 
 }
-
+img{
+    object-fit: cover ;
+}
 .boton{
 
 }
