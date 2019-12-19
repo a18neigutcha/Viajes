@@ -437,7 +437,7 @@ window.onload = function() {
             
               //Actualiza la imagen de la experiencia
               let imgExp=document.getElementsByClassName("imgExp")[i];
-              imgExp.src="img/"+datos[i].imatge;
+              imgExp.src=datos[i].imatge+i;
 
               //Despliege del mapa pendiente por problemas de api key
 

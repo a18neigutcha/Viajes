@@ -4,10 +4,10 @@ class view {
   
   private $diccionari = array (
     'subtitle' => array ('inici' => 'Categorias',
-                         'view1' => 'Mostrar dades nom i edat',
-                         'view2' => 'Mostrar dades nom i alcada'),
-    'capçalera' => array ('view1' => array('nom','edat'),
-                         'view2' => array('nom','alcada')));
+                         'view1' => 'Mostrar categorias',
+                         'view2' => 'Mostrar experiencias'),
+    'capçalera' => array ('view1' => array('codCat','nomCat','Opcion 1','Opcion 2'),
+                         'view2' => array('codExp','titol','data','text','imatge','valPos','valNeg','estat','usuari')));
   
 
 public function retornar_vista ($vista, $dades=array(), $message="Dades de l'usuari") {
@@ -37,7 +37,7 @@ public function retornar_vista ($vista, $dades=array(), $message="Dades de l'usu
 		$html = str_replace('{capçalera}', $capçalera,$html);
 		
 		// the table contents is built and writen on the template
-		$contingut = $this->buildContents ($dades);
+		$contingut = $this->buildContents ($dades,$vista);
 		$html = str_replace('{contingut}', $contingut, $html);
 	}
 	
@@ -59,13 +59,30 @@ private function buildHeader ($vista) {
 } 
 
 
-private function buildContents ($dades) {
+private function buildContents ($dades,$vista) {
 	$str = "";
 	for ($i=0; $i<count($dades); $i++) {
 		$str .= "<tr>";
 		foreach ($dades[$i] as $value) 
 			$str .= "<td>$value</td>";
+		$str .="<td>";
+			 
+			$str .="<a href=\"./index.php?action=".$vista."&opcion=delete&codCat=".$dades[$i]['codCat']."\">Delete</a>";
+
+		$str .="</td>";
+		$str .="<td>";
+			 
+		$str .="<a href=\"./index.php?action=".$vista."&opcion=update&codCat=".$dades[$i]['codCat']."\">Update</a>";
+
+		$str .="</td>";
 		$str .= "</tr>";
+	}
+	return $str;
+}
+private function buildDelete(){
+	$str = "";
+	for ($i=0; $i<count($dades); $i++) {
+		$str .= "<tr> <a href=\"./index.php?codCat=".$dades['codCat']."\">Delete</a></tr>";
 	}
 	return $str;
 }

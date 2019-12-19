@@ -17,12 +17,26 @@ class controller {
     
     $uri = $_SERVER['REQUEST_URI'];
     echo $uri;
- 
-    foreach ($this->peticions as $peticio)
-      if (strpos($uri,$peticio) == true)
-        $event = $peticio;
-          
+
     $cat = new categories();
+    $exp=new experiencia();
+
+    foreach ($this->peticions as $peticio)
+      if (strpos($uri,$peticio) == true){
+          $event = $peticio;
+          $posInicio=strpos($uri,"codCat");
+          $codCat=substr($uri,$posInicio+7);
+          if(strpos($uri,"delete")==true){
+            $cat->delete($codCat);
+          }
+          if(strpos($uri,"update")==true){
+           // $cat->update($codCat,$nom);
+           echo "categoria modificada";
+          }
+      }
+        
+          
+    
     
     $view = new view();
     
@@ -30,12 +44,12 @@ class controller {
         
         
         case 'view1':
-          $dades = $cat->selectAll(array("nom","edat"));
+          $dades = $cat->selectAll(array("*"));
           $view->retornar_vista($event, $dades);
           break;
         
         case 'view2':
-          $dades = $cat->selectAll(array("nom","alcada"));
+          $dades = $exp->selectAll(array('codExp','titol','data','text','imatge','valPos','valNeg','estat','usuari'));
           $view->retornar_vista($event, $dades);
           break;
         
