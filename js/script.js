@@ -452,10 +452,12 @@ window.onload = function() {
               document.getElementById("botLogIn").style.display="none";
               document.getElementById("botLogUp").style.display="none";
               document.getElementById("botLogOut").style.display="flex";
+              document.getElementById("barraSignVacio").setAttribute("class","col-11");
             }else{
               document.getElementById("botLogIn").style.display="flex";
               document.getElementById("botLogUp").style.display="flex";
               document.getElementById("botLogOut").style.display="none";
+              document.getElementById("barraSignVacio").setAttribute("class","col-10");
             }
           },
           creaCamposExperiencias:function(numExp){

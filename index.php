@@ -29,14 +29,14 @@
         <h1 class="text-center col">Viat-1 Projecte Transversal</h1>
         <!--clase lead: resalta el texto-->
       </div>
-      <div class="row">
-        <div class="col-10"></div>
+      <div id="barraSign" class="row">
+        <div id="barraSignVacio" class="col-10"></div>
         <!--clase btn: botón-->
-        <button id="botLogIn" class="btn col-1 link buzz-out-on-hover">SingIn</button>
+        <button id="botLogIn" class="btn col-1 link buzz-out-on-hover">SignIn</button>
         <!--clase btn-primary: botón primario-->
-        <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
+        <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SignUp</button>
         <!--clase btn: botón-->
-        <button id="botLogOut" class="btn btn-primary col-1 link buzz-out-on-hover" style="display: none;">SingOut</button>
+        <button id="botLogOut" class="btn btn-primary col-1 link buzz-out-on-hover" style="display: none;">SignOut</button>
       </div>
       <div class="container">
         <div class="row">
