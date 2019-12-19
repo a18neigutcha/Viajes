@@ -1,5 +1,3 @@
-
-
 CREATE DATABASE IF NOT EXISTS a18NeiGutCha_viajes;
 USE a18NeiGutCha_viajes;
 CREATE TABLE IF NOT EXISTS usuari(

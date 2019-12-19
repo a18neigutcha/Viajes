@@ -10,6 +10,8 @@ var filtros={
 var datosInicio;
 var expPorTitol;
 var confirmacionGuardado="";
+var listaUsuario;
+var expActualizar;
 window.onload = function() {
       var modelo={
         init:function(){
@@ -100,21 +102,22 @@ window.onload = function() {
           }); 
         },
 
-        listaExperienciasUsuario:function(nomUsuari,callback){
-          axios.get('api.php',{
-            "nomUsuari":nomUsuari,
-            "tipo":"listaExpUsuario",
-            
+        listaExperienciasUsuario:function(){
+          axios.get('api.php', {
+            params: {
+              "nomUsuari":logIn.nomUsuari,
+              'tipo':'listaExpUsuario'
+            }
           })
           .then(function(response){
-              datos=response.data;
+             datosInicio=response.data;
+             controlador.creaListaExpUsuario();
           })
           .catch(function (error) {
             console.log(error);
           })
           .finally(function () {
-            console.log("login usuario");
-            callback();
+            console.log("listaExperienciasUsuario");
           }); 
         },
         insertaLaNuevaExperiencia:function(nuevaExp){
@@ -122,6 +125,25 @@ window.onload = function() {
               params: {
                 'nuevaExp':nuevaExp,
                 'tipo':'insertaNuevaExp'
+              }
+          })
+          .then(function (response) {
+              confirmacionGuardado=response.data;
+          })
+          .catch(function (error) {
+              console.log(error);
+          })
+          .finally(function () {
+            controlador.postInsertaExperiencia();
+              
+          });
+        },
+        actualizaExperiencia:function(codExp,experiencia){
+          axios.get('api.php', {
+              params: {
+                'codExp':codExp,
+                'experiencia':experiencia,
+                'tipo':'actualizaExperiencia'
               }
           })
           .then(function (response) {
@@ -239,9 +261,26 @@ window.onload = function() {
           })
           .finally(function () {
             
-          }); 
+          });
+        }, 
+        dameDatosExperiencia:function(codExp){
+          axios.get('api.php',{
+            params: {
+              'codExp':codExp,
+              "tipo":'datosExperiencia'
+            }
+          })
+          .then(function(response){
+            datos=response.data;
+            controlador.rellenaFormularioUpd(datos[0]);
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          .finally(function () {    
+          });
         }
-        
       }
 
       var controlador={
@@ -278,6 +317,48 @@ window.onload = function() {
             view.actualizaExperiencias(datos);
             controlador.retornaALaPaginaInicial();
             console.log("Datos actualizados");
+          },
+          dameDatosExperiencia(codExp){
+            modelo.dameDatosExperiencia(codExp);
+          },
+          creaListaExpUsuario:function(){
+            let datos = controlador.dameDatosIniciales();
+            let form = document.getElementById("formUpd8Exp");
+            form.innerHTML ="Selecciona una experiencia a actualitzar:";
+    
+            let ul = document.createElement("ul");
+            for(let i=0; i < datos.length;i++){
+
+                let li =document.createElement("li");
+                li.innerHTML=" Titol: "+datos[i].titol;
+                li.addEventListener("click",(function(copia){
+                  return function(){  
+                      expActualizar =datos[i].codExp;                                  
+                      obj=document.getElementById("contenidoExp");
+                      controlador.dameDatosExperiencia(datos[i].codExp);
+                  }
+
+                })(i));
+                ul.appendChild(li); 
+            }
+            form.appendChild(ul);
+            let p =document.createElement("p");
+            p.innerHTML="Volver atras";
+            p.classList.add("updBack");
+            p.classList.add("btn");
+            p.classList.add("btn-primary");
+            p.addEventListener("click",function(){
+              view.ocultarTodo();
+              view.mostrarPaginaPrincipal();
+            });
+            form.appendChild(p);
+          },
+          rellenaFormularioUpd(datos){
+            console.log(datos);
+            document.getElementById("updExpTitulo").value =datos.titol;
+            document.getElementById("updExpDescrip").value =datos.text;
+            document.getElementById("updExpImg").value =datos.imatge;
+            document.getElementById("updExpMaps").value=datos.coordenades;
           },
           fechaHoy:function(){
               let hoy = new Date();
@@ -327,8 +408,10 @@ window.onload = function() {
           retornaALaPaginaInicial:function(){
             view.ocultarTodo();
             view.mostrarPaginaPrincipal();
+          },
+          actualizaExperiencia:function(codExp,experiencia){
+            modelo.actualizaExperiencia(codExp,JSON.stringify(experiencia));
           }
-          
 
       }
       var view={
@@ -347,6 +430,7 @@ window.onload = function() {
             view.aplicarFiltros();     
             view.registrarUsuario();
             view.eventoCancelar();   
+            view.actualizaExperiencia();        
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -494,18 +578,19 @@ window.onload = function() {
           },
           eventoMostrarActualizarExp:function(){
             document.getElementById("botUpdExp").addEventListener("click",function(){
-              console.log("UPDATE EXP");
-              let formUpd=document.getElementById("Upd8Exp");
-              if(formUpd.style.display=="none"){
-                console.log("IF");
-                view.ocultarTodo();
-                formUpd.style.display="block";
-              }else{
-                console.log("ELSE");
-                view.ocultarTodo();
-                view.mostrarPaginaPrincipal();
-              }
+              if(logIn.log=="logIn"){
+                view.listaExperienciasUsuario();
+                let formUpd=document.getElementById("Upd8Exp");
+                if(formUpd.style.display=="none"){
+                  view.ocultarTodo();
+                  formUpd.style.display="block";
+                }else{
+                  view.ocultarTodo();
+                  view.mostrarPaginaPrincipal();
+                }
+              }else alert("Necesitas iniciar sesion");
             });
+
           },
           eventoMostrarOcultarLogOut:function(){
             document.getElementById("botLogUp").addEventListener("click",function(){
@@ -630,6 +715,33 @@ window.onload = function() {
             });
 
           },
+          actualizaExperiencia:function(){
+            document.getElementById("botUpdConfirm").addEventListener("click",function(){
+              let experiencia={
+                titol:"",
+                data:"",
+                text:"",
+                imatge:"",
+                coordenades:"",
+                valPos:0,
+                valNeg:0,
+                estat:"",
+                usuari:logIn.nomUsuari,
+                categoria:""
+              };
+              experiencia.titol=document.getElementById("updExpTitulo").value;
+              experiencia.text=document.getElementById("updExpDescrip").value;
+              experiencia.imatge=document.getElementById("updExpImg").value;
+              experiencia.coordenades=document.getElementById("updExpMaps").value;
+              experiencia.estat=document.getElementById("updExpEst").value;
+              experiencia.categoria=document.getElementById("updExpCat").value;
+              console.log(experiencia);
+
+              controlador.actualizaExperiencia(expActualizar,experiencia);
+
+            });
+
+          },
           valoraUnaExperiencia:function(){
             let datos=controlador.dameDatosIniciales();
             for(let i=0;i<datos.length;i++){
@@ -653,12 +765,7 @@ window.onload = function() {
             
           },
           listaExperienciasUsuario:function(){
-            let datos=controlador.dameExpUsuario(logIn.nomUsuari);
-            let form = document.getElementById("formUpd8Exp");
-            let ul = document.createElement("ul");
-            for(let i=0; i < datos.length;i++){
-                let li =document.createElement("li");
-            }
+            modelo.listaExperienciasUsuario();
           },
           filtraPorCategoria:function(){
             let categorias=document.getElementsByClassName("filtroCat");
@@ -719,6 +826,6 @@ window.onload = function() {
     //  window.setTimeout(function (){alert("Hola")},1000);
       controlador.init();
      
-      
+    
 
 };

@@ -190,6 +190,8 @@ class experiencia extends DBAbstractModel {
     $this->query .= "FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat AND C.nomCat='".$categoria."' ORDER BY codExp ";
     if(strcmp($orden,"Ascendent")==0) $this->query .= "ASC";
     else $this->query .= "DESC";
+  public function selectCodExp($codExp){
+    $this->query ="SELECT * FROM experiencia WHERE codExp='".$codExp."'";
     $this->get_results_from_query();
     return $this->rows;
   }
@@ -223,8 +225,15 @@ class experiencia extends DBAbstractModel {
   
   public function update ($user_data = array()) {
     $this->query="UPDATE experiencia SET titol ='".$user_data["titol"]."',data ='".$user_data["data"]."', text='".$user_data["text"]."',
-    imatge ='".$user_data["img"]."',coordenades ='".$user_data["coordenades"]."',valPos ='".$user_data["valPos"]."',valNeg ='".$user_data["valNeg"]."',
+    imatge ='".$user_data["imatge"]."',coordenades ='".$user_data["coordenades"]."',valPos ='".$user_data["valPos"]."',valNeg ='".$user_data["valNeg"]."',
     estat ='".$user_data["estat"]."',usuari ='".$user_data["usuari"]."' WHERE codExp='".$user_data["codExp"]."'";
+    $this->execute_single_query();
+    return $this->rows;
+  }
+  public function updateCodExp ($codExp,$user_data = array()) {
+    $this->query="UPDATE experiencia SET titol ='".$user_data["titol"]."', text='".$user_data["text"]."',
+    imatge ='".$user_data["imatge"]."',coordenades ='".$user_data["coordenades"]."',valPos ='".$user_data["valPos"]."',valNeg ='".$user_data["valNeg"]."',
+    estat ='".$user_data["estat"]."',usuari ='".$user_data["usuari"]."' WHERE codExp='".$codExp."'";
     $this->execute_single_query();
     return $this->rows;
   }

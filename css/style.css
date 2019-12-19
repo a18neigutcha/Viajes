@@ -192,6 +192,22 @@ body{
 .accordion li:hover .detalleExp{
     visibility: visible;
 }
+#formUpd8Exp li{
+    list-style:none;
+    color: blue;
+    /*
+    INTENTO DE HACER UN EFECTO DE SUBRAYADO DINAMICO
+    transition: border 1s;
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+    width: 0;
+    display: inline-block;*/
+}
+#formUpd8Exp li:hover{
+    cursor: pointer;
+   /* border-bottom: 1px solid blue;
+    width: 200px;*/
+}
 .slide-01  { background:#0091A6; color:white; }
 .slide-02  { background:#0067A6; color:white; }
 .slide-03  { background:#003EA6; color:#333; text-shadow:none; }

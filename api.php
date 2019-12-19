@@ -120,7 +120,23 @@ switch ($_REQUEST['tipo']){
             $dades="ok";
             
         }
-        
+        break;
+    case 'datosExperiencia':
+        if($_REQUEST['codExp'])
+            $dades=$exp->selectCodExp($_REQUEST['codExp']);     
+        else $dades="error";
+        break;
+    case 'actualizaExperiencia':
+            if($_REQUEST['codExp'] && $_REQUEST['experiencia']){
+                $dadesExp=json_decode ($_REQUEST['experiencia'],true);
+                $verif = $exp->updateCodExp($_REQUEST['codExp'],$dadesExp);
+                if($verif){
+                    $dades="ok";
+                }else{
+                    $dades="Error";
+                }
+            }
+            else $dades = "ERROR PARAMETROS";
         break;
     default:
         $dades="REQUEST ERROR: TIPO ERRONEO";
