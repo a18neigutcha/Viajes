@@ -280,6 +280,12 @@ window.onload = function() {
           })
           .finally(function () {    
           });
+        },
+        borrarFiltros:function(){
+          filtros={
+            categoria:"",
+            orden:""
+          }
         }
       }
 
@@ -306,7 +312,8 @@ window.onload = function() {
           postLogIn:function(){
             if(logIn.log=="logIn"){
               console.log("Inicio session");
-              modelo.cargaDatosIniciales();                
+              modelo.cargaDatosIniciales();
+              view.actualizaBarraAcceso();               
             }else{
               console.log("Fallo el acceso");
             }
@@ -396,6 +403,7 @@ window.onload = function() {
               modelo.cargaDatosPorCategoria(filtros.categoria);
             }else{
               console.log("No hay filtros");
+              modelo.cargaDatosIniciales();
             }
               
           },
@@ -411,6 +419,11 @@ window.onload = function() {
           },
           actualizaExperiencia:function(codExp,experiencia){
             modelo.actualizaExperiencia(codExp,JSON.stringify(experiencia));
+          },
+          borrarFiltros:function(){
+            modelo.borrarFiltros();
+            modelo.cargaDatosIniciales();
+
           }
 
       }
@@ -430,7 +443,19 @@ window.onload = function() {
             view.aplicarFiltros();     
             view.registrarUsuario();
             view.eventoCancelar();   
-            view.actualizaExperiencia();        
+            view.actualizaExperiencia();
+            view.borrarFiltros();        
+          },
+          actualizaBarraAcceso:function(){
+            if(logIn.log=="logIn"){
+              document.getElementById("botLogIn").style.display="none";
+              document.getElementById("botLogUp").style.display="none";
+              document.getElementById("botLogOut").style.display="flex";
+            }else{
+              document.getElementById("botLogIn").style.display="flex";
+              document.getElementById("botLogUp").style.display="flex";
+              document.getElementById("botLogOut").style.display="none";
+            }
           },
           creaCamposExperiencias:function(numExp){
             var contExp=document.getElementById("contExp");
@@ -685,9 +710,11 @@ window.onload = function() {
             document.getElementById("formNewExp").style.display="none";
             document.getElementById("formSpam").style.display="none";
             document.getElementById("Upd8Exp").style.display="none";
+            document.getElementById("barraFiltros").style.display="none";
           },
           mostrarPaginaPrincipal:function(){
             document.getElementById("contExp").style.display="flex";
+            document.getElementById("barraFiltros").style.display="flex";
           },
           crearNuevaExperiencia:function(){
             document.getElementById("botCreaExp").addEventListener("click",function(){
@@ -817,6 +844,11 @@ window.onload = function() {
                 controlador.retornaALaPaginaInicial();
               });
             }
+          },
+          borrarFiltros:function(){
+            document.getElementById("botBorraFiltros").addEventListener("click",function(){
+                controlador.borrarFiltros();
+            });
           }
 
 

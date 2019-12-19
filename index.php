@@ -35,6 +35,8 @@
         <button id="botLogIn" class="btn col-1 link buzz-out-on-hover">SingIn</button>
         <!--clase btn-primary: botón primario-->
         <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SingUp</button>
+        <!--clase btn: botón-->
+        <button id="botLogOut" class="btn btn-primary col-1 link buzz-out-on-hover" style="display: none;">SingOut</button>
       </div>
       <div class="container">
         <div class="row">
@@ -54,9 +56,6 @@
                 <li><a id="botUpdExp" href="#">Actualiza una experiencia</a></li>
               </ul>
             </div>
-          <!--<button id="botMisExp" class="btn btn-primary col-2">Mis experiencias</button>
-          <button id="botNewExp" class="btn btn-primary col-2">Nueva experiencia</button>
-          <button id="botUpdExp" class="btn btn-primary col-2">Actualiza una experiencia</button>-->
           <button id="botReport" class="btn btn-primary col-2">Reportar</button>
           <div class="col-2"></div>
         </div>
@@ -69,81 +68,66 @@
       <p class="col">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <p class="col-1">Filtrar: </p>
-        <div class="btn-group">
-          <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
+    <!--Barra de filtros -->
+    <div id="barraFiltros" class="container">
+          <div class="row">
+            <p class="col-1">Filtrar: </p>
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
 
-          <button type="button" class="btn btn-danger dropdown-toggle colorBot"
-                  data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only">Desplegar menú</span>
-          </button>
+              <button type="button" class="btn btn-danger dropdown-toggle colorBot"
+                      data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Desplegar menú</span>
+              </button>
 
-          <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-item filtroCat">Platja</button></li>
-            <li class="dropdown-item filtroCat">Muntanya</li>
-            <li class="dropdown-item filtroCat">Interior</li>
-            <li class="dropdown-item filtroCat">Aventures</li>
-            <li class="dropdown-item filtroCat">Relax</li>
-          </ul>
-        </div>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-item filtroCat">Platja</button></li>
+                <li class="dropdown-item filtroCat">Muntanya</li>
+                <li class="dropdown-item filtroCat">Interior</li>
+                <li class="dropdown-item filtroCat">Aventures</li>
+                <li class="dropdown-item filtroCat">Relax</li>
+              </ul>
+            </div>
 
-        <p class="col-1">Ordenar: </p>
-        <div class="btn-group">
-          <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
+            <p class="col-1">Ordenar: </p>
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
 
-          <button type="button" class="btn btn-danger dropdown-toggle colorBot"
-                  data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only">Desplegar menú</span>
-          </button>
+              <button type="button" class="btn btn-danger dropdown-toggle colorBot"
+                      data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Desplegar menú</span>
+              </button>
 
-          <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-item ordenExp">Ascendent</li>
-            <li class="dropdown-item ordenExp">Descendent</li>
-          </ul>
-        </div>
-        <div id="botAplicaFiltros" class="btn btn-primary">
-          Aplicar filtros
-        </div>
-      </div>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-item ordenExp">Ascendent</li>
+                <li class="dropdown-item ordenExp">Descendent</li>
+              </ul>
+            </div>
+            <div id="botAplicaFiltros" class="btn btn-primary">
+              Aplicar filtros
+            </div>
+            <div id="botBorraFiltros" class="btn btn-primary">
+              Borrar filtros
+            </div>
+          </div>
     </div>
 
     <div class="container">
 
     </div>
-
-    <!--<div class="container">
-      <div class="row">
-        <p class="col-1">Filtrar: </p>
-        <select class="col-2" name="OS">
-          <option value="Categoria">Escull una opció:</option> 
-          <option value="Platja">Platja</option>
-          <option value="Muntanya">Muntanya</option>
-          <option value="Interior">Interior</option>
-          <option value="Aventures">Aventures</option>
-          <option value="Relax">Relax</option>
-        </select>
-        <p class="col-1">Ordenar: </p>
-        <select class="col-2" name="OS">
-          <option value="Categoria">Escull una opció:</option> 
-          <option value="Platja">Ascendent</option>
-          <option value="Muntanya">Descendent</option>
-        </select>
-      <div>
-    </div>-->
-
     <div class="container">
       <div class="carga animation-load"></div>
     </div>
     <!--Contenido de la página-->
     <div class="container caja">
+
       
+         
       <!--Experiencias de inicio -->
       <ul id="contExp" class="row accordion">
-          
+        
       </ul>
       <!--Experiencias de inicio -->
       <ul id="misExp" class="row accordion" style="display: none;">
