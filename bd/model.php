@@ -190,6 +190,7 @@ class experiencia extends DBAbstractModel {
     $this->query .= "FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat AND C.nomCat='".$categoria."' ORDER BY codExp ";
     if(strcmp($orden,"Ascendent")==0) $this->query .= "ASC";
     else $this->query .= "DESC";
+  }
   public function selectCodExp($codExp){
     $this->query ="SELECT * FROM experiencia WHERE codExp='".$codExp."'";
     $this->get_results_from_query();
