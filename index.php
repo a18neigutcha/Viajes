@@ -29,14 +29,28 @@
         <h1 class="text-center col">Viat-1 Projecte Transversal</h1>
         <!--clase lead: resalta el texto-->
       </div>
+      <!--barra de Sign-->
       <div id="barraSign" class="row">
         <div id="barraSignVacio" class="col-10"></div>
         <!--clase btn: botón-->
         <button id="botLogIn" class="btn col-1 link buzz-out-on-hover">SignIn</button>
         <!--clase btn-primary: botón primario-->
         <button id="botLogUp" class="btn btn-primary col-1 link buzz-out-on-hover">SignUp</button>
-        <!--clase btn: botón-->
+        <!--clase btn: botón-
         <button id="botLogOut" class="btn btn-primary col-1 link buzz-out-on-hover" style="display: none;">SignOut</button>
+        -->
+        <div id="listUsuario" class="btn-group" role="group" aria-label="Button group with nested dropdown" style="display: none;" >
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              User...
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item">Perfil</a>
+              <a id="botLogOut" class="dropdown-item">SignOut</a>
+            </div>
+          </div>
+        </div>
+        
       </div>
       <div class="container">
         <div class="row">
@@ -129,6 +143,13 @@
       <ul id="contExp" class="row accordion">
         
       </ul>
+      <div id="barraAntSig" class="container">
+        <div class="row">
+            <div class="col-10"></div>
+            <button id="botAnterior" type="button" class="btn btn-primary btn-sm col-1"><<<</button>
+            <button id="botSiguiente" type="button" class="btn btn-secondary btn-sm col-1">>>></button>
+        </div>
+      </div>
       <!--Experiencias de inicio -->
       <ul id="misExp" class="row accordion" style="display: none;">
           <div>Carga las experiencias del usuario</div>

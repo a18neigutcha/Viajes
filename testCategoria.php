@@ -82,7 +82,7 @@
     // }
     $exp= new experiencia();
 
-    $resul=$exp->select10Last(array("*"));
+    $resul=$exp->select10Last(array("*"),1,3);
 
     print_r($resul);
 ?>

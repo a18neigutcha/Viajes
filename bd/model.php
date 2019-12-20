@@ -201,7 +201,7 @@ class experiencia extends DBAbstractModel {
     $this->get_results_from_query();
     return $this->rows;
   }
-  public function select10Last($fields=array()){
+  public function select10Last($fields=array(),$inicio,$final){
     $this->query="SELECT ";
     $firstField = true;
     for ($i=0; $i<count($fields); $i++) {
@@ -212,9 +212,11 @@ class experiencia extends DBAbstractModel {
       else $this->query .= ", E.".$fields[$i];
     }
     $this->query .= ", C.nomCat";
-    $this->query .= " FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat ORDER BY codExp DESC LIMIT 10";
+    $this->query .= " FROM experiencia E, categories C, pertany P WHERE E.codExp = P.codExp AND P.codCat = C.codCat AND ";
+    $this->query .= "E.codExp>=".$inicio." AND E.codExp<=".$final." ORDER BY codExp DESC LIMIT 10";
     $this->get_results_from_query();
     return $this->rows;
+    //return $this->query;
   }
 
   public function insert($user_data = array()) {

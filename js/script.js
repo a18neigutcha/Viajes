@@ -12,15 +12,36 @@ var expPorTitol;
 var confirmacionGuardado="";
 var listaUsuario;
 var expActualizar;
+var inicio=1;
+var final=3;
+var rango=3;
+var totalExp;
 window.onload = function() {
       var modelo={
         init:function(){
           modelo.cargaDatosIniciales();
+          modelo.dameTotalExperiencias();
+        },
+        dameTotalExperiencias:function(){
+          axios.get('api.php', {
+            params: {
+              "tipo":"dameTotalExperiencias"
+            }
+          })
+          .then(function (response) {
+              totalExp=response.data;
+              
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
         },
         cargaDatosIniciales:function(){
             axios.get('api.php', {
                 params: {
                   'logIn':logIn.log,
+                  "inicio":1,
+                  "final":rango,
                   "tipo":"cargaDatosIniciales"
                 }
             })
@@ -42,6 +63,66 @@ window.onload = function() {
               controlador.postActualizaDatos();
              // hideLoading();//oculta pantalla de load
             }); 
+        },
+        cargaDatosAnteriores:function(){
+            axios.get('api.php', {
+                params: {
+                  'logIn':logIn.log,
+                  "inicio":inicio-rango,
+                  "final":final-rango,
+                  "tipo":"cargaDatosIniciales"
+                }
+            })
+            .then(function (response) {
+                datosInicio=response.data;
+                //hideLoading();//oculta pantalla de load
+                inicio-=rango;
+                final-=rango;
+                console.log("axios succes");
+                document.getElementsByClassName("animation-load")[0].style.visibility="hidden";
+            })
+            .catch(function (error) {
+                console.log(error);
+                //hideLoading();//oculta pantalla de load
+
+                // var imagen = new Image();
+                // imagen.onload = imagenCargada;
+                // imagen.src = "../img/icons/ups.jpg"
+            })
+            .finally(function () {
+              controlador.postActualizaDatos();
+             // hideLoading();//oculta pantalla de load
+            }); 
+        },
+        cargaDatosSiguientes:function(){
+          axios.get('api.php', {
+              params: {
+                'logIn':logIn.log,
+                "inicio":inicio+rango,
+                "final":final+rango,
+                "tipo":"cargaDatosIniciales"
+              }
+          })
+          .then(function (response) {
+              datosInicio=response.data;
+              //hideLoading();//oculta pantalla de load
+              inicio+=rango;
+              final+=rango;
+              console.log("axios succes");
+              document.getElementsByClassName("animation-load")[0].style.visibility="hidden";
+          })
+          .catch(function (error) {
+              console.log(error);
+              //hideLoading();//oculta pantalla de load
+
+              // var imagen = new Image();
+              // imagen.onload = imagenCargada;
+              // imagen.src = "../img/icons/ups.jpg"
+          })
+          .finally(function () {
+            controlador.postActualizaDatos();
+           // hideLoading();//oculta pantalla de load
+          }); 
         },
         cargaDatosActualizados:function(){
           
@@ -287,6 +368,12 @@ window.onload = function() {
             categoria:"",
             orden:""
           }
+        },
+        borraUsuario:function(){
+          logIn={
+            log:"logOut",
+            nomUsuari:"",
+          };
         }
       }
 
@@ -424,7 +511,17 @@ window.onload = function() {
           borrarFiltros:function(){
             modelo.borrarFiltros();
             modelo.cargaDatosIniciales();
-
+          },
+          cierraUsuario:function(){
+            modelo.borraUsuario();
+            modelo.cargaDatosIniciales();
+            view.actualizaBarraAcceso();
+          },
+          muestraLasSiguientesExperiencias:function(){
+            modelo.cargaDatosSiguientes();
+          },
+          muestraLasAnterioresExperiencias:function(){
+            modelo.cargaDatosAnteriores();
           }
 
       }
@@ -445,19 +542,44 @@ window.onload = function() {
             view.registrarUsuario();
             view.eventoCancelar();   
             view.actualizaExperiencia();
-            view.borrarFiltros();        
+            view.borrarFiltros();
+            view.eventoCerrarUsuario(); 
+            view.muestraSiguientes();
+            view.muestraAnteriores();       
+          },
+          muestraSiguientes:function(){
+            document.getElementById("botSiguiente").addEventListener("click",function(){
+              console.log("Muestra siguientes");
+              if(final!=totalExp)
+                controlador.muestraLasSiguientesExperiencias();
+            });
+          },
+          muestraAnteriores:function(){
+            document.getElementById("botAnterior").addEventListener("click",function(){
+              console.log("Muestra anterior");
+              if(inicio!=1)
+                controlador.muestraLasAnterioresExperiencias();
+            });
+          },
+          eventoCerrarUsuario:function(){
+            document.getElementById("botLogOut").addEventListener("click",function(){
+                console.log("Cierra session");
+                controlador.cierraUsuario();
+            });
           },
           actualizaBarraAcceso:function(){
             if(logIn.log=="logIn"){
               document.getElementById("botLogIn").style.display="none";
               document.getElementById("botLogUp").style.display="none";
-              document.getElementById("botLogOut").style.display="flex";
+              document.getElementById("listUsuario").style.display="flex";
               document.getElementById("barraSignVacio").setAttribute("class","col-11");
+              console.log(document.getElementById("barraSignVacio"));
             }else{
               document.getElementById("botLogIn").style.display="flex";
               document.getElementById("botLogUp").style.display="flex";
-              document.getElementById("botLogOut").style.display="none";
+              document.getElementById("listUsuario").style.display="none";
               document.getElementById("barraSignVacio").setAttribute("class","col-10");
+              
             }
           },
           creaCamposExperiencias:function(numExp){
@@ -724,12 +846,14 @@ window.onload = function() {
             document.getElementById("formSpam").style.display="none";
             document.getElementById("Upd8Exp").style.display="none";
             document.getElementById("barraFiltros").style.display="none";
+            document.getElementById("barraAntSig").style.display="none";
             document.getElementsByClassName("caja")[0].style.backgroundColor="transparent";
 
           },
           mostrarPaginaPrincipal:function(){
             document.getElementById("contExp").style.display="flex";
-            document.getElementById("barraFiltros").style.display="flex";
+            document.getElementById("barraFiltros").removeAttribute("style");
+            document.getElementById("barraAntSig").removeAttribute("style");
           },
           crearNuevaExperiencia:function(){
             document.getElementById("botCreaExp").addEventListener("click",function(){

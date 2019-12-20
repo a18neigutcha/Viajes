@@ -28,9 +28,9 @@ switch ($_REQUEST['tipo']){
     case "cargaDatosIniciales":
         if($_REQUEST['logIn']){
             if($_REQUEST['logIn']=="logIn"){
-                $dades = $exp->select10Last(array("*"));  
+                $dades = $exp->select10Last(array("*"),$_REQUEST["inicio"],$_REQUEST["final"]);  
             }else{
-                $dades = $exp->select10Last(array("codExp","titol","text","imatge"));   
+                $dades = $exp->select10Last(array("codExp","titol","text","imatge"),$_REQUEST["inicio"],$_REQUEST["final"]);   
             }
         }else $dades="INPUT DATA ERROR: cargaDatosUsuario";
         break;
@@ -128,6 +128,10 @@ switch ($_REQUEST['tipo']){
                 }
             }
             else $dades = "ERROR PARAMETROS";
+        break;
+    case "dameTotalExperiencias":
+        $dades=$exp->selectAll(array("*"));
+        $dades=count($dades);
         break;
     default:
         $dades="REQUEST ERROR: TIPO ERRONEO";
