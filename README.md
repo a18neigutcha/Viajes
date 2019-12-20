@@ -3,8 +3,11 @@ Proyecto trasversal
 
 ## Integrantes:
   - Neil Gutierrez Chacon.
+    URL(labs): http://labs.iam.cat/~a18NeiGutCha/Viajes/
   - Adrian Postigo Moñino.
+    URL(labs):
   - Ferran Blasco Salvador.
+    URL(labs):
   
 ## Objetivo
 
