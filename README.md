@@ -5,7 +5,7 @@ Proyecto trasversal
   - Neil Gutierrez Chacon.
     URL(labs): http://labs.iam.cat/~a18NeiGutCha/Viajes/
   - Adrian Postigo Moñino.
-    URL(labs):
+    URL(labs): http://labs.iam.cat/~a17adrposmon/Viajes/
   - Ferran Blasco Salvador.
     URL(labs):
   

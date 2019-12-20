@@ -10,23 +10,32 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/animacion.css" rel="stylesheet" media="screen"> 
     <link href="css/style.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="css/fonts.css" rel="stylesheet" media="screen" type="text/css">
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!--Tipografias-->
+    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inria+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+
   </head>
   <body>
 
 
     <!--- Resto de tu HTML -->
 
-    <div class="container" style="background-color: #aaa">
+    <div class="container" style="background-color: #8aeef5 opacity:0.6">
       <!--Contenido de la página-->
       <!--clase text-center: centra el texto-->
       <div class="row">
-        <img class="col-2" border="0" alt="logo" src="./img/logo/logo_transparent.png" width="150" height="100">
-        <h1 class="text-center col">Viat-1 Projecte Transversal</h1>
+        <img class="col-3" border="0" alt="logo" src="./img/logo/logo_transparent.png" width="200" height="150">
+        <h1 class="text-center col titulo">Viat-1 Projecte Transversal</h1>
         <!--clase lead: resalta el texto-->
       </div>
       <!--barra de Sign-->
@@ -54,23 +63,26 @@
       </div>
       <div class="container">
         <div class="row">
-          <button id="botInicio" class="btn btn-primary col-2">Inicio</button>
+          <button id="botInicio" class="btn btn-primary col-2 boton">Inicio</button>
             <div class="btn-group">
-              <button type="button" class="btn btn-danger colorBot">Experiencias</button>
+              <button type="button" class="btn btn-danger colorBot boton">Experiencias</button>
 
               <button type="button" class="btn btn-danger dropdown-toggle colorBot"
                       data-toggle="dropdown">
                 <span class="caret"></span>
-                <span class="sr-only">Desplegar menú</span>
+                <span class="sr-only boton">Desplegar menú</span>
               </button>
 
               <ul class="dropdown-menu" role="menu">
-                <li><a id="botMisExp" href="#">Mis experiencias</a></li>
-                <li><a id="botNewExp" href="#">Nueva experiencia</a></li>
-                <li><a id="botUpdExp" href="#">Actualiza una experiencia</a></li>
+                <li><a id="botMisExp boton" href="#">Mis experiencias</a></li>
+                <li><a id="botNewExp boton" href="#">Nueva experiencia</a></li>
+                <li><a id="botUpdExp boton" href="#">Actualiza una experiencia</a></li>
               </ul>
             </div>
-          <button id="botReport" class="btn btn-primary col-2">Reportar</button>
+          <!--<button id="botMisExp" class="btn btn-primary col-2">Mis experiencias</button>
+          <button id="botNewExp" class="btn btn-primary col-2">Nueva experiencia</button>
+          <button id="botUpdExp" class="btn btn-primary col-2">Actualiza una experiencia</button>-->
+          <button id="botReport" class="btn btn-primary col-2 boton">Reportar</button>
           <div class="col-2"></div>
         </div>
       </div>
@@ -79,53 +91,51 @@
     
     <!-- texto introductivo-->
     <div class="container">
-      <p class="col">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <p class="col introText">Aunque al principio de nuestra andadura viajera, tuvimos un par de experiencias viajando en grupos organizados a día de hoy todos nuestros viajes son por libre, organizados por nosotros y siempre, partiendo de un itinerario que parimos desde 0, basándonos principalmente en información que leemos en guías de viaje y otros blogs.</p>
     </div>
 
-    <!--Barra de filtros -->
-    <div id="barraFiltros" class="container">
-          <div class="row">
-            <p class="col-1">Filtrar: </p>
-            <div class="btn-group">
-              <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
+    <div class="container">
+      <div class="row">
+        <p class="col-1 boton">Filtrar: </p>
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger colorBot boton">Escull una opció:</button>
 
-              <button type="button" class="btn btn-danger dropdown-toggle colorBot"
-                      data-toggle="dropdown">
-                <span class="caret"></span>
-                <span class="sr-only">Desplegar menú</span>
-              </button>
+          <button type="button" class="btn btn-danger dropdown-toggle colorBot"
+                  data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only boton">Desplegar menú</span>
+          </button>
 
-              <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-item filtroCat">Platja</button></li>
-                <li class="dropdown-item filtroCat">Muntanya</li>
-                <li class="dropdown-item filtroCat">Interior</li>
-                <li class="dropdown-item filtroCat">Aventures</li>
-                <li class="dropdown-item filtroCat">Relax</li>
-              </ul>
-            </div>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-item filtroCat boton">Platja</button></li>
+            <li class="dropdown-item filtroCat boton">Muntanya</li>
+            <li class="dropdown-item filtroCat boton">Interior</li>
+            <li class="dropdown-item filtroCat boton">Aventures</li>
+            <li class="dropdown-item filtroCat boton">Relax</li>
+          </ul>
+        </div>
 
-            <p class="col-1">Ordenar: </p>
-            <div class="btn-group">
-              <button type="button" class="btn btn-danger colorBot">Escull una opció:</button>
+        <p class="col-1">Ordenar: </p>
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger colorBot boton">Escull una opció:</button>
 
-              <button type="button" class="btn btn-danger dropdown-toggle colorBot"
-                      data-toggle="dropdown">
-                <span class="caret"></span>
-                <span class="sr-only">Desplegar menú</span>
-              </button>
+          <button type="button" class="btn btn-danger dropdown-toggle colorBot"
+                  data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only boton">Desplegar menú</span>
+          </button>
 
-              <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-item ordenExp">Ascendent</li>
-                <li class="dropdown-item ordenExp">Descendent</li>
-              </ul>
-            </div>
-            <div id="botAplicaFiltros" class="btn btn-primary">
-              Aplicar filtros
-            </div>
-            <div id="botBorraFiltros" class="btn btn-primary">
-              Borrar filtros
-            </div>
-          </div>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-item ordenExp boton">Ascendent</li>
+            <li class="dropdown-item ordenExp boton">Descendent</li>
+          </ul>
+        </div>
+        <div class="col-4">
+        </div>
+        <div id="botAplicaFiltros" class="btn btn-primary col-2 boton">
+          Aplicar filtros
+        </div>
+      </div>
     </div>
 
     <div class="container">
@@ -165,49 +175,71 @@
                   <p>Contraseña:</p> <input class="barLog" id="inputLogInPwd" type="password" name="password"><br>
                   <a href="admin/index.php">Acceder como administrador</a>
                   <br>
-                  <input class="barLogBut" id="botAcceso"  type="button" value="Acceder">
+                  <input class="barLogBut btn btn-primary" id="botAcceso"  type="button" value="Acceder">
                 </form> 
               </div>
           </div>
         </div>
         </div>
       <!--Registrarse-->
-      <div id="formRegistro" style="display: none;">
-        <div>Formulario de registro: </div>
-        <form>
-          <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
-          <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
-          <br>
-          <input id="botRegistrarse"  type="button" value="Registrarse">
-          <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
-        </form> 
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-8">
+            <div id="formRegistro" class="log" style="display: none;">
+              <div>Formulario de registro: </div>
+              <form>
+                <p>Usuario:</p> <input id="logUpName" type="text" name="logUpName"> 
+                <p>Contraseña:</p> <input id="logUpPwd" type="password" name="logUpPwd">
+                <br>
+                <input id="botRegistrarse"  type="button" value="Registrarse">
+                <input id="botCancelar" class="cancelar"  type="button" value="Cancelar">
+              </form> 
+            </div>
+          </div>
+        </div>
       </div>
       <!--Nueva experiencia-->
-      <div id="formNewExp" style="display: none;" >
-        <div>Crea una nueva experiencia:</div>
-        <form>
-          <p>Titulo:</p> <input id="newExpTitulo" type="text"> 
-          <p>Descripcion:</p> <input id="newExpDescrip" type="text">
-          <p>URL(Imagen):</p> <input id="newExpImg" type="text">
-          <p>URL (Maps):</p> <input id="newExpMaps" type="text">
-          <p>Categoria:</p>
-          <select id="newExpCat">
-              <option value="Platja">Platja</option>
-              <option value="Muntanya">Muntanya</option>
-              <option value="Interior">Interior</option>
-              <option value="Aventures">Aventures</option>
-              <option value="Relax">Relax</option>
-          </select>
-          <p>Estado:</p>
-          <select id="newExpEst">
-              <option value="publicada">Publicar</option>
-              <option value="esborrany">Esborrany</option>
-          </select>
-          <br>
-          
-          <input id="botCreaExp"  type="button" value="Registrarse">
-          <input id="botCancelar" class="cancelar" type="reset" value="Cancelar">
-        </form> 
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-8">
+            <div id="formNewExp" class="log" style="width:80%" style="display: none;" >
+              <div>Crea una nueva experiencia:</div>
+              <form>
+                <p>Titulo:</p> <input id="newExpTitulo" type="text" class="logExp"> 
+                <p>Descripcion:</p> <input id="newExpDescrip" type="text" class="logExp">
+                <p>URL(Imagen):</p> <input id="newExpImg" type="text" class="logExp">
+                <p>URL (Maps):</p> <input id="newExpMaps" type="text" class="logExp">
+                <p>Categoria:</p>
+                <select id="newExpCat" class="btn btn-primary">
+                    <option value="Platja">Platja</option>
+                    <option value="Muntanya">Muntanya</option>
+                    <option value="Interior">Interior</option>
+                    <option value="Aventures">Aventures</option>
+                    <option value="Relax">Relax</option>
+                </select>
+                <p>Estado:</p>
+                <select id="newExpEst" class="btn btn-primary">
+                    <option value="publicada">Publicar</option><br>
+                    <option value="esborrany">Esborrany</option>
+                </select>
+                <br>
+                <br>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-8">
+                        <input id="botCreaExp"  type="button" value="Registrarse" class="logExp btn btn-primary">
+                      </div>
+                      <div class="col-4">
+                        <input id="botCancelar" class="cancelar logExp btn btn-primary"  type="button" value="Cancelar">                
+                      </div>
+                  </div>
+                </div>
+              </form> 
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Actualizar experiencia -->
       <div id="Upd8Exp"  class="container" style="display: none;" >
@@ -238,15 +270,22 @@
          </div>
       </div>
       <!--Reportar spam-->
-      <div id="formSpam" style="display: none;">
-        <div>Reportar un spam</div>
-        <form>
-          <textarea id="reporteExp" name="reporte" rows="10" cols="40">¿En que te puedo ayudar?</textarea>
-          <br>
-          
-          <input id="botLogUp"  type="button" value="Reportar">
-          <input id="botCancelar"  type="button" value="Cancelar">
-        </form>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-8">
+            <div id="formSpam" style="display: none;" class="logReport">
+              <div>Reportar un spam</div>
+              <form>
+                <textarea id="reporteExp" name="reporte" rows="10" cols="40">¿En que te puedo ayudar?</textarea>
+                <br>
+                
+                <input id="botLogUp"  type="button" value="Reportar" class="btn btn-primary">
+                <input id="botCancelar"  type="button" value="Cancelar" class="btn btn-primary">
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -258,9 +297,9 @@
     <div class="container footer">
       <div class="row">
           <div class="col-8 footer">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-              <div class="col-12 legal">
-                  <a href="README.md">Readme</a>
+              <p class="legal">D’acord amb  l’article 17.1 de la Llei 19/2014, de 29 de desembre, de transparència, accés a la informació pública, la reutilització de la informació pública és lliure i no està subjecta a restriccions, llevat dels supòsits en què, per via reglamentària, se sotmeti a l’obtenció d’una llicència específica, per raó de la tutela d’altres drets o béns jurídics, o a la sol·licitud prèvia de l’interessat.</p>
+              <div class="col-12 readme">
+                  <a href="url">Readme</a>
                   <a>|</a>
                   <a href="doc/Guia.md">Guide</a>
               </div>

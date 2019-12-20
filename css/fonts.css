@@ -1,0 +1,29 @@
+.titulo{
+    font-family: 'Girassol', cursive;
+    font-size: 40px;
+}
+
+.introText{
+    font-family: 'Inria Serif', serif;
+    font-size: 20px;
+}
+
+.text{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+}
+
+.legal{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 10px;
+}
+
+.readme{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    padding-left: 50%;
+}
+
+.boton{
+    font-family: 'Titillium Web', sans-serif;
+}
