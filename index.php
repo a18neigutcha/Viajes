@@ -94,7 +94,7 @@
       <p class="col introText">Aunque al principio de nuestra andadura viajera, tuvimos un par de experiencias viajando en grupos organizados a día de hoy todos nuestros viajes son por libre, organizados por nosotros y siempre, partiendo de un itinerario que parimos desde 0, basándonos principalmente en información que leemos en guías de viaje y otros blogs.</p>
     </div>
 
-    <div class="container">
+    <div id="barraFiltros" class="container">
       <div class="row">
         <p class="col-1 boton">Filtrar: </p>
         <div class="btn-group">

@@ -730,7 +730,7 @@ window.onload = function() {
             });
           },
           eventoMostrarActualizarExp:function(){
-            document.getElementById("botUpdExp").addEventListener("click",function(){
+            document.getElementById("botUpdExp boton").addEventListener("click",function(){
               if(logIn.log=="logIn"){
                 view.listaExperienciasUsuario();
                 let formUpd=document.getElementById("Upd8Exp");
@@ -765,7 +765,7 @@ window.onload = function() {
             });
           },
           eventoMuestraCrearNuevaExperiencia:function(){
-            document.getElementById("botNewExp").addEventListener("click",function(){
+            document.getElementById("botNewExp boton").addEventListener("click",function(){
               let formNewExp=document.getElementById("formNewExp");
                 console.log("Evento new exp");
                 if(logIn.log=="logIn"){
@@ -818,7 +818,7 @@ window.onload = function() {
             });
           },
           eventoMuestraMisExperiencias:function(){
-            document.getElementById("botMisExp").addEventListener("click",function(){
+            document.getElementById("botMisExp boton").addEventListener("click",function(){
               let misExp=document.getElementById("misExp");
                 console.log("Evento mis experiencias");
                 if(logIn.log=="logIn"){
